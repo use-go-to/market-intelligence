@@ -1,0 +1,64 @@
+name: Market Intelligence — Analyse Toutes les 30min
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Verifier Ollama via Ngrok
+        env:
+          OLLAMA_HOST: ${{ secrets.OLLAMA_HOST }}
+        run: |
+          echo "Test connexion Ollama sur $OLLAMA_HOST ..."
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$OLLAMA_HOST/api/tags" || echo "000")
+          if [ "$STATUS" = "200" ]; then
+            echo "OK Ollama accessible — rapports IA actives"
+            echo "OLLAMA_AVAILABLE=true" >> $GITHUB_ENV
+          else
+            echo "WARNING Ollama non accessible (status $STATUS) — mode sans IA"
+            echo "OLLAMA_AVAILABLE=false" >> $GITHUB_ENV
+          fi
+
+      - name: Analyse AVEC Ollama/Gemma4
+        if: env.OLLAMA_AVAILABLE == 'true'
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+          OLLAMA_HOST:  ${{ secrets.OLLAMA_HOST }}
+          OLLAMA_MODEL: ${{ secrets.OLLAMA_MODEL }}
+        run: python analyzer.py
+
+      - name: Analyse SANS Ollama (fallback si PC eteint)
+        if: env.OLLAMA_AVAILABLE == 'false'
+        env:
+          NEWS_API_KEY: ${{ secrets.NEWS_API_KEY }}
+        run: python analyzer.py --no-ai
+
+      - name: Copier results.json dans docs/
+        run: cp results.json docs/results.json
+
+      - name: Commit et push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/results.json
+          git diff --staged --quiet || git commit -m "chore: analyse $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
