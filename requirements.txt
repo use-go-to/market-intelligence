@@ -1,0 +1,10 @@
+yfinance
+requests
+transformers
+torch
+pandas
+numpy
+newsapi-python
+python-dotenv
+rich
+colorama
