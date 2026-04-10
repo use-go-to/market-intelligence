@@ -3,18 +3,18 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-10T19:56:52.476477",
+    "timestamp": "2026-04-10T20:01:05.029760",
     "market": {
       "ticker": "NVDA",
-      "current_price": 188.27999877929688,
-      "change_1d": 2.376159550959675,
-      "sma_7": 180.4500013078962,
-      "sma_20": 177.40299911499022,
-      "rsi": 67.91628721479695,
-      "volatility": 2.31328880876606,
+      "current_price": 188.7449951171875,
+      "change_1d": 2.6289986182378993,
+      "sma_7": 180.5164293561663,
+      "sma_20": 177.42624893188477,
+      "rsi": 68.25577547614063,
+      "volatility": 2.3287905265884925,
       "trend": "HAUSSIER",
-      "volume_ratio": 1.0219750228861133,
-      "price_30d_high": 188.27999877929688,
+      "volume_ratio": 1.1235353893605384,
+      "price_30d_high": 188.7449951171875,
       "price_30d_low": 165.1699981689453
     },
     "sentiment": {
@@ -26,18 +26,18 @@
       "headlines_used": 4
     },
     "score": {
-      "composite": 66.0,
+      "composite": 67.2,
       "signal": "ACHETER",
       "signal_color": "green",
       "breakdown": {
         "sentiment": 62.5,
-        "momentum": 73.76159550959676,
-        "rsi": 67.91628721479695,
-        "volume": 51.098751144305666,
+        "momentum": 76.28998618237898,
+        "rsi": 68.25577547614063,
+        "volume": 56.17676946802692,
         "trend": 70
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": [
       "Alleged images of the long-awaited Nvidia N1/N1X SoC surface on laptop motherboard — board features 128 GB of LPDDR5X memory alongside 8+6+2 phase VRM",
       "NVIDIA's N1 SoC pictured on an engineering board with 128GB of memory for local AI",
@@ -49,18 +49,18 @@
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-10T19:56:52.476502",
+    "timestamp": "2026-04-10T20:01:05.029787",
     "market": {
       "ticker": "AMD",
-      "current_price": 245.05999755859375,
-      "change_1d": 3.558146632294843,
-      "sma_7": 226.13428606305803,
-      "sma_20": 210.44150009155274,
-      "rsi": 73.71731604920086,
-      "volatility": 3.592379617253278,
+      "current_price": 245.0399932861328,
+      "change_1d": 3.5496931702797427,
+      "sma_7": 226.13142830984933,
+      "sma_20": 210.44049987792968,
+      "rsi": 73.71161174309083,
+      "volatility": 3.5920031155873646,
       "trend": "HAUSSIER",
-      "volume_ratio": 0.9843540555889896,
-      "price_30d_high": 245.05999755859375,
+      "volume_ratio": 1.0568252421748094,
+      "price_30d_high": 245.0399932861328,
       "price_30d_low": 190.9499969482422
     },
     "sentiment": {
@@ -72,36 +72,36 @@
       "headlines_used": 0
     },
     "score": {
-      "composite": 56.8,
+      "composite": 57.2,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
-        "momentum": 85.58146632294843,
+        "momentum": 85.49693170279741,
         "rsi": 30,
-        "volume": 49.21770277944948,
+        "volume": 52.84126210874047,
         "trend": 70
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": []
   },
   {
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-10T19:56:52.476512",
+    "timestamp": "2026-04-10T20:01:05.029794",
     "market": {
       "ticker": "INTC",
-      "current_price": 62.46500015258789,
-      "change_1d": 1.2070624062704425,
-      "sma_7": 55.03357151576451,
-      "sma_20": 48.18524990081787,
-      "rsi": 80.40882818755806,
-      "volatility": 5.134689460326388,
+      "current_price": 62.380001068115234,
+      "change_1d": 1.0693451626030128,
+      "sma_7": 55.021428789411274,
+      "sma_20": 48.18099994659424,
+      "rsi": 80.35421253102177,
+      "volatility": 5.137851380101612,
       "trend": "HAUSSIER",
-      "volume_ratio": 0.7016627753690037,
-      "price_30d_high": 62.46500015258789,
+      "volume_ratio": 0.7590019399613724,
+      "price_30d_high": 62.380001068115234,
       "price_30d_low": 41.189998626708984
     },
     "sentiment": {
@@ -113,18 +113,18 @@
       "headlines_used": 3
     },
     "score": {
-      "composite": 55.4,
+      "composite": 55.3,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 66.64999999999999,
-        "momentum": 62.070624062704425,
+        "momentum": 60.693451626030125,
         "rsi": 30,
-        "volume": 35.08313876845018,
+        "volume": 37.950096998068624,
         "trend": 70
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": [
       "Intel's latest Arc Graphics driver officially adds gaming support for the new Arc Pro B70",
       "Intel And NVIDIA May Team Up On Monster Serpent Lake CPUs With RTX Graphics",
@@ -135,17 +135,17 @@
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-10T19:56:52.476520",
+    "timestamp": "2026-04-10T20:01:05.029801",
     "market": {
       "ticker": "MSFT",
-      "current_price": 370.8500061035156,
-      "change_1d": -0.595062904312707,
-      "sma_7": 372.32142857142856,
-      "sma_20": 377.12449951171874,
-      "rsi": 39.472688398246845,
-      "volatility": 1.4497231519253,
+      "current_price": 370.8699951171875,
+      "change_1d": -0.5897049250381888,
+      "sma_7": 372.3242841448103,
+      "sma_20": 377.12549896240233,
+      "rsi": 39.487769055693406,
+      "volatility": 1.4496113085736644,
       "trend": "BAISSIER",
-      "volume_ratio": 0.865867925105152,
+      "volume_ratio": 1.0219770830655246,
       "price_30d_high": 410.67999267578125,
       "price_30d_low": 356.7699890136719
     },
@@ -158,18 +158,18 @@
       "headlines_used": 5
     },
     "score": {
-      "composite": 43.7,
+      "composite": 44.5,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
-        "momentum": 44.04937095687293,
-        "rsi": 39.472688398246845,
-        "volume": 43.2933962552576,
+        "momentum": 44.10295074961812,
+        "rsi": 39.487769055693406,
+        "volume": 51.09885415327623,
         "trend": 30
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": [
       "Windows and Xbox are now prioritizing user feedback in a huge pivot ... but why now? I can't help but be suspicious — it smells a bit like panic.",
       "Meta Debuts New LLM Muse Spark",
@@ -182,17 +182,17 @@
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-10T19:56:52.476527",
+    "timestamp": "2026-04-10T20:01:05.029808",
     "market": {
       "ticker": "GOOGL",
-      "current_price": 317.1600036621094,
-      "change_1d": -0.41759132564477,
-      "sma_7": 307.36856951032365,
-      "sma_20": 299.29550018310545,
-      "rsi": 60.079842143113574,
-      "volatility": 2.6197253295552527,
+      "current_price": 317.26300048828125,
+      "change_1d": -0.38525221630695994,
+      "sma_7": 307.38328334263394,
+      "sma_20": 299.30065002441404,
+      "rsi": 60.15713747680409,
+      "volatility": 2.61895746901032,
       "trend": "HAUSSIER",
-      "volume_ratio": 0.5974781219086993,
+      "volume_ratio": 0.7272698581514438,
       "price_30d_high": 318.489990234375,
       "price_30d_low": 273.5
     },
@@ -205,18 +205,18 @@
       "headlines_used": 1
     },
     "score": {
-      "composite": 51.0,
+      "composite": 51.7,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
-        "momentum": 45.82408674355231,
-        "rsi": 60.079842143113574,
-        "volume": 29.873906095434965,
+        "momentum": 46.14747783693039,
+        "rsi": 60.15713747680409,
+        "volume": 36.363492907572194,
         "trend": 70
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": [
       "Demis Hassabis says Google DeepMind had to return to its startup roots after the Brain merger"
     ]
@@ -225,17 +225,17 @@
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-10T19:56:52.476534",
+    "timestamp": "2026-04-10T20:01:05.029814",
     "market": {
       "ticker": "META",
-      "current_price": 629.0900268554688,
-      "change_1d": 0.11139772923076804,
-      "sma_7": 595.951433454241,
-      "sma_20": 591.2317474365234,
-      "rsi": 58.4976346581863,
-      "volatility": 3.7474818676606523,
+      "current_price": 629.8599853515625,
+      "change_1d": 0.23392648973701433,
+      "sma_7": 596.0614275251116,
+      "sma_20": 591.2702453613281,
+      "rsi": 58.65035445828687,
+      "volatility": 3.7466965675380908,
       "trend": "HAUSSIER",
-      "volume_ratio": 0.6340161500593097,
+      "volume_ratio": 0.7402450299263704,
       "price_30d_high": 667.1587524414062,
       "price_30d_low": 525.719970703125
     },
@@ -248,18 +248,18 @@
       "headlines_used": 15
     },
     "score": {
-      "composite": 54.5,
+      "composite": 55.3,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 56.65,
-        "momentum": 51.11397729230769,
-        "rsi": 58.4976346581863,
-        "volume": 31.700807502965482,
+        "momentum": 52.33926489737014,
+        "rsi": 58.65035445828687,
+        "volume": 37.01225149631852,
         "trend": 70
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": [
       "Meta rolls out new AI model in ‘fundamental shift’ in latest effort to catch up with rivals",
       "Meta AI app climbs to No. 5 on the App Store after Muse Spark launch | TechCrunch",
@@ -272,17 +272,17 @@
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-10T19:56:52.476540",
+    "timestamp": "2026-04-10T20:01:05.029819",
     "market": {
       "ticker": "TSLA",
-      "current_price": 348.54998779296875,
-      "change_1d": 0.8477497590345702,
-      "sma_7": 354.105712890625,
-      "sma_20": 370.8304977416992,
-      "rsi": 41.77193868957386,
-      "volatility": 2.8082787697993066,
+      "current_price": 348.9960021972656,
+      "change_1d": 0.9767973866597158,
+      "sma_7": 354.16942923409596,
+      "sma_20": 370.85279846191406,
+      "rsi": 41.991291890250594,
+      "volatility": 2.81271953026984,
       "trend": "BAISSIER",
-      "volume_ratio": 0.6699944543006264,
+      "volume_ratio": 0.718784080775767,
       "price_30d_high": 407.82000732421875,
       "price_30d_low": 343.25
     },
@@ -295,35 +295,35 @@
       "headlines_used": 0
     },
     "score": {
-      "composite": 46.8,
+      "composite": 47.4,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
-        "momentum": 58.477497590345706,
-        "rsi": 41.77193868957386,
-        "volume": 33.499722715031325,
+        "momentum": 59.76797386659716,
+        "rsi": 41.991291890250594,
+        "volume": 35.939204038788354,
         "trend": 30
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": []
   },
   {
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-10T19:56:52.476549",
+    "timestamp": "2026-04-10T20:01:05.029827",
     "market": {
       "ticker": "BTC-USD",
-      "current_price": 73111.28125,
-      "change_1d": 1.871943404306552,
-      "sma_7": 70439.34486607143,
-      "sma_20": 68894.54140625,
-      "rsi": 77.96843545140143,
-      "volatility": 1.6463487880897607,
+      "current_price": 73166.28125,
+      "change_1d": 1.9485794143920252,
+      "sma_7": 70447.20200892857,
+      "sma_20": 68897.29140625,
+      "rsi": 78.06805919531371,
+      "volatility": 1.6506340145642069,
       "trend": "HAUSSIER",
-      "volume_ratio": 1.1228864952682707,
+      "volume_ratio": 1.1225840378145446,
       "price_30d_high": 74861.0859375,
       "price_30d_low": 65954.921875
     },
@@ -336,18 +336,18 @@
       "headlines_used": 3
     },
     "score": {
-      "composite": 53.3,
+      "composite": 53.5,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
-        "momentum": 68.71943404306552,
+        "momentum": 69.48579414392026,
         "rsi": 30,
-        "volume": 56.144324763413536,
+        "volume": 56.12920189072723,
         "trend": 70
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": [
       "Bitcoin on-chain activity is a ghost town with price being controlled by corporate products",
       "Crypto for Advisors: Crypto’s Performance Q1",
@@ -358,17 +358,17 @@
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-10T19:56:52.476555",
+    "timestamp": "2026-04-10T20:01:05.029834",
     "market": {
       "ticker": "ETH-USD",
-      "current_price": 2251.029541015625,
-      "change_1d": 2.8269267271673275,
-      "sma_7": 2164.9177594866073,
-      "sma_20": 2104.332354736328,
-      "rsi": 73.25391351024341,
-      "volatility": 2.5550578284300163,
+      "current_price": 2252.331787109375,
+      "change_1d": 2.8864132693129965,
+      "sma_7": 2165.1037946428573,
+      "sma_20": 2104.3974670410157,
+      "rsi": 73.3161291729356,
+      "volatility": 2.5585387063550993,
       "trend": "HAUSSIER",
-      "volume_ratio": 1.1084811541282866,
+      "volume_ratio": 1.107494616503971,
       "price_30d_high": 2351.176025390625,
       "price_30d_low": 1982.5596923828125
     },
@@ -381,35 +381,35 @@
       "headlines_used": 0
     },
     "score": {
-      "composite": 55.6,
+      "composite": 55.8,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
-        "momentum": 78.26926727167327,
+        "momentum": 78.86413269312996,
         "rsi": 30,
-        "volume": 55.42405770641433,
+        "volume": 55.37473082519855,
         "trend": 70
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": []
   },
   {
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-10T19:56:52.476562",
+    "timestamp": "2026-04-10T20:01:05.029840",
     "market": {
       "ticker": "SOL-USD",
-      "current_price": 85.310791015625,
-      "change_1d": 2.416706356475545,
-      "sma_7": 82.80752454485211,
-      "sma_20": 83.935107421875,
-      "rsi": 54.91129611840001,
-      "volatility": 2.6655714064061478,
+      "current_price": 85.3897705078125,
+      "change_1d": 2.511522256823594,
+      "sma_7": 82.81880732945034,
+      "sma_20": 83.93905639648438,
+      "rsi": 55.06339756185783,
+      "volatility": 2.6716757857136058,
       "trend": "BAISSIER",
-      "volume_ratio": 2.3965492223101355,
+      "volume_ratio": 2.3968031375910446,
       "price_30d_high": 96.22372436523438,
       "price_30d_low": 78.9513168334961
     },
@@ -422,18 +422,18 @@
       "headlines_used": 1
     },
     "score": {
-      "composite": 42.5,
+      "composite": 42.8,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 0.0,
-        "momentum": 74.16706356475545,
-        "rsi": 54.91129611840001,
+        "momentum": 75.11522256823595,
+        "rsi": 55.06339756185783,
         "volume": 100,
         "trend": 30
       }
     },
-    "report": "⏭ Rapport IA désactivé (mode rapide)",
+    "report": "Rapport non disponible (reponse vide d Ollama).",
     "headlines": [
       "Morning Minute: Crypto Soars, Oil Tumbles on 2-Week Ceasefire"
     ]
