@@ -647,11 +647,11 @@ def backtest_combination(ticker: str, signal_rules: list,
             window_high   = high.iloc[i:end_window]
             window_low    = low.iloc[i:end_window]
 
-            # ── Filtre régime : MA50 doit être haussière sur la fenêtre ──
+            # ── Filtre régime : MA court terme haussier (filtre souple) ──
             if len(window_close) >= 10:
-                ma_recent = float(window_close.iloc[-5:].mean())
-                ma_old    = float(window_close.iloc[:5].mean())
-                if ma_recent < ma_old:   # tendance baissière → on ignore
+                ma_recent = float(window_close.iloc[-3:].mean())
+                ma_old    = float(window_close.iloc[:3].mean())
+                if ma_recent < ma_old * 0.97:   # tolérance 3% pour éviter sur-filtrage
                     continue
 
             market_slice = {
@@ -1062,15 +1062,22 @@ def compute_score_global(scores: dict) -> dict:
 # ─────────────────────────────────────────────
 
 def _extract_response(data: dict) -> str:
+    # Priorité 1 : réponse directe (modèles non-thinking)
     resp = (data.get("response") or "").strip()
-    if resp: return resp
+    if resp:
+        return resp
     msg = data.get("message", {})
+    # Priorité 2 : content du message (format chat standard)
     content = (msg.get("content") or "").strip()
-    if content: return content
-    thinking = (msg.get("thinking") or "").strip()
-    if thinking:
-        console.print("[yellow][DEBUG] Thinking mode → extraction depuis 'thinking'[/yellow]")
-        return thinking
+    if content:
+        return content
+    # Priorité 3 : thinking mode — on ignore le thinking, on cherche la vraie réponse
+    # Dans certains modèles le thinking est dans 'thinking' et la réponse dans 'content'
+    # Dans d'autres, tout est dans 'content' avec balises <think>...</think>
+    thinking_raw = (msg.get("thinking") or "").strip()
+    if thinking_raw:
+        # Le vrai contenu est dans 'content' — si vide, on ne retourne pas le thinking
+        return ""  # force une nouvelle tentative via le fallback
     return ""
 
 
@@ -1151,7 +1158,8 @@ def generate_ai_report(ticker: str, asset_info: dict, market: dict,
     ok_str        = " | ".join(decision_algo["raisons_ok"])  or "aucun"
     nok_str       = " | ".join(decision_algo["raisons_nok"]) or "aucun"
 
-    prompt = f"""
+    prompt = f"""Tu es un analyste financier expert. Réponds UNIQUEMENT avec l'analyse demandée, sans préambule ni explication de ta méthode.
+
 Analyse approfondie pour {asset_info['name']} ({ticker}) en français.
 
 CONTEXTE MARCHÉ:
