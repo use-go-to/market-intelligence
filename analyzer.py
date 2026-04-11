@@ -720,7 +720,8 @@ def rule_macd_cross(market, macro):
     if len(closes) < 26:
         return False
     macd = calcul_macd(closes)
-    return macd["croisement"] == "ACHAT"
+    # Tendance haussiere OU croisement recents — beaucoup plus fréquent qu'un croisement exact
+    return macd["tendance"] == "HAUSSIER"
 
 def rule_golden_cross(market, macro):
     closes = market["close"]
@@ -1063,20 +1064,30 @@ def compute_score_global(scores: dict) -> dict:
 # ─────────────────────────────────────────────
 
 def _extract_response(data: dict) -> str:
-    # Format 1 : réponse directe (modèles /api/generate)
+    import re
+    # Format 1 : réponse directe (/api/generate)
     resp = (data.get("response") or "").strip()
     if resp:
-        return resp
+        cleaned = re.sub(r"<think>[\s\S]*?</think>", "", resp).strip()
+        if cleaned:
+            return cleaned
     msg = data.get("message", {})
-    # Format 2 : thinking mode — 'content' contient la vraie réponse, 'thinking' le raisonnement interne
-    # On retourne TOUJOURS content s'il existe, qu'il y ait thinking ou non
+    # Format 2 : content du message (format chat standard + thinking mode)
     content = (msg.get("content") or "").strip()
     if content:
-        # Nettoyer les balises <think>...</think> si le modèle les insère dans content
-        import re
-        content = re.sub(r"<think>[\s\S]*?</think>", "", content).strip()
-        if content:
-            return content
+        cleaned = re.sub(r"<think>[\s\S]*?</think>", "", content).strip()
+        if cleaned:
+            return cleaned
+    # Format 3 : thinking mode où content est vide — utiliser thinking comme fallback
+    thinking = (msg.get("thinking") or "").strip()
+    if thinking:
+        # Extraire uniquement la partie après le raisonnement (cherche les sections du format)
+        for marker in ["COURT TERME", "SHORT TERM", "ANALYSE", "D\u00c9CISION"]:
+            idx = thinking.find(marker)
+            if idx != -1:
+                return thinking[idx:].strip()
+        # Si aucun marqueur trouvé, retourner les 1500 derniers caractères (conclusion)
+        return thinking[-1500:].strip()
     return ""
 
 
