@@ -8,3 +8,4 @@ newsapi-python
 python-dotenv
 rich
 colorama
+feedparser
