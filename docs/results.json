@@ -3,7 +3,7 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-11T06:19:12.133689",
+    "timestamp": "2026-04-11T06:35:46.626131",
     "market": {
       "ticker": "NVDA",
       "prix_actuel": 188.6300048828125,
@@ -14,15 +14,15 @@
       "variation_1an": 65.03,
       "rsi": 68.2,
       "macd": {
-        "macd": 0.12882478292411292,
-        "signal": -1.6624025945144851,
-        "histo": 1.791227377438598,
+        "macd": 0.12882478269742137,
+        "signal": -1.6624025948476588,
+        "histo": 1.7912273775450802,
         "tendance": "HAUSSIER",
         "croisement": "NEUTRE"
       },
       "bollinger": {
-        "upper": 188.58734450649916,
-        "lower": 166.25365433383286,
+        "upper": 188.58734450650445,
+        "lower": 166.25365433382757,
         "ma": 177.420499420166,
         "pct_b": 1.002,
         "zone": "SURACHAT"
@@ -32,7 +32,7 @@
         "prix_vs_ma20": "AU DESSUS",
         "ma50": 182.07218597412108,
         "prix_vs_ma50": "AU DESSUS",
-        "ma200": 180.72493156433106,
+        "ma200": 180.72493171691895,
         "prix_vs_ma200": "AU DESSUS",
         "score_ma": 3
       },
@@ -102,9 +102,9 @@
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
       "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
+      "The AI Stock Wall Street Can't Stop Talking About in 2026",
       "Could Investing $10,000 in SCHB Make You a Millionaire?",
-      "2 AI Stocks I'd Buy Before Sandisk -- Even After Its Stock Has Surged More Than 2,200% in the Past Year",
-      "Stanley Druckenmiller Says Stablecoins Will Dominate Global Payments Within 15 Years. Are Visa and Mastercard Stock in Trouble?"
+      "2 AI Stocks I'd Buy Before Sandisk -- Even After Its Stock Has Surged More Than 2,200% in the Past Year"
     ],
     "fear_greed": null
   },
@@ -112,7 +112,7 @@
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-11T06:19:12.133711",
+    "timestamp": "2026-04-11T06:35:46.626160",
     "market": {
       "ticker": "AMD",
       "prix_actuel": 245.0399932861328,
@@ -221,7 +221,7 @@
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-11T06:19:12.133720",
+    "timestamp": "2026-04-11T06:35:46.626170",
     "market": {
       "ticker": "INTC",
       "prix_actuel": 62.380001068115234,
@@ -319,10 +319,10 @@
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
+      "The AI Stock Wall Street Can't Stop Talking About in 2026",
       "Could Investing $10,000 in SCHB Make You a Millionaire?",
       "2 AI Stocks I'd Buy Before Sandisk -- Even After Its Stock Has Surged More Than 2,200% in the Past Year",
-      "Stanley Druckenmiller Says Stablecoins Will Dominate Global Payments Within 15 Years. Are Visa and Mastercard Stock in Trouble?",
-      "Oracle's Credit Risk Is At an All-Time High, Due to Heavy Investment in AI. Should Investors Be Concerned?"
+      "Stanley Druckenmiller Says Stablecoins Will Dominate Global Payments Within 15 Years. Are Visa and Mastercard Stock in Trouble?"
     ],
     "fear_greed": null
   },
@@ -330,7 +330,7 @@
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-11T06:19:12.133728",
+    "timestamp": "2026-04-11T06:35:46.626178",
     "market": {
       "ticker": "MSFT",
       "prix_actuel": 370.8699951171875,
@@ -341,15 +341,15 @@
       "variation_1an": -4.3,
       "rsi": 39.5,
       "macd": {
-        "macd": -8.315402587001756,
-        "signal": -9.778323826489808,
-        "histo": 1.4629212394880522,
+        "macd": -8.315402588952509,
+        "signal": -9.778323829356008,
+        "histo": 1.4629212404034995,
         "tendance": "HAUSSIER",
         "croisement": "NEUTRE"
       },
       "bollinger": {
-        "upper": 401.929452488278,
-        "lower": 352.32154543652666,
+        "upper": 401.9294524882931,
+        "lower": 352.32154543651154,
         "ma": 377.12549896240233,
         "pct_b": 0.374,
         "zone": "NEUTRE"
@@ -359,7 +359,7 @@
         "prix_vs_ma20": "EN DESSOUS",
         "ma50": 393.62245056152346,
         "prix_vs_ma50": "EN DESSOUS",
-        "ma200": 472.5898913574219,
+        "ma200": 472.589891204834,
         "prix_vs_ma200": "EN DESSOUS",
         "score_ma": 0
       },
@@ -368,8 +368,8 @@
       "tendance_court": "HAUSSIER",
       "tendance_moyen": "BAISSIER",
       "tendance_long": "BAISSIER",
-      "prix_52w_haut": 539.8252563476562,
-      "prix_52w_bas": 356.3916320800781
+      "prix_52w_haut": 539.8251953125,
+      "prix_52w_bas": 356.3916015625
     },
     "sentiment": {
       "score": 0.1,
@@ -439,7 +439,7 @@
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-11T06:19:12.133735",
+    "timestamp": "2026-04-11T06:35:46.626185",
     "market": {
       "ticker": "GOOGL",
       "prix_actuel": 317.239990234375,
@@ -450,15 +450,15 @@
       "variation_1an": 100.58,
       "rsi": 60.1,
       "macd": {
-        "macd": 1.3036168859100599,
-        "signal": -2.7144978681048735,
-        "histo": 4.018114754014933,
+        "macd": 1.3036168880092873,
+        "signal": -2.7144978650208587,
+        "histo": 4.0181147530301455,
         "tendance": "HAUSSIER",
         "croisement": "NEUTRE"
       },
       "bollinger": {
-        "upper": 325.6873018799574,
-        "lower": 272.9116971434801,
+        "upper": 325.6873018799578,
+        "lower": 272.9116971434797,
         "ma": 299.29949951171875,
         "pct_b": 0.84,
         "zone": "NEUTRE"
@@ -468,7 +468,7 @@
         "prix_vs_ma20": "AU DESSUS",
         "ma50": 308.22975158691406,
         "prix_vs_ma50": "AU DESSUS",
-        "ma200": 268.252458114624,
+        "ma200": 268.25245834350585,
         "prix_vs_ma200": "AU DESSUS",
         "score_ma": 3
       },
@@ -478,7 +478,7 @@
       "tendance_moyen": "BAISSIER",
       "tendance_long": "HAUSSIER",
       "prix_52w_haut": 343.4482421875,
-      "prix_52w_bas": 147.1597442626953
+      "prix_52w_bas": 147.1597137451172
     },
     "sentiment": {
       "score": 0.167,
@@ -548,7 +548,7 @@
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-11T06:19:12.133742",
+    "timestamp": "2026-04-11T06:35:46.626191",
     "market": {
       "ticker": "META",
       "prix_actuel": 629.8599853515625,
@@ -559,15 +559,15 @@
       "variation_1an": 7.86,
       "rsi": 58.7,
       "macd": {
-        "macd": -7.503834630150209,
-        "signal": -16.079287348371093,
-        "histo": 8.575452718220884,
+        "macd": -7.503834630150777,
+        "signal": -16.079287348372038,
+        "histo": 8.57545271822126,
         "tendance": "HAUSSIER",
         "croisement": "NEUTRE"
       },
       "bollinger": {
-        "upper": 652.3484716141649,
-        "lower": 530.1920191084913,
+        "upper": 652.3484716141687,
+        "lower": 530.1920191084874,
         "ma": 591.2702453613281,
         "pct_b": 0.816,
         "zone": "NEUTRE"
@@ -657,7 +657,7 @@
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-11T06:19:12.133748",
+    "timestamp": "2026-04-11T06:35:46.626199",
     "market": {
       "ticker": "TSLA",
       "prix_actuel": 348.95001220703125,
@@ -766,43 +766,43 @@
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-11T06:19:12.133756",
+    "timestamp": "2026-04-11T06:35:46.626207",
     "market": {
       "ticker": "BTC-USD",
-      "prix_actuel": 72706.2265625,
-      "variation_1j": 1.31,
-      "variation_5j": 5.59,
-      "variation_30j": 5.81,
-      "variation_90j": 4.94,
-      "variation_1an": -35.39,
-      "rsi": 77.2,
+      "prix_actuel": 72726.4453125,
+      "variation_1j": -0.35,
+      "variation_5j": 1.09,
+      "variation_30j": 7.19,
+      "variation_90j": 3.5,
+      "variation_1an": -36.33,
+      "rsi": 76.2,
       "macd": {
-        "macd": 444.92929943559284,
-        "signal": -174.08376004473547,
-        "histo": 619.0130594803284,
+        "macd": 647.4051976988994,
+        "signal": -6.303817498856887,
+        "histo": 653.7090151977563,
         "tendance": "HAUSSIER",
         "croisement": "NEUTRE"
       },
       "bollinger": {
-        "upper": 73200.6649929255,
-        "lower": 64547.91235082448,
-        "ma": 68874.288671875,
-        "pct_b": 0.943,
+        "upper": 73800.48524793629,
+        "lower": 64463.497564563724,
+        "ma": 69131.99140625,
+        "pct_b": 0.885,
         "zone": "NEUTRE"
       },
       "moyennes": {
-        "ma20": 68874.288671875,
+        "ma20": 69131.99140625,
         "prix_vs_ma20": "AU DESSUS",
-        "ma50": 68981.14703125,
+        "ma50": 69081.02390625,
         "prix_vs_ma50": "AU DESSUS",
-        "ma200": 88278.54751953125,
+        "ma200": 88083.47134765625,
         "prix_vs_ma200": "EN DESSOUS",
         "score_ma": 2
       },
-      "atr": 2150.3089,
-      "vol_ratio": 1.02,
+      "atr": 2132.0148,
+      "vol_ratio": 1.01,
       "tendance_court": "HAUSSIER",
-      "tendance_moyen": "BAISSIER",
+      "tendance_moyen": "HAUSSIER",
       "tendance_long": "BAISSIER",
       "prix_52w_haut": 124752.53125,
       "prix_52w_bas": 62702.09765625
@@ -818,20 +818,20 @@
     },
     "scores": {
       "court": {
-        "score": 59,
+        "score": 53,
         "signal": "ATTENDRE",
         "couleur": "yellow",
         "detail": {
           "rsi": 5,
           "macd": 20,
           "volume": 10,
-          "momentum_1j": 14,
+          "momentum_1j": 8,
           "bollinger": 10
         },
         "horizon": "Court terme (1-5 jours)"
       },
       "moyen": {
-        "score": 58,
+        "score": 54,
         "signal": "ATTENDRE",
         "couleur": "yellow",
         "detail": {
@@ -839,7 +839,7 @@
           "macd": 15,
           "sentiment": 14,
           "rsi": 3,
-          "momentum_5j": 10
+          "momentum_5j": 6
         },
         "horizon": "Moyen terme (2-8 semaines)"
       },
@@ -857,7 +857,7 @@
       }
     },
     "score_global": {
-      "score": 54.1,
+      "score": 50.7,
       "signal": "ATTENDRE",
       "couleur": "yellow"
     },
@@ -880,41 +880,41 @@
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-11T06:19:12.133764",
+    "timestamp": "2026-04-11T06:35:46.626216",
     "market": {
       "ticker": "ETH-USD",
-      "prix_actuel": 2232.79541015625,
-      "variation_1j": 1.99,
-      "variation_5j": 5.93,
-      "variation_30j": 7.52,
-      "variation_90j": 6.8,
-      "variation_1an": -34.19,
-      "rsi": 72.4,
+      "prix_actuel": 2232.91943359375,
+      "variation_1j": -0.54,
+      "variation_5j": -0.4,
+      "variation_30j": 8.76,
+      "variation_90j": 6.9,
+      "variation_1an": -36.15,
+      "rsi": 71.3,
       "macd": {
-        "macd": 25.96660206434899,
-        "signal": 8.104429242752168,
-        "histo": 17.862172821596822,
+        "macd": 31.720141369116845,
+        "signal": 12.985243053352734,
+        "histo": 18.734898315764113,
         "tendance": "HAUSSIER",
         "croisement": "NEUTRE"
       },
       "bollinger": {
-        "upper": 2260.8886566674523,
-        "lower": 1945.9526397192665,
-        "ma": 2103.4206481933593,
-        "pct_b": 0.911,
+        "upper": 2280.6880855871427,
+        "lower": 1945.375647323014,
+        "ma": 2113.031866455078,
+        "pct_b": 0.858,
         "zone": "NEUTRE"
       },
       "moyennes": {
-        "ma20": 2103.4206481933593,
+        "ma20": 2113.031866455078,
         "prix_vs_ma20": "AU DESSUS",
-        "ma50": 2068.8423388671877,
+        "ma50": 2074.3673461914063,
         "prix_vs_ma50": "AU DESSUS",
-        "ma200": 2937.1079150390624,
+        "ma200": 2927.5067590332033,
         "prix_vs_ma200": "EN DESSOUS",
         "score_ma": 2
       },
-      "atr": 90.406,
-      "vol_ratio": 0.95,
+      "atr": 89.0402,
+      "vol_ratio": 0.94,
       "tendance_court": "HAUSSIER",
       "tendance_moyen": "HAUSSIER",
       "tendance_long": "BAISSIER",
@@ -932,20 +932,20 @@
     },
     "scores": {
       "court": {
-        "score": 60,
+        "score": 52,
         "signal": "ATTENDRE",
         "couleur": "yellow",
         "detail": {
           "rsi": 5,
           "macd": 20,
           "volume": 9,
-          "momentum_1j": 16,
+          "momentum_1j": 8,
           "bollinger": 10
         },
         "horizon": "Court terme (1-5 jours)"
       },
       "moyen": {
-        "score": 66,
+        "score": 60,
         "signal": "ACHETER",
         "couleur": "green",
         "detail": {
@@ -953,7 +953,7 @@
           "macd": 15,
           "sentiment": 15,
           "rsi": 10,
-          "momentum_5j": 10
+          "momentum_5j": 4
         },
         "horizon": "Moyen terme (2-8 semaines)"
       },
@@ -971,7 +971,7 @@
       }
     },
     "score_global": {
-      "score": 57.9,
+      "score": 53.1,
       "signal": "ATTENDRE",
       "couleur": "yellow"
     },
@@ -994,41 +994,41 @@
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-11T06:19:12.133771",
+    "timestamp": "2026-04-11T06:35:46.626222",
     "market": {
       "ticker": "SOL-USD",
-      "prix_actuel": 84.04032135009766,
-      "variation_1j": 0.89,
-      "variation_5j": 4.85,
-      "variation_30j": -3.92,
-      "variation_90j": -4.11,
-      "variation_1an": -46.97,
-      "rsi": 52.3,
+      "prix_actuel": 84.02113342285156,
+      "variation_1j": -0.95,
+      "variation_5j": -1.9,
+      "variation_30j": -2.45,
+      "variation_90j": -3.47,
+      "variation_1an": -48.12,
+      "rsi": 54.4,
       "macd": {
-        "macd": -1.2993240792271905,
-        "signal": -1.613236073328461,
-        "histo": 0.31391199410127046,
+        "macd": -1.0789994378843915,
+        "signal": -1.4963291091536437,
+        "histo": 0.41732967126925224,
         "tendance": "HAUSSIER",
         "croisement": "NEUTRE"
       },
       "bollinger": {
-        "upper": 91.37430653111306,
-        "lower": 76.3688613460842,
-        "ma": 83.87158393859863,
-        "pct_b": 0.511,
+        "upper": 91.24819790401665,
+        "lower": 76.36306384525093,
+        "ma": 83.80563087463379,
+        "pct_b": 0.514,
         "zone": "NEUTRE"
       },
       "moyennes": {
-        "ma20": 83.87158393859863,
+        "ma20": 83.80563087463379,
         "prix_vs_ma20": "AU DESSUS",
-        "ma50": 85.46319808959962,
+        "ma50": 85.46668167114258,
         "prix_vs_ma50": "EN DESSOUS",
-        "ma200": 131.8584760284424,
+        "ma200": 131.2139359664917,
         "prix_vs_ma200": "EN DESSOUS",
         "score_ma": 1
       },
-      "atr": 3.6254,
-      "vol_ratio": 3.2,
+      "atr": 3.6117,
+      "vol_ratio": 2.87,
       "tendance_court": "HAUSSIER",
       "tendance_moyen": "BAISSIER",
       "tendance_long": "BAISSIER",
@@ -1046,20 +1046,20 @@
     },
     "scores": {
       "court": {
-        "score": 82,
+        "score": 76,
         "signal": "ACHETER",
         "couleur": "green",
         "detail": {
           "rsi": 25,
           "macd": 20,
           "volume": 15,
-          "momentum_1j": 12,
+          "momentum_1j": 6,
           "bollinger": 10
         },
         "horizon": "Court terme (1-5 jours)"
       },
       "moyen": {
-        "score": 57,
+        "score": 51,
         "signal": "ATTENDRE",
         "couleur": "yellow",
         "detail": {
@@ -1067,7 +1067,7 @@
           "macd": 15,
           "sentiment": 10,
           "rsi": 15,
-          "momentum_5j": 9
+          "momentum_5j": 3
         },
         "horizon": "Moyen terme (2-8 semaines)"
       },
@@ -1085,7 +1085,7 @@
       }
     },
     "score_global": {
-      "score": 59.7,
+      "score": 55.5,
       "signal": "ATTENDRE",
       "couleur": "yellow"
     },
