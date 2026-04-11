@@ -355,7 +355,7 @@ def compute_score_horizon(market: dict, sentiment: dict,
         score += r; detail["rsi"] = r
 
         m = 20 if macd.get("tendance") == "HAUSSIER" else 5
-        if macd.get("croisement") == "ACHAT":  m = 25
+        if macd.get("croisement") == "ACHAT":   m = 25
         elif macd.get("croisement") == "VENTE": m = 0
         score += m; detail["macd"] = m
 
@@ -430,9 +430,9 @@ def compute_score_horizon(market: dict, sentiment: dict,
 
     score = min(score, 100)
 
-    if score >= seuil_achat:    signal, couleur = "ACHETER", "green"
-    elif score <= seuil_vente:  signal, couleur = "ÉVITER",  "red"
-    else:                       signal, couleur = "ATTENDRE","yellow"
+    if score >= seuil_achat:   signal, couleur = "ACHETER", "green"
+    elif score <= seuil_vente: signal, couleur = "ÉVITER",  "red"
+    else:                      signal, couleur = "ATTENDRE","yellow"
 
     return {
         "score":   round(score, 1),
@@ -456,171 +456,169 @@ def compute_score_global(scores: dict) -> dict:
 
 # ─────────────────────────────────────────────
 # MODULE 5 — RAPPORT IA
-# Correction done_reason=length :
-#   - Utilise /api/chat (structure messages system+user)
-#   - Prompt Gemma-compatible avec balises <start_of_turn>
-#   - num_predict=250 (4 lignes = ~120 tokens, marge suffisante)
-#   - num_ctx=2048 (le prompt fait ~80 tokens, large marge de génération)
-#   - stop tokens explicites pour forcer l'arrêt
+#
+# ROOT CAUSE IDENTIFIÉE :
+#   Le modèle est un "thinking model" (gemma4, qwq, deepseek-r1, etc.)
+#   Il met son raisonnement dans data["message"]["thinking"]
+#   et retourne data["response"] = "" (vide).
+#
+# SOLUTION EN 3 NIVEAUX :
+#   1. Extraction depuis TOUS les champs (response / content / thinking)
+#   2. Pré-injection de "COURT:" pour forcer la continuation directe
+#   3. Parsing du texte thinking pour en extraire les 4 lignes structurées
 # ─────────────────────────────────────────────
 
-def _count_chars(prompt: str) -> int:
-    """Estimation tokens = chars / 4 (approximation pour Gemma)"""
-    return len(prompt) // 4
+def _extract_response(data: dict) -> str:
+    """
+    Extrait la réponse depuis n'importe quel format Ollama :
+    - Standard   : data["response"]
+    - Chat       : data["message"]["content"]
+    - Thinking   : data["message"]["thinking"]  ← gemma4/qwq/deepseek-r1
+    """
+    # 1. /api/generate standard
+    resp = (data.get("response") or "").strip()
+    if resp:
+        return resp
+
+    msg = data.get("message", {})
+
+    # 2. /api/chat contenu normal
+    content = (msg.get("content") or "").strip()
+    if content:
+        return content
+
+    # 3. Thinking mode — tout est dans "thinking", content est vide
+    thinking = (msg.get("thinking") or "").strip()
+    if thinking:
+        console.print("[yellow][DEBUG] Thinking mode détecté → extraction depuis 'thinking'[/yellow]")
+        return thinking
+
+    return ""
+
+
+def _extract_4lines(text: str) -> str:
+    """
+    Cherche et extrait les 4 lignes structurées COURT/MOYEN/LONG/SYNTHESE
+    depuis n'importe quel texte (réponse normale ou texte de raisonnement).
+    """
+    keywords = ("COURT", "MOYEN", "LONG", "SYNTH")
+    kept = []
+
+    for line in text.split("\n"):
+        line = line.strip()
+        if not line:
+            continue
+        upper = line.upper()
+        if any(upper.startswith(k) for k in keywords):
+            # Nettoie les préfixes parasites : "* COURT:" "- COURT:" "1. COURT:"
+            line = line.lstrip("*-•123456789. ").strip()
+            kept.append(line)
+        if len(kept) == 4:
+            break
+
+    return "\n".join(kept)
+
+
+def _clean_report(text: str) -> str:
+    """Pipeline de nettoyage : cherche les 4 lignes, sinon retourne brut."""
+    result = _extract_4lines(text)
+    if result:
+        return result
+    # Fallback : texte brut tronqué
+    return text[:400].strip()
 
 
 def generate_ai_report(ticker: str, asset_info: dict, market: dict,
                        sentiment: dict, scores: dict, headlines: list,
                        fear_greed: Optional[dict] = None) -> str:
 
-    # ── Prompt ultra-compact (~80 tokens estimés) ──
-    news_1    = headlines[0][:60].replace("\n", " ") if headlines else "aucune"
-    macd_t    = "H" if market.get("macd", {}).get("tendance") == "HAUSSIER" else "B"
-    fg_str    = f" FG={fear_greed['value']}" if fear_greed else ""
-    sent_sc   = sentiment.get("score", 0)
-    prix      = market.get("prix_actuel", 0)
-    rsi       = market.get("rsi", 50)
-    var1j     = market.get("variation_1j", 0)
-    sc_c      = scores["court"]["score"]
-    sc_m      = scores["moyen"]["score"]
-    sc_l      = scores["long"]["score"]
-    sig_c     = scores["court"]["signal"]
-    sig_m     = scores["moyen"]["signal"]
-    sig_l     = scores["long"]["signal"]
+    # ── Données compactes ──
+    news_1  = headlines[0][:60].replace("\n", " ") if headlines else "aucune"
+    macd_t  = "H" if market.get("macd", {}).get("tendance") == "HAUSSIER" else "B"
+    fg_str  = f" FG={fear_greed['value']}" if fear_greed else ""
+    sent_sc = sentiment.get("score", 0)
+    prix    = market.get("prix_actuel", 0)
+    rsi     = market.get("rsi", 50)
+    var1j   = market.get("variation_1j", 0)
+    sc_c    = scores["court"]["score"]
+    sc_m    = scores["moyen"]["score"]
+    sc_l    = scores["long"]["score"]
+    sig_c   = scores["court"]["signal"]
+    sig_m   = scores["moyen"]["signal"]
+    sig_l   = scores["long"]["signal"]
 
-    # Prompt structuré Gemma : instruction claire + format imposé
-    system_msg = (
-        "Tu es un analyste financier. "
-        "Réponds UNIQUEMENT avec exactement 4 lignes, sans texte avant ni après. "
-        "Format strict:\n"
-        "COURT: [signal] — [raison]\n"
-        "MOYEN: [signal] — [raison]\n"
-        "LONG: [signal] — [raison]\n"
-        "SYNTHESE: [conclusion]"
+    # ── Prompt : on termine par "COURT:" pour forcer la continuation
+    #    immédiate sans introduction ni raisonnement préalable visible ──
+    prompt = (
+        f"Analyse {asset_info['name']} ({ticker}) en français. "
+        f"Réponds UNIQUEMENT avec ces 4 lignes, rien d'autre:\n"
+        f"COURT: [signal] — [raison courte]\n"
+        f"MOYEN: [signal] — [raison courte]\n"
+        f"LONG: [signal] — [raison courte]\n"
+        f"SYNTHESE: [conclusion en 1 phrase]\n\n"
+        f"Données: Prix={prix:.2f} Var1j={var1j:+.1f}% RSI={rsi:.0f} "
+        f"MACD={macd_t} Sent={sent_sc:+.2f}{fg_str} "
+        f"C={sc_c:.0f}({sig_c}) M={sc_m:.0f}({sig_m}) L={sc_l:.0f}({sig_l})\n"
+        f"News: {news_1}\n\n"
+        f"COURT:"
     )
 
-    user_msg = (
-        f"Analyse {asset_info['name']} ({ticker}) :\n"
-        f"Prix={prix:.2f} Var1j={var1j:+.1f}% RSI={rsi:.0f} MACD={macd_t} "
-        f"Sent={sent_sc:+.2f}{fg_str}\n"
-        f"Scores: C={sc_c:.0f}({sig_c}) M={sc_m:.0f}({sig_m}) L={sc_l:.0f}({sig_l})\n"
-        f"News: {news_1}"
-    )
+    console.print(f"[dim][DEBUG] {ticker}: prompt {len(prompt)} chars[/dim]")
 
-    est_tokens = _count_chars(system_msg + user_msg)
-    console.print(f"[dim][DEBUG] {ticker}: prompt ~{est_tokens} tokens estimés[/dim]")
-
-    # ── Tentative 1 : /api/chat (endpoint moderne, meilleur contrôle) ──
     try:
-        response = requests.post(
-            f"{OLLAMA_HOST}/api/chat",
-            json={
-                "model":      OLLAMA_MODEL,
-                "stream":     False,
-                "keep_alive": "10m",
-                "options": {
-                    "temperature": 0.15,
-                    "num_predict": 250,    # ~120 tokens suffisent pour 4 lignes, 250 = marge
-                    "num_ctx":     2048,   # prompt ~80 tokens → ~1970 tokens de génération
-                    "top_p":       0.9,
-                    "repeat_penalty": 1.1,
-                    "stop": [              # Force l'arrêt après SYNTHESE
-                        "\n\n",
-                        "COURT:",          # Évite les boucles
-                        "Note:",
-                        "Remarque:",
-                        "Attention:",
-                    ],
-                },
-                "messages": [
-                    {"role": "system", "content": system_msg},
-                    {"role": "user",   "content": user_msg},
-                ],
-            },
-            timeout=300,
-        )
-        data   = response.json()
-        report = data.get("message", {}).get("content", "").strip()
-
-        # Debug si vide
-        if not report:
-            ec = data.get("eval_count", 0)
-            dr = data.get("done_reason", "?")
-            console.print(f"[yellow][DEBUG /api/chat] eval={ec} reason={dr}[/yellow]")
-            console.print(f"[dim][DEBUG] Raw: {str(data)[:300]}[/dim]")
-        else:
-            ec = data.get("eval_count", 0)
-            dr = data.get("done_reason", "?")
-            console.print(f"[dim][DEBUG] {ticker}: eval={ec} reason={dr}[/dim]")
-            return _clean_report(report)
-
-    except requests.exceptions.ConnectionError:
-        return f"⚠ Ollama non accessible sur {OLLAMA_HOST}"
-    except Exception as e:
-        console.print(f"[red][DEBUG] /api/chat error: {e}[/red]")
-
-    # ── Tentative 2 : /api/generate fallback ──
-    console.print(f"[yellow][DEBUG] Fallback /api/generate pour {ticker}[/yellow]")
-    try:
-        # Format prompt Gemma natif pour /api/generate
-        prompt_raw = (
-            f"<start_of_turn>user\n"
-            f"{system_msg}\n\n"
-            f"{user_msg}"
-            f"<end_of_turn>\n"
-            f"<start_of_turn>model\n"
-            f"COURT:"
-        )
-
         response = requests.post(
             f"{OLLAMA_HOST}/api/generate",
             json={
                 "model":  OLLAMA_MODEL,
-                "prompt": prompt_raw,
+                "prompt": prompt,
                 "stream": False,
                 "options": {
-                    "temperature":    0.15,
-                    "num_predict":    200,
+                    "temperature":    0.1,
+                    "num_predict":    300,
                     "num_ctx":        2048,
                     "top_p":          0.9,
                     "repeat_penalty": 1.1,
-                    "stop": ["\n\n", "Note:", "Remarque:", "<end_of_turn>"],
+                    "stop": [
+                        "\n\n\n",   # Arrête après triple saut de ligne
+                        "Données:", # Évite une répétition du prompt
+                        "Analyse ", # Évite une répétition du prompt
+                        "Note:",
+                        "Remarque:",
+                    ],
                 },
             },
             timeout=300,
         )
-        data   = response.json()
-        report = data.get("response", "").strip()
 
-        ec = data.get("eval_count", 0)
-        dr = data.get("done_reason", "?")
-        console.print(f"[dim][DEBUG] fallback: eval={ec} reason={dr}[/dim]")
+        data = response.json()
+        ec   = data.get("eval_count", 0)
+        dr   = data.get("done_reason", "?")
 
-        if not report:
-            return "Rapport IA non disponible (réponse vide)."
+        # ── Extraction multi-champs (standard + thinking mode) ──
+        raw = _extract_response(data)
 
-        # Le prompt injecte "COURT:" donc on le remet en tête
-        return _clean_report("COURT:" + report)
+        console.print(f"[dim][DEBUG] {ticker}: eval={ec} reason={dr} raw_chars={len(raw)}[/dim]")
 
+        if not raw:
+            # Affiche tous les champs disponibles pour le diagnostic
+            all_keys = list(data.keys())
+            msg_keys = list(data.get("message", {}).keys()) if "message" in data else []
+            console.print(f"[red][DEBUG] Champs data: {all_keys}[/red]")
+            console.print(f"[red][DEBUG] Champs message: {msg_keys}[/red]")
+            console.print(f"[red][DEBUG] data[:400]: {str(data)[:400]}[/red]")
+            return "Rapport IA non disponible."
+
+        # Le prompt se termine par "COURT:" donc on le remet en tête
+        full_text = "COURT:" + raw
+
+        report = _clean_report(full_text)
+        return report if report else full_text[:400]
+
+    except requests.exceptions.ConnectionError:
+        return f"⚠ Ollama non accessible sur {OLLAMA_HOST}"
     except Exception as e:
+        console.print(f"[red][DEBUG] Exception generate_ai_report: {e}[/red]")
         return f"Erreur Ollama: {e}"
-
-
-def _clean_report(text: str) -> str:
-    """Nettoie la réponse : garde uniquement les 4 lignes attendues."""
-    lines = [l.strip() for l in text.split("\n") if l.strip()]
-    kept  = []
-    keywords = ("COURT", "MOYEN", "LONG", "SYNTH")
-    for line in lines:
-        if any(line.upper().startswith(k) for k in keywords):
-            kept.append(line)
-        elif kept and not any(line.upper().startswith(k) for k in keywords):
-            # Continuation d'une ligne (pas de nouveau keyword) — ignorer
-            pass
-    # Si on n'a rien extrait, retourner le texte brut tronqué
-    if not kept:
-        return text[:500]
-    return "\n".join(kept[:4])
 
 
 # ─────────────────────────────────────────────
@@ -726,19 +724,10 @@ def display_summary_table(results: list):
 
 
 # ─────────────────────────────────────────────
-# SAUVEGARDE JSON — format compatible HTML
+# SAUVEGARDE JSON — format compatible HTML dashboard
 # ─────────────────────────────────────────────
 
 def save_results_json(results: list, path: str = "results.json"):
-    """
-    Format JSON compatible avec le dashboard HTML.
-    Le HTML attend : ticker, name, category, timestamp,
-    market.current_price, market.change_1d, market.rsi,
-    market.volume_ratio, market.trend,
-    sentiment.label, sentiment.score, sentiment.headlines_used,
-    score.composite, score.signal,
-    report
-    """
     output = []
     for r in results:
         if "error" in r:
@@ -750,13 +739,12 @@ def save_results_json(results: list, path: str = "results.json"):
         se = r["sentiment"]
 
         output.append({
-            # ── Identité ──
             "ticker":    r["ticker"],
             "name":      r["asset_info"]["name"],
             "category":  r["asset_info"]["category"],
             "timestamp": datetime.now().isoformat(),
 
-            # ── Marché (clés attendues par le HTML) ──
+            # ── Marché — clés attendues par index.html ──
             "market": {
                 "current_price":  m.get("prix_actuel"),
                 "change_1d":      m.get("variation_1j"),
@@ -775,7 +763,7 @@ def save_results_json(results: list, path: str = "results.json"):
                 "low_52w":        m.get("prix_52w_bas"),
             },
 
-            # ── Sentiment (clés attendues par le HTML) ──
+            # ── Sentiment — clés attendues par index.html ──
             "sentiment": {
                 "label":          se.get("label", "NEUTRE"),
                 "score":          se.get("score", 0),
@@ -785,11 +773,10 @@ def save_results_json(results: list, path: str = "results.json"):
                 "negatif":        se.get("negatif", 0),
             },
 
-            # ── Score global (clés attendues par le HTML) ──
+            # ── Score — clés attendues par index.html ──
             "score": {
                 "composite": round(sg["score"], 1),
                 "signal":    sg["signal"],
-                # Détail par horizon
                 "court": {
                     "value":  sc["court"]["score"],
                     "signal": sc["court"]["signal"],
@@ -804,9 +791,8 @@ def save_results_json(results: list, path: str = "results.json"):
                 },
             },
 
-            # ── IA ──
-            "report":    r.get("report", ""),
-            "headlines": r.get("headlines", [])[:5],
+            "report":     r.get("report", ""),
+            "headlines":  r.get("headlines", [])[:5],
             "fear_greed": r.get("fear_greed"),
         })
 
