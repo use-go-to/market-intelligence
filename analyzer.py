@@ -761,18 +761,19 @@ def run_advanced_backtest(ticker: str, sentiment_score: float) -> dict:
     ]
 
     best = None
-    best_score = -999.0  # Sharpe-ajusté pour éviter de choisir sur win_rate seul
+    best_score = -999.0
     for rules, use_macro, name in combos:
         result = backtest_combination(ticker, rules, filter_macro=use_macro)
-        if result["n_trades"] < 3:
+        if result["n_trades"] < 1:   # au moins 1 trade pour être considéré
             continue
-        # Critère composite : win_rate pondéré par Sharpe
         composite = result["win_rate"] * 0.6 + min(max(result["sharpe"], -1), 2) * 0.4
         if composite > best_score:
             best_score = composite
             best = {**result, "combo_name": name}
+    # Fallback : si aucune combo n'a généré de trades, lancer MACD seul sans filtre
     if best is None:
-        best = {"win_rate": 0.5, "avg_return": 0.0, "sharpe": 0.0, "max_dd": 0.0, "n_trades": 0, "combo_name": "Aucune"}
+        fallback = backtest_combination(ticker, [rule_macd_cross], filter_macro=False)
+        best = {**fallback, "combo_name": "MACD-seul"}
     return best
 
 
@@ -1062,22 +1063,20 @@ def compute_score_global(scores: dict) -> dict:
 # ─────────────────────────────────────────────
 
 def _extract_response(data: dict) -> str:
-    # Priorité 1 : réponse directe (modèles non-thinking)
+    # Format 1 : réponse directe (modèles /api/generate)
     resp = (data.get("response") or "").strip()
     if resp:
         return resp
     msg = data.get("message", {})
-    # Priorité 2 : content du message (format chat standard)
+    # Format 2 : thinking mode — 'content' contient la vraie réponse, 'thinking' le raisonnement interne
+    # On retourne TOUJOURS content s'il existe, qu'il y ait thinking ou non
     content = (msg.get("content") or "").strip()
     if content:
-        return content
-    # Priorité 3 : thinking mode — on ignore le thinking, on cherche la vraie réponse
-    # Dans certains modèles le thinking est dans 'thinking' et la réponse dans 'content'
-    # Dans d'autres, tout est dans 'content' avec balises <think>...</think>
-    thinking_raw = (msg.get("thinking") or "").strip()
-    if thinking_raw:
-        # Le vrai contenu est dans 'content' — si vide, on ne retourne pas le thinking
-        return ""  # force une nouvelle tentative via le fallback
+        # Nettoyer les balises <think>...</think> si le modèle les insère dans content
+        import re
+        content = re.sub(r"<think>[\s\S]*?</think>", "", content).strip()
+        if content:
+            return content
     return ""
 
 
