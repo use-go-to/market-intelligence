@@ -4,17 +4,8 @@
 ║        Stocks: NVDA, AMD, INTC, MSFT, GOOGL, META, TSLA             ║
 ║        Crypto: BTC, ETH, SOL                                         ║
 ║        Sources: yfinance + NewsAPI + RSS + Fear&Greed + FinBERT      ║
-║        IA: Ollama/Gemma4 — 3 horizons (court/moyen/long terme)       ║
+║        IA: Ollama — 3 horizons (court/moyen/long terme)              ║
 ╚══════════════════════════════════════════════════════════════════════╝
-
-INSTALLATION:
-    pip install yfinance requests transformers torch pandas numpy
-    pip install newsapi-python python-dotenv rich colorama feedparser
-
-CONFIG (.env):
-    NEWS_API_KEY=your_key
-    OLLAMA_HOST=http://localhost:11434
-    OLLAMA_MODEL=gemma4:latest
 """
 
 import os
@@ -163,7 +154,6 @@ def fetch_market_data(ticker: str) -> dict:
         bollinger = calcul_bollinger(close)
         mas       = calcul_moyennes_mobiles(close)
 
-        # ATR
         high = hist["High"]
         low  = hist["Low"]
         tr   = pd.concat([high - low,
@@ -171,12 +161,10 @@ def fetch_market_data(ticker: str) -> dict:
                           (low  - close.shift()).abs()], axis=1).max(axis=1)
         atr  = float(tr.rolling(14).mean().iloc[-1])
 
-        # Volume
         vol_moy    = float(volume.rolling(20).mean().iloc[-1])
         vol_actuel = float(volume.iloc[-1])
         vol_ratio  = vol_actuel / vol_moy if vol_moy > 0 else 1.0
 
-        # Tendances multi-horizon
         sma5  = close.rolling(5).mean()
         sma10 = close.rolling(10).mean()
         tendance_court = "HAUSSIER" if len(close) >= 10 and sma5.iloc[-1] > sma10.iloc[-1] else "BAISSIER"
@@ -360,30 +348,25 @@ def compute_score_horizon(market: dict, sentiment: dict,
     is_crypto = "USD" in market.get("ticker", "")
 
     if horizon == "court":
-        # RSI (25 pts)
         if 40 < rsi < 60:   r = 25
         elif 30 < rsi < 70: r = 15
         elif rsi < 30:      r = 20
         else:               r = 5
         score += r; detail["rsi"] = r
 
-        # MACD (25 pts)
         m = 20 if macd.get("tendance") == "HAUSSIER" else 5
         if macd.get("croisement") == "ACHAT":  m = 25
         elif macd.get("croisement") == "VENTE": m = 0
         score += m; detail["macd"] = m
 
-        # Volume (15 pts)
         vr = market.get("vol_ratio", 1.0)
         v  = min(int(vr * 10), 15)
         score += v; detail["volume"] = v
 
-        # Momentum 1j (20 pts)
         ch = market.get("variation_1j", 0)
         mo = min(max(int((ch + 3) / 6 * 20), 0), 20)
         score += mo; detail["momentum_1j"] = mo
 
-        # Bollinger (15 pts)
         bz = boll.get("zone", "NEUTRE")
         b  = 10 if bz == "NEUTRE" else (15 if bz == "SURVENTE" else 3)
         score += b; detail["bollinger"] = b
@@ -391,27 +374,22 @@ def compute_score_horizon(market: dict, sentiment: dict,
         seuil_achat, seuil_vente = 65, 35
 
     elif horizon == "moyen":
-        # MA score (30 pts)
         ma_score = mas.get("score_ma", 0)
         m = ma_score * 8
         score += m; detail["ma_score"] = m
 
-        # MACD (20 pts)
         mc = 15 if macd.get("tendance") == "HAUSSIER" else 5
         if macd.get("croisement") == "ACHAT": mc = 20
         score += mc; detail["macd"] = mc
 
-        # Sentiment pondéré (25 pts)
         conf = sentiment.get("confiance", 0.5)
         sent = sentiment.get("score", 0)
         s    = int((sent + 1) / 2 * 25 * conf)
         score += s; detail["sentiment"] = s
 
-        # RSI (15 pts)
         r = 15 if 35 < rsi < 65 else (10 if 25 < rsi < 75 else 3)
         score += r; detail["rsi"] = r
 
-        # Momentum 5j (10 pts)
         ch5 = market.get("variation_5j", 0)
         mo5 = min(max(int((ch5 + 5) / 10 * 10), 0), 10)
         score += mo5; detail["momentum_5j"] = mo5
@@ -419,7 +397,6 @@ def compute_score_horizon(market: dict, sentiment: dict,
         seuil_achat, seuil_vente = 60, 35
 
     else:  # long
-        # Golden/Death cross MA50 vs MA200 (35 pts)
         ma50  = mas.get("ma50")
         ma200 = mas.get("ma200")
         if ma50 and ma200:
@@ -428,17 +405,14 @@ def compute_score_horizon(market: dict, sentiment: dict,
             ma_l = 20
         score += ma_l; detail["golden_cross"] = ma_l
 
-        # Tendance long (25 pts)
         tl = 25 if market.get("tendance_long") == "HAUSSIER" else 5
         score += tl; detail["tendance_long"] = tl
 
-        # Sentiment (20 pts)
         conf = sentiment.get("confiance", 0.5)
         sent = sentiment.get("score", 0)
         s    = int((sent + 1) / 2 * 20 * conf)
         score += s; detail["sentiment"] = s
 
-        # Fear & Greed crypto (20 pts) ou momentum 1an actions
         if is_crypto and fear_greed:
             fg = fear_greed["value"]
             if fg < 25:   fg_s = 18
@@ -481,68 +455,172 @@ def compute_score_global(scores: dict) -> dict:
 
 
 # ─────────────────────────────────────────────
-# MODULE 5 — RAPPORT IA (Gemma4)
-# Prompt court pour ne pas saturer le contexte
-# num_ctx 2048 adapté RTX 3060 6GB
+# MODULE 5 — RAPPORT IA
+# Correction done_reason=length :
+#   - Utilise /api/chat (structure messages system+user)
+#   - Prompt Gemma-compatible avec balises <start_of_turn>
+#   - num_predict=250 (4 lignes = ~120 tokens, marge suffisante)
+#   - num_ctx=2048 (le prompt fait ~80 tokens, large marge de génération)
+#   - stop tokens explicites pour forcer l'arrêt
 # ─────────────────────────────────────────────
+
+def _count_chars(prompt: str) -> int:
+    """Estimation tokens = chars / 4 (approximation pour Gemma)"""
+    return len(prompt) // 4
+
 
 def generate_ai_report(ticker: str, asset_info: dict, market: dict,
                        sentiment: dict, scores: dict, headlines: list,
                        fear_greed: Optional[dict] = None) -> str:
 
-    # Résumé news ultra-court (1 seule headline, 60 chars max)
-    news_1 = headlines[0][:60] if headlines else "aucune news"
-    macd   = market.get("macd", {})
-    mas    = market.get("moyennes", {})
-    fg     = f" F&G={fear_greed['value']}" if fear_greed else ""
+    # ── Prompt ultra-compact (~80 tokens estimés) ──
+    news_1    = headlines[0][:60].replace("\n", " ") if headlines else "aucune"
+    macd_t    = "H" if market.get("macd", {}).get("tendance") == "HAUSSIER" else "B"
+    fg_str    = f" FG={fear_greed['value']}" if fear_greed else ""
+    sent_sc   = sentiment.get("score", 0)
+    prix      = market.get("prix_actuel", 0)
+    rsi       = market.get("rsi", 50)
+    var1j     = market.get("variation_1j", 0)
+    sc_c      = scores["court"]["score"]
+    sc_m      = scores["moyen"]["score"]
+    sc_l      = scores["long"]["score"]
+    sig_c     = scores["court"]["signal"]
+    sig_m     = scores["moyen"]["signal"]
+    sig_l     = scores["long"]["signal"]
 
-    # Prompt réduit à ~300 tokens max (était ~1800)
-    prompt = (
-        f"Analyste. {asset_info['name']} ({ticker}). Réponds en français, 4 lignes exactes.\n"
-        f"prix={market.get('prix_actuel',0):.2f} 1j={market.get('variation_1j',0):+.1f}% "
-        f"5j={market.get('variation_5j',0):+.1f}% RSI={market.get('rsi',50):.0f} "
-        f"MACD={macd.get('tendance','?')[0]} MA20={mas.get('prix_vs_ma20','?')[:2]} "
-        f"MA50={mas.get('prix_vs_ma50','?')[:2]} sent={sentiment['label'][0]}{fg}\n"
-        f"Scores: C={scores['court']['score']:.0f} M={scores['moyen']['score']:.0f} "
-        f"L={scores['long']['score']:.0f}\n"
-        f"News: {news_1}\n\n"
-        f"COURT TERME: [signal] — [raison]\n"
-        f"MOYEN TERME: [signal] — [raison]\n"
-        f"LONG TERME: [signal] — [raison]\n"
-        f"SYNTHÈSE: [conclusion]"
+    # Prompt structuré Gemma : instruction claire + format imposé
+    system_msg = (
+        "Tu es un analyste financier. "
+        "Réponds UNIQUEMENT avec exactement 4 lignes, sans texte avant ni après. "
+        "Format strict:\n"
+        "COURT: [signal] — [raison]\n"
+        "MOYEN: [signal] — [raison]\n"
+        "LONG: [signal] — [raison]\n"
+        "SYNTHESE: [conclusion]"
     )
 
+    user_msg = (
+        f"Analyse {asset_info['name']} ({ticker}) :\n"
+        f"Prix={prix:.2f} Var1j={var1j:+.1f}% RSI={rsi:.0f} MACD={macd_t} "
+        f"Sent={sent_sc:+.2f}{fg_str}\n"
+        f"Scores: C={sc_c:.0f}({sig_c}) M={sc_m:.0f}({sig_m}) L={sc_l:.0f}({sig_l})\n"
+        f"News: {news_1}"
+    )
+
+    est_tokens = _count_chars(system_msg + user_msg)
+    console.print(f"[dim][DEBUG] {ticker}: prompt ~{est_tokens} tokens estimés[/dim]")
+
+    # ── Tentative 1 : /api/chat (endpoint moderne, meilleur contrôle) ──
     try:
+        response = requests.post(
+            f"{OLLAMA_HOST}/api/chat",
+            json={
+                "model":      OLLAMA_MODEL,
+                "stream":     False,
+                "keep_alive": "10m",
+                "options": {
+                    "temperature": 0.15,
+                    "num_predict": 250,    # ~120 tokens suffisent pour 4 lignes, 250 = marge
+                    "num_ctx":     2048,   # prompt ~80 tokens → ~1970 tokens de génération
+                    "top_p":       0.9,
+                    "repeat_penalty": 1.1,
+                    "stop": [              # Force l'arrêt après SYNTHESE
+                        "\n\n",
+                        "COURT:",          # Évite les boucles
+                        "Note:",
+                        "Remarque:",
+                        "Attention:",
+                    ],
+                },
+                "messages": [
+                    {"role": "system", "content": system_msg},
+                    {"role": "user",   "content": user_msg},
+                ],
+            },
+            timeout=300,
+        )
+        data   = response.json()
+        report = data.get("message", {}).get("content", "").strip()
+
+        # Debug si vide
+        if not report:
+            ec = data.get("eval_count", 0)
+            dr = data.get("done_reason", "?")
+            console.print(f"[yellow][DEBUG /api/chat] eval={ec} reason={dr}[/yellow]")
+            console.print(f"[dim][DEBUG] Raw: {str(data)[:300]}[/dim]")
+        else:
+            ec = data.get("eval_count", 0)
+            dr = data.get("done_reason", "?")
+            console.print(f"[dim][DEBUG] {ticker}: eval={ec} reason={dr}[/dim]")
+            return _clean_report(report)
+
+    except requests.exceptions.ConnectionError:
+        return f"⚠ Ollama non accessible sur {OLLAMA_HOST}"
+    except Exception as e:
+        console.print(f"[red][DEBUG] /api/chat error: {e}[/red]")
+
+    # ── Tentative 2 : /api/generate fallback ──
+    console.print(f"[yellow][DEBUG] Fallback /api/generate pour {ticker}[/yellow]")
+    try:
+        # Format prompt Gemma natif pour /api/generate
+        prompt_raw = (
+            f"<start_of_turn>user\n"
+            f"{system_msg}\n\n"
+            f"{user_msg}"
+            f"<end_of_turn>\n"
+            f"<start_of_turn>model\n"
+            f"COURT:"
+        )
+
         response = requests.post(
             f"{OLLAMA_HOST}/api/generate",
             json={
                 "model":  OLLAMA_MODEL,
-                "prompt": prompt,
+                "prompt": prompt_raw,
                 "stream": False,
                 "options": {
-                    "temperature": 0.1,
-                    "num_predict": 400,   # ↑ augmenté (4 lignes ont besoin de place)
-                    "num_ctx":     4096,  # ↑ augmenté (RTX 3060 6GB gère 4096 sans problème)
-                    "top_p":       0.9,
-                }
+                    "temperature":    0.15,
+                    "num_predict":    200,
+                    "num_ctx":        2048,
+                    "top_p":          0.9,
+                    "repeat_penalty": 1.1,
+                    "stop": ["\n\n", "Note:", "Remarque:", "<end_of_turn>"],
+                },
             },
             timeout=300,
         )
         data   = response.json()
         report = data.get("response", "").strip()
 
+        ec = data.get("eval_count", 0)
+        dr = data.get("done_reason", "?")
+        console.print(f"[dim][DEBUG] fallback: eval={ec} reason={dr}[/dim]")
+
         if not report:
-            ec = data.get("eval_count", 0)
-            dr = data.get("done_reason", "?")
-            console.print(f"[yellow][DEBUG] eval_count={ec} done_reason={dr}[/yellow]")
             return "Rapport IA non disponible (réponse vide)."
 
-        return report
+        # Le prompt injecte "COURT:" donc on le remet en tête
+        return _clean_report("COURT:" + report)
 
-    except requests.exceptions.ConnectionError:
-        return f"⚠ Ollama non accessible sur {OLLAMA_HOST}"
     except Exception as e:
         return f"Erreur Ollama: {e}"
+
+
+def _clean_report(text: str) -> str:
+    """Nettoie la réponse : garde uniquement les 4 lignes attendues."""
+    lines = [l.strip() for l in text.split("\n") if l.strip()]
+    kept  = []
+    keywords = ("COURT", "MOYEN", "LONG", "SYNTH")
+    for line in lines:
+        if any(line.upper().startswith(k) for k in keywords):
+            kept.append(line)
+        elif kept and not any(line.upper().startswith(k) for k in keywords):
+            # Continuation d'une ligne (pas de nouveau keyword) — ignorer
+            pass
+    # Si on n'a rien extrait, retourner le texte brut tronqué
+    if not kept:
+        return text[:500]
+    return "\n".join(kept[:4])
 
 
 # ─────────────────────────────────────────────
@@ -647,23 +725,91 @@ def display_summary_table(results: list):
     console.print(table)
 
 
+# ─────────────────────────────────────────────
+# SAUVEGARDE JSON — format compatible HTML
+# ─────────────────────────────────────────────
+
 def save_results_json(results: list, path: str = "results.json"):
+    """
+    Format JSON compatible avec le dashboard HTML.
+    Le HTML attend : ticker, name, category, timestamp,
+    market.current_price, market.change_1d, market.rsi,
+    market.volume_ratio, market.trend,
+    sentiment.label, sentiment.score, sentiment.headlines_used,
+    score.composite, score.signal,
+    report
+    """
     output = []
     for r in results:
-        if "error" not in r:
-            output.append({
-                "ticker":       r["ticker"],
-                "name":         r["asset_info"]["name"],
-                "category":     r["asset_info"]["category"],
-                "timestamp":    datetime.now().isoformat(),
-                "market":       {k: v for k, v in r["market"].items() if k != "history_14j"},
-                "sentiment":    r["sentiment"],
-                "scores":       r["scores"],
-                "score_global": r["score_global"],
-                "report":       r["report"],
-                "headlines":    r["headlines"][:5],
-                "fear_greed":   r.get("fear_greed"),
-            })
+        if "error" in r:
+            continue
+
+        m  = r["market"]
+        sg = r["score_global"]
+        sc = r["scores"]
+        se = r["sentiment"]
+
+        output.append({
+            # ── Identité ──
+            "ticker":    r["ticker"],
+            "name":      r["asset_info"]["name"],
+            "category":  r["asset_info"]["category"],
+            "timestamp": datetime.now().isoformat(),
+
+            # ── Marché (clés attendues par le HTML) ──
+            "market": {
+                "current_price":  m.get("prix_actuel"),
+                "change_1d":      m.get("variation_1j"),
+                "change_5d":      m.get("variation_5j"),
+                "change_30d":     m.get("variation_30j"),
+                "rsi":            m.get("rsi"),
+                "volume_ratio":   m.get("vol_ratio"),
+                "trend":          m.get("tendance_court", ""),
+                "macd_trend":     m.get("macd", {}).get("tendance", ""),
+                "bollinger_zone": m.get("bollinger", {}).get("zone", ""),
+                "ma20_status":    m.get("moyennes", {}).get("prix_vs_ma20", ""),
+                "ma50_status":    m.get("moyennes", {}).get("prix_vs_ma50", ""),
+                "ma200_status":   m.get("moyennes", {}).get("prix_vs_ma200", ""),
+                "atr":            m.get("atr"),
+                "high_52w":       m.get("prix_52w_haut"),
+                "low_52w":        m.get("prix_52w_bas"),
+            },
+
+            # ── Sentiment (clés attendues par le HTML) ──
+            "sentiment": {
+                "label":          se.get("label", "NEUTRE"),
+                "score":          se.get("score", 0),
+                "headlines_used": se.get("nb_sources", 0),
+                "confiance":      se.get("confiance", 0),
+                "positif":        se.get("positif", 0),
+                "negatif":        se.get("negatif", 0),
+            },
+
+            # ── Score global (clés attendues par le HTML) ──
+            "score": {
+                "composite": round(sg["score"], 1),
+                "signal":    sg["signal"],
+                # Détail par horizon
+                "court": {
+                    "value":  sc["court"]["score"],
+                    "signal": sc["court"]["signal"],
+                },
+                "moyen": {
+                    "value":  sc["moyen"]["score"],
+                    "signal": sc["moyen"]["signal"],
+                },
+                "long": {
+                    "value":  sc["long"]["score"],
+                    "signal": sc["long"]["signal"],
+                },
+            },
+
+            # ── IA ──
+            "report":    r.get("report", ""),
+            "headlines": r.get("headlines", [])[:5],
+            "fear_greed": r.get("fear_greed"),
+        })
+
     with open(path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     console.print(f"\n[dim]💾 Résultats sauvegardés dans {path}[/dim]")
