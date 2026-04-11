@@ -764,17 +764,42 @@ function buildCard(d, idx) {
       </div>`;
   }
 
-  // Stop loss
+  // Stop loss + backtest net
   const stopLoss = d.market?.stop_loss;
   const riskPct  = d.market?.risk_pct;
+  const btNet    = d.backtest?.net_avg_return ?? d.backtest?.avg_return;
+  const btWr     = d.backtest?.win_rate;
+  const btCombo  = d.backtest?.combo_name;
   let stopHtml = '';
   if (stopLoss && riskPct) {
+    const btLine = (btNet !== undefined && btWr !== undefined && btCombo && btCombo !== 'Aucune')
+      ? `<div class="stop-item" style="margin-left:auto">BT <span style="color:${btNet>=0?'var(--green)':'var(--red)'}">${btNet>=0?'+':''}${btNet.toFixed(1)}%</span> <span style="color:var(--muted)">${(btWr*100).toFixed(0)}%W</span></div>`
+      : '';
     stopHtml = `<div class="stop-row">
       <div class="stop-item">STOP <span>${fmtPrice(stopLoss, d.ticker)}</span></div>
       <div class="stop-item risk-item">RISQUE <span>${riskPct?.toFixed(1)}%</span></div>
       ${hv20 ? `<div class="stop-item">HV20 <span style="color:var(--muted)">${hv20?.toFixed(0)}%</span></div>` : ''}
+      ${btLine}
     </div>`;
   }
+
+  // Décision algorithmique
+  const dec     = d.decision ?? {};
+  const decTxt  = dec.decision ?? '';
+  const decFib  = dec.fiabilite ?? 0;
+  const decOk   = (dec.raisons_ok  ?? []).join(' · ');
+  const decNok  = (dec.raisons_nok ?? []).join(' · ');
+  const decCol  = decTxt === 'ACHETER' ? 'var(--green)' : (decTxt === 'ATTENDRE' ? 'var(--amber)' : 'var(--red)');
+  const fibCol  = decFib >= 70 ? 'var(--green)' : decFib >= 40 ? 'var(--amber)' : 'var(--red)';
+  const decHtml = decTxt ? `
+    <div style="background:var(--surface3);border:1px solid ${decCol}30;border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:10px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <span style="font-family:var(--mono);font-size:11px;font-weight:600;color:${decCol}">${decTxt}</span>
+        <span style="font-family:var(--mono);font-size:10px;color:${fibCol}">FIABILITÉ ${decFib}/100</span>
+      </div>
+      ${decOk  ? `<div style="font-family:var(--mono);font-size:9px;color:var(--green);margin-bottom:2px">✓ ${decOk}</div>`  : ''}
+      ${decNok ? `<div style="font-family:var(--mono);font-size:9px;color:var(--red)"  >✗ ${decNok}</div>` : ''}
+    </div>` : '';
 
   // Report
   let reportHtml = '';
@@ -878,6 +903,7 @@ function buildCard(d, idx) {
 
       ${fundHtml}
       ${stopHtml}
+      ${decHtml}
       ${reportHtml}
     </div>
   `;
@@ -1020,45 +1046,35 @@ function buildMacroSidebar(data) {
 // ── Backtest sidebar ──────────────────────────────────────────────────────────
 
 function buildBacktestSidebar(data) {
-  // Agrège les résultats de backtest de tous les actifs
-  const btData = {};
-  data.forEach(d => {
-    if (!d.backtest) return;
-    Object.entries(d.backtest).forEach(([sig, bt]) => {
-      if (!btData[sig]) btData[sig] = { wr: [], ret: [], sh: [] };
-      if (bt.win_rate)   btData[sig].wr.push(bt.win_rate);
-      if (bt.avg_return) btData[sig].ret.push(bt.avg_return);
-      if (bt.sharpe)     btData[sig].sh.push(bt.sharpe);
-    });
-  });
-
-  if (!Object.keys(btData).length) return;
-  const panel = document.getElementById('btPanel');
+  // backtest est un objet plat {win_rate, avg_return, sharpe, max_dd, combo_name, net_avg_return}
+  const btItems = data.filter(d => d.backtest && d.backtest.combo_name && d.backtest.combo_name !== 'Aucune');
+  if (!btItems.length) return;
+  const panel   = document.getElementById('btPanel');
   const content = document.getElementById('btContent');
   panel.style.display = 'block';
 
-  const avg = arr => arr.length ? arr.reduce((a,b) => a+b, 0) / arr.length : 0;
-
-  const rows = Object.entries(btData).map(([sig, d]) => {
-    const wr = avg(d.wr);
-    const ret = avg(d.ret);
-    const sh = avg(d.sh);
-    const wrCol = wr > 0.55 ? '#10b981' : wr < 0.45 ? '#f43f5e' : '#f59e0b';
-    const sigLabel = sig.replace('_', ' ').toUpperCase();
+  const rows = btItems.map(d => {
+    const bt  = d.backtest;
+    const wr  = bt.win_rate  ?? 0.5;
+    const ret = bt.net_avg_return ?? bt.avg_return ?? 0;
+    const sh  = bt.sharpe    ?? 0;
+    const dd  = bt.max_dd    ?? 0;
+    const wrCol  = wr > 0.55 ? '#10b981' : wr < 0.45 ? '#f43f5e' : '#f59e0b';
+    const retCol = ret >= 0  ? '#10b981' : '#f43f5e';
     return `<div class="bt-item">
-      <div class="bt-sig">${sigLabel}</div>
+      <div class="bt-sig">${d.ticker}<br><span style="color:var(--muted2);font-size:8px">${bt.combo_name}</span></div>
       <div class="bt-wr" style="color:${wrCol}">${(wr*100).toFixed(0)}%</div>
-      <div class="bt-ret" style="color:${ret>=0?'#10b981':'#f43f5e'}">${fmtPct(ret)}</div>
-      <div class="bt-sharpe">Sh: ${sh.toFixed(1)}</div>
+      <div class="bt-ret" style="color:${retCol}">${ret>=0?'+':''}${ret.toFixed(2)}%</div>
+      <div class="bt-sharpe">Sh:${sh.toFixed(1)}<br><span style="color:${dd<-5?'#f43f5e':'var(--muted)'};font-size:8px">DD:${dd.toFixed(1)}%</span></div>
     </div>`;
   }).join('');
 
   content.innerHTML = `
     <div style="display:flex;gap:4px;margin-bottom:8px;font-family:var(--mono);font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em">
-      <div style="flex:1.5">SIGNAL</div>
+      <div style="flex:1.5">ACTIF / COMBO</div>
       <div style="flex:1">WIN%</div>
-      <div style="flex:1">AVG RET</div>
-      <div style="flex:1;text-align:right">SHARPE</div>
+      <div style="flex:1">NET RET</div>
+      <div style="flex:1;text-align:right">SH/DD</div>
     </div>
     ${rows}`;
 }
@@ -1077,10 +1093,10 @@ function filter(type, btn) {
   else if (type === 'Crypto') items = allData.filter(d => d.category === 'Crypto');
   else if (type !== 'all') {
     items = allData.filter(d => {
-      const s = (d.score?.signal ?? '').toUpperCase();
-      const t = type.toUpperCase();
+      const s = (d.score?.signal ?? '').toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      const t = type.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
       if (t === 'ACHETER') return s === 'ACHETER' || s === 'BUY';
-      if (t === 'EVITER')  return s.includes('VITER') || s.includes('VENDRE');
+      if (t === 'EVITER')  return s.includes('EVITER') || s.includes('VENDRE') || s === 'SELL';
       if (t === 'ATTENDRE')return s === 'ATTENDRE' || s === 'WAIT';
       return s.includes(t);
     });
