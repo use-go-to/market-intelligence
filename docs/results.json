@@ -3,7 +3,7 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-11T08:30:32.993293",
+    "timestamp": "2026-04-11T08:35:07.004878",
     "market": {
       "current_price": 188.6300048828125,
       "change_1d": 2.57,
@@ -127,7 +127,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRE — RSI élevé et MACD neutre suggèrent une consolidation après forte hausse.\nMOYEN: ACHETER — Croissance des revenus (+73.2%) et sentiment positif du secteur IA soutiennent le prix.\nLONG: ACHETER — Les indicateurs de tendance (M=89, L=84) sont fortement acheteurs malgré le RSI élevé.\nSYNTHESE: Le momentum haussier est confirmé par les fondamentaux de croissance, mais une prudence est conseillée en raison de la surévaluation relative.",
+    "report": "COURT: NEUTRE — RSI élevé et VolBreakout non atteint\nMOYEN: ACHETER — Croissance des revenus forte et MACD haussier\nLONG: ACHETER — Support technique solide avec des indicateurs de momentum positifs\nSYNTHESE: Le momentum est positif malgré un RSI élevé, suggérant une prudence avant une forte accélération.",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
       "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
@@ -141,7 +141,7 @@
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-11T08:30:32.993339",
+    "timestamp": "2026-04-11T08:35:07.004939",
     "market": {
       "current_price": 245.0399932861328,
       "change_1d": 3.55,
@@ -265,7 +265,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRE — RSI élevé et VolBreakout non confirmé\nMOYEN: ACHETER — Croissance des revenus forte et indicateurs techniques positifs\nLONG: ACHETER — Support technique solide et momentum haussier visible\nSYNTHESE: Les signaux techniques et de croissance penchent vers une approche acheteuse prudente.",
+    "report": "COURT: NEUTRE — RSI élevé et VolBreakout non confirmé\nMOYEN: ACHETER — Croissance des revenus et support technique en place\nLONG: ACHETER — Momentum technique positif (L=78) et croissance des revenus\nSYNTHESE: Le contexte technique et de croissance est favorable, mais une prudence est conseillée en raison de la surévaluation relative.",
     "headlines": [
       "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
       "Intel vs. Advanced Micro Devices: Shifting Trends in Revenue",
@@ -279,7 +279,7 @@
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-11T08:30:32.993367",
+    "timestamp": "2026-04-11T08:35:07.004972",
     "market": {
       "current_price": 62.380001068115234,
       "change_1d": 1.07,
@@ -403,7 +403,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRAL — RSI élevé et surprise EPS négative\nMOYEN: NEUTRAL — MACD neutre mais faible croissance des revenus\nLONG: NEUTRAL — Volume de breakout non confirmé malgré le sentiment positif de l'IA\nSYNTHESE: Le marché est en attente malgré le contexte IA favorable, en raison de la surévaluation et des résultats récents.",
+    "report": "COURT: NEUTRE — RSI élevé et surprise EPS négative\nMOYEN: NEUTRE — MACD neutre mais faible croissance des revenus\nLONG: NEUTRE — Volume de breakout non confirmé malgré le sentiment positif sur l'IA\nSYNTHESE: Le marché est en attente malgré le contexte favorable de l'IA et les signaux contradictoires des indicateurs techniques.",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
       "Got $1,000? The Best Cybersecurity Growth Stock to Buy as Agentic AI Expands the Attack Surface.",
@@ -417,7 +417,7 @@
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-11T08:30:32.993392",
+    "timestamp": "2026-04-11T08:35:07.005004",
     "market": {
       "current_price": 370.8699951171875,
       "change_1d": -0.59,
@@ -440,8 +440,8 @@
       "hv20": 21.9,
       "stop_loss": 353.9514,
       "risk_pct": 4.56,
-      "high_52w": 539.8251953125,
-      "low_52w": 356.3916015625,
+      "high_52w": 539.8252563476562,
+      "low_52w": 356.3916320800781,
       "history_14j": [
         383.0,
         372.739990234375,
@@ -541,7 +541,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRE — RSI bas et MACD neutre, attendant une confirmation de tendance.\nMOYEN: NEUTRE — Croissance des revenus forte mais le RSI et le MACD suggèrent une consolidation.\nLONG: ATTENDRE — Le volume et les indicateurs techniques indiquent une prudence avant tout mouvement directionnel.\nSYNTHESE: L'action Microsoft est en phase d'attente technique malgré des fondamentaux de croissance solides.",
+    "report": "COURT: NEUTRE — RSI bas et MACD neutre malgré une nouvelle positive sectorielle\nMOYEN: NEUTRE — Le prix est stable mais les indicateurs techniques suggèrent une prudence\nLONG: ATTENDRE — Les niveaux de support et de résistance nécessitent une confirmation de prix\nSYNTHESE: Attendre une confirmation de la tendance après la volatilité récente et les signaux mixtes.",
     "headlines": [
       "CoreWeave stock surges on multiyear AI deal with Anthropic",
       "Why Microsoft and Google could be the best Mag 7 stock picks",
@@ -555,7 +555,7 @@
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-11T08:30:32.993415",
+    "timestamp": "2026-04-11T08:35:07.005040",
     "market": {
       "current_price": 317.239990234375,
       "change_1d": -0.39,
@@ -579,7 +579,7 @@
       "stop_loss": 298.9471,
       "risk_pct": 5.77,
       "high_52w": 343.4482421875,
-      "low_52w": 147.15972900390625,
+      "low_52w": 147.1597137451172,
       "history_14j": [
         302.05999755859375,
         290.44000244140625,
@@ -679,7 +679,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRE — RSI élevé et faible variation récente\nMOYEN: ACHETER — Croissance des revenus forte et MACD haussier\nLONG: ACHETER — Support technique solide et indicateurs de momentum positifs\nSYNTHESE: Les indicateurs techniques et fondamentaux suggèrent une tendance acheteuse malgré une consolidation à court terme.",
+    "report": "COURT: NEUTRE — Faible baisse récente et manque de catalyseur immédiat\nMOYEN: NEUTRE — RSI en zone neutre et MACD stable\nLONG: NEUTRE — Le prix est élevé par rapport à la moyenne historique\nSYNTHESE: L'action est actuellement en phase d'attente malgré des indicateurs techniques mitigés.",
     "headlines": [
       "CoreWeave stock climbs 10% on Anthropic deal",
       "How OpenAI's reported ad plans could change the AI business model",
@@ -693,7 +693,7 @@
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-11T08:30:32.993435",
+    "timestamp": "2026-04-11T08:35:07.005069",
     "market": {
       "current_price": 629.8599853515625,
       "change_1d": 0.23,
@@ -717,7 +717,7 @@
       "stop_loss": 583.5471,
       "risk_pct": 7.35,
       "high_52w": 788.1489868164062,
-      "low_52w": 483.1527099609375,
+      "low_52w": 483.15264892578125,
       "history_14j": [
         604.0599975585938,
         592.9199829101562,
@@ -817,7 +817,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRE — RSI et MACD neutres, mais l'EPS surprise négatif est un frein.\nMOYEN: NEUTRE — Croissance des revenus forte mais le prix est élevé et les indicateurs techniques sont hésitants.\nLONG: ATTENDRE — Le marché est en attente de confirmations techniques (C, M, L) malgré les bonnes nouvelles sectorielles.\nSYNTHESE: L'attente est de voir si les indicateurs techniques et la réaction au marché aux annonces sectorielles vont confirmer une direction claire.",
+    "report": "COURT: NEUTRE — RSI et MACD neutres, mais l'EPS surprise négatif est un frein.\nMOYEN: NEUTRE — Croissance des revenus forte, mais la volatilité et les niveaux de support/résistance suggèrent prudence.\nLONG: ATTENDRE — Le marché est en attente de confirmations de tendance après des signaux mixtes.\nSYNTHESE: L'analyse penche vers une approche prudente en attendant des signaux de confirmation plus clairs.",
     "headlines": [
       "How OpenAI's reported ad plans could change the AI business model",
       "CoreWeave (CRWV) Is Up 24.0% After Securing US$21 Billion Meta AI Cloud Deal – What's Changed",
@@ -831,7 +831,7 @@
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-11T08:30:32.993454",
+    "timestamp": "2026-04-11T08:35:07.005095",
     "market": {
       "current_price": 348.95001220703125,
       "change_1d": 0.96,
@@ -969,14 +969,14 @@
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-11T08:30:32.993480",
+    "timestamp": "2026-04-11T08:35:07.005125",
     "market": {
-      "current_price": 72787.8203125,
-      "change_1d": -0.26,
-      "change_5d": 1.18,
-      "change_30d": 7.29,
+      "current_price": 72783.8203125,
+      "change_1d": -0.27,
+      "change_5d": 1.17,
+      "change_30d": 7.28,
       "rsi": 76.6,
-      "volume_ratio": 0.98,
+      "volume_ratio": 0.97,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
       "macd_cross": "NEUTRE",
@@ -990,7 +990,7 @@
       "vol_breakout": false,
       "atr": 2132.0148,
       "hv20": 33.8,
-      "stop_loss": 68523.7907,
+      "stop_loss": 68519.7907,
       "risk_pct": 5.86,
       "high_52w": 124752.53125,
       "low_52w": 62702.09765625,
@@ -1008,7 +1008,7 @@
         71123.359375,
         71767.828125,
         72979.046875,
-        72787.8203125
+        72783.8203125
       ],
       "volatility": 33.8
     },
@@ -1025,7 +1025,7 @@
       "composite": 48.0,
       "signal": "ATTENDRE",
       "court": {
-        "value": 44.4,
+        "value": 44.3,
         "signal": "ATTENDRE"
       },
       "moyen": {
@@ -1093,7 +1093,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRE — RSI élevé et MACD neutre suggèrent une consolidation après la hausse.\nMOYEN: NEUTRE — Le prix est stable mais les indicateurs techniques indiquent une prudence.\nLONG: ATTENDRE — Les niveaux de support et de résistance nécessitent une confirmation de tendance.\nSYNTHESE: Le marché est en phase d'attente malgré la nouvelle positive, nécessitant une confirmation technique.",
+    "report": "COURT: NEUTRE — RSI élevé et MACD neutre suggèrent une consolidation après la hausse.\nMOYEN: NEUTRE — Le prix est stable au-dessus de 72K, mais les indicateurs de momentum sont en attente.\nLONG: ATTENTIF — Le contexte macroéconomique favorable et la cassure de résistance récente soutiennent une prudence haussière.\nSYNTHESE: Le marché est en phase d'accumulation après une forte hausse, nécessitant de la prudence avant de prendre position.",
     "headlines": [
       "Bitcoin climbs above $72K following March's hot inflation data",
       "Morning Brief: A big day for inflation",
@@ -1112,12 +1112,12 @@
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-11T08:30:32.993499",
+    "timestamp": "2026-04-11T08:35:07.005153",
     "market": {
-      "current_price": 2235.058837890625,
-      "change_1d": -0.45,
-      "change_5d": -0.3,
-      "change_30d": 8.87,
+      "current_price": 2235.474365234375,
+      "change_1d": -0.43,
+      "change_5d": -0.28,
+      "change_30d": 8.89,
       "rsi": 71.6,
       "volume_ratio": 0.91,
       "trend": "HAUSSIER",
@@ -1133,7 +1133,7 @@
       "vol_breakout": false,
       "atr": 89.0402,
       "hv20": 44.7,
-      "stop_loss": 2056.9784,
+      "stop_loss": 2057.3939,
       "risk_pct": 7.97,
       "high_52w": 4831.3486328125,
       "low_52w": 1821.68310546875,
@@ -1151,7 +1151,7 @@
         2190.33544921875,
         2189.14404296875,
         2245.148681640625,
-        2235.058837890625
+        2235.474365234375
       ],
       "volatility": 44.7
     },
@@ -1165,14 +1165,14 @@
       "volume_signal": true
     },
     "score": {
-      "composite": 49.9,
+      "composite": 50.0,
       "signal": "ATTENDRE",
       "court": {
-        "value": 51.6,
+        "value": 51.7,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 50.6,
+        "value": 50.7,
         "signal": "ATTENDRE"
       },
       "long": {
@@ -1236,7 +1236,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRE — RSI élevé et MACD haussier suggèrent une consolidation après une forte hausse.\nMOYEN: HAUT — Le MACD est haussier et le RSI montre une force acheteuse persistante.\nLONG: ATTENDRE — Les moyennes mobiles (C, M, L) indiquent une prudence et le volume n'a pas confirmé de rupture.\nSYNTHESE: Attendre une confirmation de direction sur les niveaux de support et de résistance clés avant de prendre position.",
+    "report": "COURT: NEUTRE — RSI élevé et MACD haussier suggèrent une consolidation après une forte hausse.\nMOYEN: NEUTRE — Les indicateurs techniques sont en attente de confirmation de direction.\nLONG: ATTENTIF — Le MACD est haussier et le RSI montre une force acheteuse persistante.\nSYNTHESE: Le marché est en phase d'attente, nécessitant une confirmation de tendance avant de prendre position.",
     "headlines": [
       "Bitcoin and ethereum prices today, Friday, April 10, 2026: Prices rise ahead of CPI report",
       "Alchemy launches $20 million fund for Solana builders",
@@ -1255,13 +1255,13 @@
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-11T08:30:32.993513",
+    "timestamp": "2026-04-11T08:35:07.005177",
     "market": {
-      "current_price": 84.42041015625,
-      "change_1d": -0.48,
-      "change_5d": -1.43,
-      "change_30d": -1.98,
-      "rsi": 55.4,
+      "current_price": 84.39585876464844,
+      "change_1d": -0.51,
+      "change_5d": -1.46,
+      "change_30d": -2.01,
+      "rsi": 55.3,
       "volume_ratio": 2.91,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
@@ -1276,7 +1276,7 @@
       "vol_breakout": false,
       "atr": 3.612,
       "hv20": 48.7,
-      "stop_loss": 77.1964,
+      "stop_loss": 77.1719,
       "risk_pct": 8.56,
       "high_52w": 247.6371307373047,
       "low_52w": 77.7533187866211,
@@ -1294,7 +1294,7 @@
         82.58169555664062,
         83.2977294921875,
         84.82847595214844,
-        84.42041015625
+        84.39585876464844
       ],
       "volatility": 48.7
     },
@@ -1335,7 +1335,7 @@
           "macd": 16.0,
           "ma_alignment": 6.7,
           "sentiment": 7.6,
-          "momentum_5j": 6.2
+          "momentum_5j": 6.1
         },
         "long": {
           "trend_200": 3.5,
@@ -1379,7 +1379,7 @@
         "sharpe": 0.0
       }
     },
-    "report": "COURT: NEUTRE — Faible baisse et niveau de consolidation\nMOYEN: NEUTRE — RSI neutre et absence de signal fort\nLONG: NEUTRE — MACD et indicateurs de momentum non directionnels\nSYNTHESE: Le marché est en phase d'attente malgré une nouvelle positive pour l'écosystème.",
+    "report": "COURT: NEUTRE — Volume faible et niveaux de support/résistance à surveiller\nMOYEN: NEUTRE — RSI neutre et MACD en consolidation, attendant une direction claire\nLONG: ATTENTIF — Lancement de fonds importants pour l'écosystème, potentiel de soutien\nSYNTHESE: Le marché est en attente de confirmation directionnelle malgré un catalyseur positif de l'écosystème.",
     "headlines": [
       "Alchemy launches $20 million fund for Solana builders",
       "Top Cryptocurrencies Rise; Bitcoin Holds Above $73,000 Level",
