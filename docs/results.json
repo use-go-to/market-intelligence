@@ -3,435 +3,1105 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-11T05:05:09.970698",
+    "timestamp": "2026-04-11T06:08:25.723550",
     "market": {
       "ticker": "NVDA",
-      "current_price": 188.6300048828125,
-      "change_1d": 2.5664733438725813,
-      "sma_7": 180.50000217982702,
-      "sma_20": 177.420499420166,
-      "rsi": 68.17249289193902,
-      "volatility": 2.324783886630578,
-      "trend": "HAUSSIER",
-      "volume_ratio": 1.148684072559505,
-      "price_30d_high": 188.6300048828125,
-      "price_30d_low": 165.1699981689453
+      "prix_actuel": 188.6300048828125,
+      "variation_1j": 2.57,
+      "variation_5j": 6.19,
+      "variation_30j": 3.0,
+      "variation_90j": 2.04,
+      "variation_1an": 65.03,
+      "rsi": 68.2,
+      "macd": {
+        "macd": 0.12882478291808752,
+        "signal": -1.662402594523326,
+        "histo": 1.7912273774414136,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 188.58734450649973,
+        "lower": 166.2536543338323,
+        "ma": 177.420499420166,
+        "pct_b": 1.002,
+        "zone": "SURACHAT"
+      },
+      "moyennes": {
+        "ma20": 177.420499420166,
+        "prix_vs_ma20": "AU DESSUS",
+        "ma50": 182.07218597412108,
+        "prix_vs_ma50": "AU DESSUS",
+        "ma200": 180.72493171691895,
+        "prix_vs_ma200": "AU DESSUS",
+        "score_ma": 3
+      },
+      "atr": 5.195,
+      "vol_ratio": 0.94,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "BAISSIER",
+      "tendance_long": "HAUSSIER",
+      "prix_52w_haut": 207.01727294921875,
+      "prix_52w_bas": 96.88717651367188
     },
     "sentiment": {
-      "score": 0.0,
+      "score": 0.1,
       "label": "NEUTRE",
-      "positive": 0,
-      "negative": 0,
-      "neutral": 3,
-      "headlines_used": 3
+      "positif": 4,
+      "negatif": 2,
+      "neutre": 14,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 62.8,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 50.0,
-        "momentum": 75.66473343872582,
-        "rsi": 68.17249289193902,
-        "volume": 57.43420362797526,
-        "trend": 70
+    "scores": {
+      "court": {
+        "score": 65,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "rsi": 15,
+          "macd": 20,
+          "volume": 9,
+          "momentum_1j": 18,
+          "bollinger": 3
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 72,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "ma_score": 24,
+          "macd": 15,
+          "sentiment": 13,
+          "rsi": 10,
+          "momentum_5j": 10
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 91,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "golden_cross": 35,
+          "tendance_long": 25,
+          "sentiment": 11,
+          "momentum_1an": 20
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: Le titre affiche une performance positive (+2.6%) dans une tendance haussière, corroborée par des fuites sur les SoC N1/N1X pour l'IA embarquée.\nRISQUES: Le RSI à 68 signale une prudence face au surachat potentiel, mais les annonces de nouveaux produits IA (N1) restent des catalyseurs majeurs.\nVERDICT ATTENDRE: Attendre une confirmation officielle des puces N1/N1X pour valider le momentum haussier et déterminer le point d'entrée optimal.",
+    "score_global": {
+      "score": 75.6,
+      "signal": "ACHETER",
+      "couleur": "green"
+    },
+    "report": "Rapport IA non disponible.",
     "headlines": [
-      "Alleged images of the long-awaited Nvidia N1/N1X SoC surface on laptop motherboard — board features 128 GB of LPDDR5X memory alongside 8+6+2 phase VRM",
-      "NVIDIA's N1 SoC pictured on an engineering board with 128GB of memory for local AI",
-      "Grab an entire RTX 5090 gaming PC for just $8 more than the GPU itself and score a whopping $1,600 off — huge HP discount requires a $39 controller or monitor to secure you a 4K powerhouse with a 9800X3D, 32GB DDR5, and a 1TB SSD"
-    ]
+      "Chips are still where the AI trade's rubber meets the road",
+      "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
+      "Stanley Druckenmiller Says Stablecoins Will Dominate Global Payments Within 15 Years. Are Visa and Mastercard Stock in Trouble?",
+      "Oracle's Credit Risk Is At an All-Time High, Due to Heavy Investment in AI. Should Investors Be Concerned?",
+      "Nvidia Is Nearly The Same Price as the S&P 500. It's Time to Load Up on Shares."
+    ],
+    "fear_greed": null
   },
   {
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-11T05:05:09.970719",
+    "timestamp": "2026-04-11T06:08:25.723580",
     "market": {
       "ticker": "AMD",
-      "current_price": 245.0399932861328,
-      "change_1d": 3.5496931702797427,
-      "sma_7": 226.13142830984933,
-      "sma_20": 210.44049987792968,
-      "rsi": 73.71161174309083,
-      "volatility": 3.5920031155873646,
-      "trend": "HAUSSIER",
-      "volume_ratio": 1.0814988248647333,
-      "price_30d_high": 245.0399932861328,
-      "price_30d_low": 190.9499969482422
+      "prix_actuel": 245.0399932861328,
+      "variation_1j": 3.55,
+      "variation_5j": 11.29,
+      "variation_30j": 23.92,
+      "variation_90j": 20.61,
+      "variation_1an": 153.04,
+      "rsi": 73.7,
+      "macd": {
+        "macd": 7.512347236173838,
+        "signal": 2.9746696376053143,
+        "histo": 4.537677598568523,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 239.7344358275104,
+        "lower": 181.14656392834897,
+        "ma": 210.44049987792968,
+        "pct_b": 1.091,
+        "zone": "SURACHAT"
+      },
+      "moyennes": {
+        "ma20": 210.44049987792968,
+        "prix_vs_ma20": "AU DESSUS",
+        "ma50": 209.35099975585936,
+        "prix_vs_ma50": "AU DESSUS",
+        "ma200": 199.41349975585936,
+        "prix_vs_ma200": "AU DESSUS",
+        "score_ma": 3
+      },
+      "atr": 10.85,
+      "vol_ratio": 1.06,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "HAUSSIER",
+      "tendance_long": "HAUSSIER",
+      "prix_52w_haut": 264.3299865722656,
+      "prix_52w_bas": 85.55999755859375
     },
     "sentiment": {
-      "score": 0.0,
+      "score": 0.1,
       "label": "NEUTRE",
-      "positive": 0,
-      "negative": 0,
-      "neutral": 0,
-      "headlines_used": 0
+      "positif": 5,
+      "negatif": 3,
+      "neutre": 12,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 57.3,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 50.0,
-        "momentum": 85.49693170279741,
-        "rsi": 30,
-        "volume": 54.074941243236665,
-        "trend": 70
+    "scores": {
+      "court": {
+        "score": 58,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "rsi": 5,
+          "macd": 20,
+          "volume": 10,
+          "momentum_1j": 20,
+          "bollinger": 3
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 72,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "ma_score": 24,
+          "macd": 15,
+          "sentiment": 13,
+          "rsi": 10,
+          "momentum_5j": 10
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 91,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "golden_cross": 35,
+          "tendance_long": 25,
+          "sentiment": 11,
+          "momentum_1an": 20
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: AMD affiche une forte progression de +3.5% sur 24 heures dans une tendance haussière, mais l'indice RSI à 74 signale un niveau de surachat technique.\nRISQUES: Le risque immédiat est un repli correctif dû au surachat, et l'absence de news fondamentales limite les catalyseurs à court terme.\nVERDICT ATTENDRE: Il est recommandé d'attendre une consolidation ou une confirmation de la tendance haussière à un niveau de support plus bas avant de prendre position.",
-    "headlines": []
+    "score_global": {
+      "score": 73.5,
+      "signal": "ACHETER",
+      "couleur": "green"
+    },
+    "report": "Rapport IA non disponible.",
+    "headlines": [
+      "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
+      "Intel vs. Advanced Micro Devices: Shifting Trends in Revenue",
+      "Taiwan Semiconductor Manufacturing (TSM): The Best Under-The-Radar AI Stock in Billionaire Ken Fisher’s Portfolio?",
+      "S&P 500 Snaps 7-Day Winning Streak as Wall Street Logs Back-to-Back Weekly Gains",
+      "Stock Market Today: Nasdaq Closes Higher Ahead Of Peace Talks; Palantir Plunges (Live Coverage)"
+    ],
+    "fear_greed": null
   },
   {
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-11T05:05:09.970726",
+    "timestamp": "2026-04-11T06:08:25.723591",
     "market": {
       "ticker": "INTC",
-      "current_price": 62.380001068115234,
-      "change_1d": 1.0693451626030128,
-      "sma_7": 55.021428789411274,
-      "sma_20": 48.18099994659424,
-      "rsi": 80.35421253102177,
-      "volatility": 5.137851380101612,
-      "trend": "HAUSSIER",
-      "volume_ratio": 0.7700013453945046,
-      "price_30d_high": 62.380001068115234,
-      "price_30d_low": 41.189998626708984
+      "prix_actuel": 62.380001068115234,
+      "variation_1j": 1.07,
+      "variation_5j": 22.84,
+      "variation_30j": 37.86,
+      "variation_90j": 36.95,
+      "variation_1an": 189.74,
+      "rsi": 80.4,
+      "macd": {
+        "macd": 3.4541125693633887,
+        "signal": 1.455204971401753,
+        "histo": 1.9989075979616358,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 60.65305107290584,
+        "lower": 35.70894882028264,
+        "ma": 48.18099994659424,
+        "pct_b": 1.069,
+        "zone": "SURACHAT"
+      },
+      "moyennes": {
+        "ma20": 48.18099994659424,
+        "prix_vs_ma20": "AU DESSUS",
+        "ma50": 47.20760009765625,
+        "prix_vs_ma50": "AU DESSUS",
+        "ma200": 36.19070003509521,
+        "prix_vs_ma200": "AU DESSUS",
+        "score_ma": 3
+      },
+      "atr": 3.16,
+      "vol_ratio": 0.96,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "HAUSSIER",
+      "tendance_long": "HAUSSIER",
+      "prix_52w_haut": 62.380001068115234,
+      "prix_52w_bas": 18.84000015258789
     },
     "sentiment": {
-      "score": 0.0,
+      "score": -0.15,
       "label": "NEUTRE",
-      "positive": 0,
-      "negative": 0,
-      "neutral": 1,
-      "headlines_used": 1
+      "positif": 0,
+      "negatif": 3,
+      "neutre": 17,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 49.5,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 50.0,
-        "momentum": 60.693451626030125,
-        "rsi": 30,
-        "volume": 38.50006726972523,
-        "trend": 70
+    "scores": {
+      "court": {
+        "score": 50,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "rsi": 5,
+          "macd": 20,
+          "volume": 9,
+          "momentum_1j": 13,
+          "bollinger": 3
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 62,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "ma_score": 24,
+          "macd": 15,
+          "sentiment": 10,
+          "rsi": 3,
+          "momentum_5j": 10
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 88,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "golden_cross": 35,
+          "tendance_long": 25,
+          "sentiment": 8,
+          "momentum_1an": 20
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: Le cours est en hausse (+1.1%) et la tendance reste haussière, soutenue par l'annonce de support gaming pour les pilotes Arc Pro B70.\nRISQUES: Le RSI élevé (80) signale un risque de surachat à court terme, contrastant avec un sentiment de marché encore neutre.\nVERDICT ATTENDRE: Il est préférable d'attendre une consolidation ou une baisse de volatilité pour confirmer la pérennité de la tendance haussière.",
+    "score_global": {
+      "score": 66.2,
+      "signal": "ACHETER",
+      "couleur": "green"
+    },
+    "report": "Rapport IA non disponible.",
     "headlines": [
-      "Intel's latest Arc Graphics driver officially adds gaming support for the new Arc Pro B70"
-    ]
+      "Chips are still where the AI trade's rubber meets the road",
+      "Stanley Druckenmiller Says Stablecoins Will Dominate Global Payments Within 15 Years. Are Visa and Mastercard Stock in Trouble?",
+      "Oracle's Credit Risk Is At an All-Time High, Due to Heavy Investment in AI. Should Investors Be Concerned?",
+      "Nvidia Is Nearly The Same Price as the S&P 500. It's Time to Load Up on Shares.",
+      "Don't Panic Over UPS: These 2 Mega-Cap Stocks Are the Real Opportunity"
+    ],
+    "fear_greed": null
   },
   {
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-11T05:05:09.970733",
+    "timestamp": "2026-04-11T06:08:25.723600",
     "market": {
       "ticker": "MSFT",
-      "current_price": 370.8699951171875,
-      "change_1d": -0.5897049250381888,
-      "sma_7": 372.3242841448103,
-      "sma_20": 377.12549896240233,
-      "rsi": 39.487769055693406,
-      "volatility": 1.4496113085736644,
-      "trend": "BAISSIER",
-      "volume_ratio": 1.0745804823911833,
-      "price_30d_high": 410.67999267578125,
-      "price_30d_low": 356.7699890136719
+      "prix_actuel": 370.8699951171875,
+      "variation_1j": -0.59,
+      "variation_5j": -0.54,
+      "variation_30j": -7.71,
+      "variation_90j": -22.44,
+      "variation_1an": -4.3,
+      "rsi": 39.5,
+      "macd": {
+        "macd": -8.315402587039046,
+        "signal": -9.778323826544751,
+        "histo": 1.4629212395057056,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 401.9294524882773,
+        "lower": 352.32154543652734,
+        "ma": 377.12549896240233,
+        "pct_b": 0.374,
+        "zone": "NEUTRE"
+      },
+      "moyennes": {
+        "ma20": 377.12549896240233,
+        "prix_vs_ma20": "EN DESSOUS",
+        "ma50": 393.62245056152346,
+        "prix_vs_ma50": "EN DESSOUS",
+        "ma200": 472.58989242553713,
+        "prix_vs_ma200": "EN DESSOUS",
+        "score_ma": 0
+      },
+      "atr": 8.4593,
+      "vol_ratio": 0.88,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "BAISSIER",
+      "tendance_long": "BAISSIER",
+      "prix_52w_haut": 539.8252563476562,
+      "prix_52w_bas": 356.3916015625
     },
     "sentiment": {
       "score": 0.0,
       "label": "NEUTRE",
-      "positive": 0,
-      "negative": 0,
-      "neutral": 4,
-      "headlines_used": 4
+      "positif": 4,
+      "negatif": 4,
+      "neutre": 12,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 44.8,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 50.0,
-        "momentum": 44.10295074961812,
-        "rsi": 39.487769055693406,
-        "volume": 53.72902411955916,
-        "trend": 30
+    "scores": {
+      "court": {
+        "score": 61,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "rsi": 15,
+          "macd": 20,
+          "volume": 8,
+          "momentum_1j": 8,
+          "bollinger": 10
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 46,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "ma_score": 0,
+          "macd": 15,
+          "sentiment": 12,
+          "rsi": 15,
+          "momentum_5j": 4
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 32,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "golden_cross": 10,
+          "tendance_long": 5,
+          "sentiment": 10,
+          "momentum_1an": 7
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: Le titre affiche une légère baisse de 24h (-0.6%) et une tendance baissière confirmée, avec un RSI de 39 signalant une faiblesse récente.\nRISQUES: Le risque est accentué par la tendance baissière et la concurrence IA (Meta), tandis que les catalyseurs restent liés à l'adoption d'Agent 365.\nVERDICT ATTENDRE: Il est recommandé d'attendre une confirmation de retournement de tendance ou une accélération des annonces sur l'IA pour valider un achat.",
+    "score_global": {
+      "score": 46.3,
+      "signal": "ATTENDRE",
+      "couleur": "yellow"
+    },
+    "report": "Rapport IA non disponible.",
     "headlines": [
-      "【日本マイクロソフト×スキルアップNeXtセミナー開催】Microsoft Copilotの組織定着からAgent 365の最新動向までAIの最前線を語り尽くす",
-      "Windows and Xbox are now prioritizing user feedback in a huge pivot ... but why now? I can't help but be suspicious — it smells a bit like panic.",
-      "Meta Debuts New LLM Muse Spark",
-      "Is Microsoft (MSFT) One of the Hedge Fund Favorites with Strong Setup in 2026?"
-    ]
+      "CoreWeave stock surges on multiyear AI deal with Anthropic",
+      "Why Microsoft and Google could be the best Mag 7 stock picks",
+      "Microsoft, Salesforce, ServiceNow Sell-Off Is Overdone: Dan Ives",
+      "Stock Market Today, April 10: Palantir Falls as AI Competition Pressures Valuation",
+      "Microsoft’s New AI Alliances Reframe Patent, Security And Enterprise Growth Story"
+    ],
+    "fear_greed": null
   },
   {
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-11T05:05:09.970740",
+    "timestamp": "2026-04-11T06:08:25.723608",
     "market": {
       "ticker": "GOOGL",
-      "current_price": 317.239990234375,
-      "change_1d": -0.3924770128819847,
-      "sma_7": 307.3799961635045,
-      "sma_20": 299.29949951171875,
-      "rsi": 60.13985187849982,
-      "volatility": 2.619126560087225,
-      "trend": "HAUSSIER",
-      "volume_ratio": 0.7610996662028068,
-      "price_30d_high": 318.489990234375,
-      "price_30d_low": 273.5
+      "prix_actuel": 317.239990234375,
+      "variation_1j": -0.39,
+      "variation_5j": 5.75,
+      "variation_30j": 4.51,
+      "variation_90j": -3.38,
+      "variation_1an": 100.58,
+      "rsi": 60.1,
+      "macd": {
+        "macd": 1.3036168880091736,
+        "signal": -2.714497865021052,
+        "histo": 4.0181147530302255,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 325.68730187996283,
+        "lower": 272.91169714347467,
+        "ma": 299.29949951171875,
+        "pct_b": 0.84,
+        "zone": "NEUTRE"
+      },
+      "moyennes": {
+        "ma20": 299.29949951171875,
+        "prix_vs_ma20": "AU DESSUS",
+        "ma50": 308.22975158691406,
+        "prix_vs_ma50": "AU DESSUS",
+        "ma200": 268.25245834350585,
+        "prix_vs_ma200": "AU DESSUS",
+        "score_ma": 3
+      },
+      "atr": 9.1464,
+      "vol_ratio": 0.65,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "BAISSIER",
+      "tendance_long": "HAUSSIER",
+      "prix_52w_haut": 343.4482421875,
+      "prix_52w_bas": 147.15972900390625
     },
     "sentiment": {
-      "score": 0.0,
+      "score": 0.05,
       "label": "NEUTRE",
-      "positive": 0,
-      "negative": 0,
-      "neutral": 1,
-      "headlines_used": 1
+      "positif": 3,
+      "negatif": 2,
+      "neutre": 15,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 51.9,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 50.0,
-        "momentum": 46.07522987118015,
-        "rsi": 60.13985187849982,
-        "volume": 38.05498331014034,
-        "trend": 70
+    "scores": {
+      "court": {
+        "score": 59,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "rsi": 15,
+          "macd": 20,
+          "volume": 6,
+          "momentum_1j": 8,
+          "bollinger": 10
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 77,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "ma_score": 24,
+          "macd": 15,
+          "sentiment": 13,
+          "rsi": 15,
+          "momentum_5j": 10
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 90,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "golden_cross": 35,
+          "tendance_long": 25,
+          "sentiment": 10,
+          "momentum_1an": 20
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: Malgré une légère baisse de 24h (-0.4%), l'action conserve une tendance haussière avec un RSI modéré (60) et une faible volatilité (0.8x).\nRISQUES: Le risque est le sentiment neutre actuel, mais le catalyseur est le regain d'agilité et d'innovation de DeepMind, signalant un potentiel de croissance à long terme.\nVERDICT ATTENDRE: Attendre une confirmation de la reprise de l'élan haussier pour valider le potentiel de l'innovation DeepMind et dépasser le score moyen actuel.",
+    "score_global": {
+      "score": 75.5,
+      "signal": "ACHETER",
+      "couleur": "green"
+    },
+    "report": "Rapport IA non disponible.",
     "headlines": [
-      "Demis Hassabis says Google DeepMind had to return to its startup roots after the Brain merger"
-    ]
+      "CoreWeave stock climbs 10% on Anthropic deal",
+      "How OpenAI's reported ad plans could change the AI business model",
+      "Why Microsoft and Google could be the best Mag 7 stock picks",
+      "Dow Jones Futures: Iran Talks, Earnings In Focus; Google, Amazon, Nvidia In Buy Areas",
+      "Your Lifetime Earnings Are Tracked On The Social Security Website. Here's Why Some People Compare It To Their Net Worth. 'Oh This Is Fun'"
+    ],
+    "fear_greed": null
   },
   {
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-11T05:05:09.970746",
+    "timestamp": "2026-04-11T06:08:25.723616",
     "market": {
       "ticker": "META",
-      "current_price": 629.8599853515625,
-      "change_1d": 0.23392648973701433,
-      "sma_7": 596.0614275251116,
-      "sma_20": 591.2702453613281,
-      "rsi": 58.65035445828687,
-      "volatility": 3.7466965675380908,
-      "trend": "HAUSSIER",
-      "volume_ratio": 0.7708676558178581,
-      "price_30d_high": 667.1587524414062,
-      "price_30d_low": 525.719970703125
+      "prix_actuel": 629.8599853515625,
+      "variation_1j": 0.23,
+      "variation_5j": 9.92,
+      "variation_30j": -1.22,
+      "variation_90j": -3.47,
+      "variation_1an": 7.86,
+      "rsi": 58.7,
+      "macd": {
+        "macd": -7.503834630300389,
+        "signal": -16.07928734859194,
+        "histo": 8.575452718291551,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 652.3484716141718,
+        "lower": 530.1920191084844,
+        "ma": 591.2702453613281,
+        "pct_b": 0.816,
+        "zone": "NEUTRE"
+      },
+      "moyennes": {
+        "ma20": 591.2702453613281,
+        "prix_vs_ma20": "AU DESSUS",
+        "ma50": 633.2578100585938,
+        "prix_vs_ma50": "EN DESSOUS",
+        "ma200": 681.678102722168,
+        "prix_vs_ma200": "EN DESSOUS",
+        "score_ma": 1
+      },
+      "atr": 23.1564,
+      "vol_ratio": 0.72,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "BAISSIER",
+      "tendance_long": "BAISSIER",
+      "prix_52w_haut": 788.1489868164062,
+      "prix_52w_bas": 483.1526794433594
     },
     "sentiment": {
-      "score": 0.2,
+      "score": 0.1,
       "label": "NEUTRE",
-      "positive": 3,
-      "negative": 0,
-      "neutral": 12,
-      "headlines_used": 15
+      "positif": 4,
+      "negatif": 2,
+      "neutre": 14,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 56.7,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 60.0,
-        "momentum": 52.33926489737014,
-        "rsi": 58.65035445828687,
-        "volume": 38.543382790892906,
-        "trend": 70
+    "scores": {
+      "court": {
+        "score": 72,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "rsi": 25,
+          "macd": 20,
+          "volume": 7,
+          "momentum_1j": 10,
+          "bollinger": 10
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 61,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "ma_score": 8,
+          "macd": 15,
+          "sentiment": 13,
+          "rsi": 15,
+          "momentum_5j": 10
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 39,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "golden_cross": 10,
+          "tendance_long": 5,
+          "sentiment": 11,
+          "momentum_1an": 13
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: La tendance haussière est soutenue par des annonces d'investissements massifs de 35 milliards de dollars dans l'infrastructure IA, malgré un sentiment de marché actuellement neutre.\nRISQUES: Le risque réside dans la capacité à monétiser ces dépenses colossales, mais le catalyseur majeur reste l'intégration réussie de l'IA (Muse Spark) dans les produits phares.\nVERDICT ATTENDRE: Attendre des signaux concrets de monétisation de l'IA pour valider la valorisation élevée actuelle de l'entreprise.",
+    "score_global": {
+      "score": 57.7,
+      "signal": "ACHETER",
+      "couleur": "green"
+    },
+    "report": "Rapport IA non disponible.",
     "headlines": [
-      "Meta’s new AI model Muse Spark is coming to WhatsApp. Here is what that means for Indian users",
-      "Meta Platforms says it will spend an additional $21B on CoreWeave’s AI infrastructure",
-      "Meta commits another $21 billion to CoreWeave, bringing total AI cloud spend to $35 billion",
-      "Meta rolls out new AI model in ‘fundamental shift’ in latest effort to catch up with rivals",
-      "Meta AI app climbs to No. 5 on the App Store after Muse Spark launch | TechCrunch"
-    ]
+      "How OpenAI's reported ad plans could change the AI business model",
+      "CoreWeave (CRWV) Is Up 24.0% After Securing US$21 Billion Meta AI Cloud Deal – What's Changed",
+      "Your Lifetime Earnings Are Tracked On The Social Security Website. Here's Why Some People Compare It To Their Net Worth. 'Oh This Is Fun'",
+      "Mantle’s xStocks Rollout Pushes Tokenized Equities Closer to Real Onchain Liquidity",
+      "Stock Market Today, April 10: CoreWeave Jumps After Multi-Year AI Cloud Deal With Anthropic"
+    ],
+    "fear_greed": null
   },
   {
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-11T05:05:09.970753",
+    "timestamp": "2026-04-11T06:08:25.723623",
     "market": {
       "ticker": "TSLA",
-      "current_price": 348.95001220703125,
-      "change_1d": 0.9634908676839311,
-      "sma_7": 354.16285923549106,
-      "sma_20": 370.85049896240236,
-      "rsi": 41.9687501208712,
-      "volatility": 2.8122423946294135,
-      "trend": "BAISSIER",
-      "volume_ratio": 0.735260697951875,
-      "price_30d_high": 407.82000732421875,
-      "price_30d_low": 343.25
+      "prix_actuel": 348.95001220703125,
+      "variation_1j": 0.96,
+      "variation_5j": -1.1,
+      "variation_30j": -11.66,
+      "variation_90j": -21.59,
+      "variation_1an": 28.2,
+      "rsi": 42.0,
+      "macd": {
+        "macd": -14.473319423082444,
+        "signal": -12.753762002696373,
+        "histo": -1.7195574203860708,
+        "tendance": "BAISSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 407.0249521104878,
+        "lower": 334.6760458143169,
+        "ma": 370.85049896240236,
+        "pct_b": 0.197,
+        "zone": "NEUTRE"
+      },
+      "moyennes": {
+        "ma20": 370.85049896240236,
+        "prix_vs_ma20": "EN DESSOUS",
+        "ma50": 394.3057989501953,
+        "prix_vs_ma50": "EN DESSOUS",
+        "ma200": 397.3535998535156,
+        "prix_vs_ma200": "EN DESSOUS",
+        "score_ma": 0
+      },
+      "atr": 15.43,
+      "vol_ratio": 0.79,
+      "tendance_court": "BAISSIER",
+      "tendance_moyen": "BAISSIER",
+      "tendance_long": "BAISSIER",
+      "prix_52w_haut": 489.8800048828125,
+      "prix_52w_bas": 227.5
     },
     "sentiment": {
-      "score": 0.0,
+      "score": 0.05,
       "label": "NEUTRE",
-      "positive": 0,
-      "negative": 0,
-      "neutral": 0,
-      "headlines_used": 0
+      "positif": 5,
+      "negatif": 4,
+      "neutre": 11,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 47.5,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 50.0,
-        "momentum": 59.634908676839316,
-        "rsi": 41.9687501208712,
-        "volume": 36.76303489759375,
-        "trend": 30
+    "scores": {
+      "court": {
+        "score": 60,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "rsi": 25,
+          "macd": 5,
+          "volume": 7,
+          "momentum_1j": 13,
+          "bollinger": 10
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 36,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "ma_score": 0,
+          "macd": 5,
+          "sentiment": 13,
+          "rsi": 15,
+          "momentum_5j": 3
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 45,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "golden_cross": 10,
+          "tendance_long": 5,
+          "sentiment": 10,
+          "momentum_1an": 20
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: Malgré une hausse de 1.0% sur 24h, la tendance baissière et le faible volume (0.7x) indiquent une consolidation technique sous-jacente.\nRISQUES: Le risque principal réside dans la divergence entre la tendance baissière et le sentiment neutre, en l'absence de catalyseurs externes.\nVERDICT ATTENDRE: Il est préférable d'attendre une confirmation directionnelle (hausse du volume ou changement de tendance) avant de prendre position.",
-    "headlines": []
+    "score_global": {
+      "score": 45.9,
+      "signal": "ATTENDRE",
+      "couleur": "yellow"
+    },
+    "report": "Rapport IA non disponible.",
+    "headlines": [
+      "Tesla stock mired in 8-week losing streak as investors search for catalysts",
+      "Tesla stock shaky after new model denial",
+      "Elon Musk’s Top Tips That Will Save Retirees From Financial Disaster",
+      "Stocks making big moves this week: Richardson Electronics, Tesla, C.H. Robinson Worldwide, IPG Photonics, and Zscaler",
+      "Mantle’s xStocks Rollout Pushes Tokenized Equities Closer to Real Onchain Liquidity"
+    ],
+    "fear_greed": null
   },
   {
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-11T05:05:09.970761",
+    "timestamp": "2026-04-11T06:08:25.723631",
     "market": {
       "ticker": "BTC-USD",
-      "current_price": 72843.453125,
-      "change_1d": 1.4987565154215818,
-      "sma_7": 70401.08370535714,
-      "sma_20": 68881.15,
-      "rsi": 77.47008032684991,
-      "volatility": 1.6290044857696782,
-      "trend": "HAUSSIER",
-      "volume_ratio": 1.053327020635209,
-      "price_30d_high": 74861.0859375,
-      "price_30d_low": 65954.921875
+      "prix_actuel": 72736.0390625,
+      "variation_1j": 1.35,
+      "variation_5j": 5.63,
+      "variation_30j": 5.86,
+      "variation_90j": 4.99,
+      "variation_1an": -35.36,
+      "rsi": 77.3,
+      "macd": {
+        "macd": 447.3075045637961,
+        "signal": -173.60811901909483,
+        "histo": 620.9156235828909,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 73207.73159727632,
+        "lower": 64543.82699647368,
+        "ma": 68875.779296875,
+        "pct_b": 0.946,
+        "zone": "NEUTRE"
+      },
+      "moyennes": {
+        "ma20": 68875.779296875,
+        "prix_vs_ma20": "AU DESSUS",
+        "ma50": 68981.74328125,
+        "prix_vs_ma50": "AU DESSUS",
+        "ma200": 88278.69658203125,
+        "prix_vs_ma200": "EN DESSOUS",
+        "score_ma": 2
+      },
+      "atr": 2150.3089,
+      "vol_ratio": 1.02,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "BAISSIER",
+      "tendance_long": "BAISSIER",
+      "prix_52w_haut": 124752.53125,
+      "prix_52w_bas": 62702.09765625
     },
     "sentiment": {
-      "score": 0.0,
-      "label": "NEUTRE",
-      "positive": 1,
-      "negative": 1,
-      "neutral": 1,
-      "headlines_used": 3
+      "score": 0.5,
+      "label": "POSITIF",
+      "positif": 11,
+      "negatif": 1,
+      "neutre": 8,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 52.0,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 50.0,
-        "momentum": 64.98756515421582,
-        "rsi": 30,
-        "volume": 52.66635103176045,
-        "trend": 70
+    "scores": {
+      "court": {
+        "score": 59,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "rsi": 5,
+          "macd": 20,
+          "volume": 10,
+          "momentum_1j": 14,
+          "bollinger": 10
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 62,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "ma_score": 16,
+          "macd": 15,
+          "sentiment": 18,
+          "rsi": 3,
+          "momentum_5j": 10
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 48,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "golden_cross": 10,
+          "tendance_long": 5,
+          "sentiment": 15,
+          "fear_greed": 18
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: Le Bitcoin affiche une tendance haussière soutenue (+1.5% en 24h) mais un RSI de 77 signale une zone de surachat technique.\nRISQUES: Le risque majeur est la divergence entre la forte performance et le sentiment neutre, accentuée par une activité on-chain jugée faible.\nVERDICT ATTENDRE: Il est préférable d'attendre une consolidation ou une confirmation de volume plus élevé pour valider la continuation de la tendance haussière.",
+    "score_global": {
+      "score": 56.9,
+      "signal": "ATTENDRE",
+      "couleur": "yellow"
+    },
+    "report": "Rapport IA non disponible.",
     "headlines": [
-      "Bitcoin on-chain activity is a ghost town with price being controlled by corporate products",
-      "Crypto for Advisors: Crypto’s Performance Q1",
-      "Zcash Price Prediction 2026: How High Can ZEC Go?"
-    ]
+      "Bitcoin climbs above $72K following March's hot inflation data",
+      "Morning Brief: A big day for inflation",
+      "Exodus Pay Pushes Self-Custody One Step Closer to Everyday Spending",
+      "Crypto Ends The Week Higher After U.S.-Iran Ceasefire",
+      "Sector Update: Financial Stocks Decline Friday"
+    ],
+    "fear_greed": {
+      "value": 15,
+      "label": "Extreme Fear",
+      "hier": 16,
+      "tendance": "BAISSE"
+    }
   },
   {
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-11T05:05:09.970768",
+    "timestamp": "2026-04-11T06:08:25.723640",
     "market": {
       "ticker": "ETH-USD",
-      "current_price": 2241.870849609375,
-      "change_1d": 2.4085581216081575,
-      "sma_7": 2163.609375,
-      "sma_20": 2103.8744201660156,
-      "rsi": 72.80801901340413,
-      "volatility": 2.5332616367511167,
-      "trend": "HAUSSIER",
-      "volume_ratio": 0.9901595023760028,
-      "price_30d_high": 2351.176025390625,
-      "price_30d_low": 1982.5596923828125
+      "prix_actuel": 2233.235595703125,
+      "variation_1j": 2.01,
+      "variation_5j": 5.95,
+      "variation_30j": 7.54,
+      "variation_90j": 6.83,
+      "variation_1an": -34.18,
+      "rsi": 72.4,
+      "macd": {
+        "macd": 26.001716580908578,
+        "signal": 8.111452146064085,
+        "histo": 17.890264434844493,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 2260.9869081744864,
+        "lower": 1945.8984067669198,
+        "ma": 2103.442657470703,
+        "pct_b": 0.912,
+        "zone": "NEUTRE"
+      },
+      "moyennes": {
+        "ma20": 2103.442657470703,
+        "prix_vs_ma20": "AU DESSUS",
+        "ma50": 2068.851142578125,
+        "prix_vs_ma50": "AU DESSUS",
+        "ma200": 2937.110115966797,
+        "prix_vs_ma200": "EN DESSOUS",
+        "score_ma": 2
+      },
+      "atr": 90.406,
+      "vol_ratio": 0.94,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "HAUSSIER",
+      "tendance_long": "BAISSIER",
+      "prix_52w_haut": 4831.3486328125,
+      "prix_52w_bas": 1821.68310546875
     },
     "sentiment": {
-      "score": 0.0,
-      "label": "NEUTRE",
-      "positive": 0,
-      "negative": 0,
-      "neutral": 0,
-      "headlines_used": 0
+      "score": 0.3,
+      "label": "POSITIF",
+      "positif": 9,
+      "negatif": 3,
+      "neutre": 8,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 54.0,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 50.0,
-        "momentum": 74.08558121608158,
-        "rsi": 30,
-        "volume": 49.50797511880014,
-        "trend": 70
+    "scores": {
+      "court": {
+        "score": 60,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "rsi": 5,
+          "macd": 20,
+          "volume": 9,
+          "momentum_1j": 16,
+          "bollinger": 10
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 67,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "ma_score": 16,
+          "macd": 15,
+          "sentiment": 16,
+          "rsi": 10,
+          "momentum_5j": 10
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 46,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "golden_cross": 10,
+          "tendance_long": 5,
+          "sentiment": 13,
+          "fear_greed": 18
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: Ethereum maintient une tendance haussière notable, avec une performance positive de +2.4% en 24h, mais l'indice RSI (73) signale un niveau de surachat.\nRISQUES: Le niveau RSI élevé augmente le risque de correction technique à court terme, et l'absence de nouvelles majeures pourrait freiner la poursuite de la dynamique haussière.\nVERDICT ATTENDRE: Il est recommandé d'attendre une consolidation ou une baisse du RSI pour confirmer la solidité de la tendance avant d'envisager une prise de position.",
-    "headlines": []
+    "score_global": {
+      "score": 58.6,
+      "signal": "ATTENDRE",
+      "couleur": "yellow"
+    },
+    "report": "Rapport IA non disponible.",
+    "headlines": [
+      "Bitcoin and ethereum prices today, Friday, April 10, 2026: Prices rise ahead of CPI report",
+      "Alchemy launches $20 million fund for Solana builders",
+      "Crypto Ends The Week Higher After U.S.-Iran Ceasefire",
+      "Mantle’s xStocks Rollout Pushes Tokenized Equities Closer to Real Onchain Liquidity",
+      "Top Cryptocurrencies Rise; Bitcoin Holds Above $73,000 Level"
+    ],
+    "fear_greed": {
+      "value": 15,
+      "label": "Extreme Fear",
+      "hier": 16,
+      "tendance": "BAISSE"
+    }
   },
   {
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-11T05:05:09.970775",
+    "timestamp": "2026-04-11T06:08:25.723647",
     "market": {
       "ticker": "SOL-USD",
-      "current_price": 84.40267181396484,
-      "change_1d": 1.3264975270196007,
-      "sma_7": 82.67779323032924,
-      "sma_20": 83.88970146179199,
-      "rsi": 53.08542809989559,
-      "volatility": 2.612074721684789,
-      "trend": "BAISSIER",
-      "volume_ratio": 2.5992064173016303,
-      "price_30d_high": 96.22372436523438,
-      "price_30d_low": 78.9513168334961
+      "prix_actuel": 84.07998657226562,
+      "variation_1j": 0.94,
+      "variation_5j": 4.9,
+      "variation_30j": -3.87,
+      "variation_90j": -4.06,
+      "variation_1an": -46.95,
+      "rsi": 52.4,
+      "macd": {
+        "macd": -1.2961599019602232,
+        "signal": -1.6126032378750674,
+        "histo": 0.3164433359148442,
+        "tendance": "HAUSSIER",
+        "croisement": "NEUTRE"
+      },
+      "bollinger": {
+        "upper": 91.3764985651382,
+        "lower": 76.37063583427584,
+        "ma": 83.87356719970703,
+        "pct_b": 0.514,
+        "zone": "NEUTRE"
+      },
+      "moyennes": {
+        "ma20": 83.87356719970703,
+        "prix_vs_ma20": "AU DESSUS",
+        "ma50": 85.46399139404296,
+        "prix_vs_ma50": "EN DESSOUS",
+        "ma200": 131.85867435455322,
+        "prix_vs_ma200": "EN DESSOUS",
+        "score_ma": 1
+      },
+      "atr": 3.6254,
+      "vol_ratio": 3.19,
+      "tendance_court": "HAUSSIER",
+      "tendance_moyen": "BAISSIER",
+      "tendance_long": "BAISSIER",
+      "prix_52w_haut": 247.6371307373047,
+      "prix_52w_bas": 77.7533187866211
     },
     "sentiment": {
-      "score": -1.0,
-      "label": "NÉGATIF",
-      "positive": 0,
-      "negative": 1,
-      "neutral": 0,
-      "headlines_used": 1
+      "score": 0.05,
+      "label": "NEUTRE",
+      "positif": 3,
+      "negatif": 2,
+      "neutre": 15,
+      "nb_sources": 20,
+      "confiance": 1.0
     },
-    "score": {
-      "composite": 39.4,
-      "signal": "ATTENDRE",
-      "signal_color": "yellow",
-      "breakdown": {
-        "sentiment": 0.0,
-        "momentum": 63.26497527019601,
-        "rsi": 53.08542809989559,
-        "volume": 100,
-        "trend": 30
+    "scores": {
+      "court": {
+        "score": 83,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "rsi": 25,
+          "macd": 20,
+          "volume": 15,
+          "momentum_1j": 13,
+          "bollinger": 10
+        },
+        "horizon": "Court terme (1–5 jours)"
+      },
+      "moyen": {
+        "score": 60,
+        "signal": "ACHETER",
+        "couleur": "green",
+        "detail": {
+          "ma_score": 8,
+          "macd": 15,
+          "sentiment": 13,
+          "rsi": 15,
+          "momentum_5j": 9
+        },
+        "horizon": "Moyen terme (2–8 semaines)"
+      },
+      "long": {
+        "score": 43,
+        "signal": "ATTENDRE",
+        "couleur": "yellow",
+        "detail": {
+          "golden_cross": 10,
+          "tendance_long": 5,
+          "sentiment": 10,
+          "fear_greed": 18
+        },
+        "horizon": "Long terme (6 mois–2 ans)"
       }
     },
-    "report": "CONSTAT: Malgré une hausse de +1.3% sur 24h, Solana est dominé par une tendance baissière et un sentiment fortement négatif (Score 39/100).\nRISQUES: Le risque majeur est la divergence entre la performance récente et la tendance baissière structurelle, amplifiée par une volatilité élevée (2.6x).\nVERDICT ATTENDRE: Il est conseillé d'attendre une confirmation de renversement de tendance ou une amélioration du sentiment avant d'envisager toute prise de position.",
+    "score_global": {
+      "score": 61.8,
+      "signal": "ACHETER",
+      "couleur": "green"
+    },
+    "report": "Rapport IA non disponible.",
     "headlines": [
-      "Morning Minute: Crypto Soars, Oil Tumbles on 2-Week Ceasefire"
-    ]
+      "Alchemy launches $20 million fund for Solana builders",
+      "Top Cryptocurrencies Rise; Bitcoin Holds Above $73,000 Level",
+      "Can DeFi Survive Mythos?",
+      "XRP Led Global Crypto Fund Inflows Last Week With $119.6 Million: What’s Driving the Demand for XRP?",
+      "Every Major Altcoin Dipped in Q1: Can XRP, Solana, and Ethereum Bounce Back in Q2?"
+    ],
+    "fear_greed": {
+      "value": 15,
+      "label": "Extreme Fear",
+      "hier": 16,
+      "tendance": "BAISSE"
+    }
   }
 ]
