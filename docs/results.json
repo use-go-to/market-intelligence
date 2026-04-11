@@ -3,7 +3,7 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-11T08:35:07.004878",
+    "timestamp": "2026-04-11T09:13:10.773350",
     "market": {
       "current_price": 188.6300048828125,
       "change_1d": 2.57,
@@ -47,27 +47,27 @@
       "volatility": 35.3
     },
     "sentiment": {
-      "label": "NEUTRE",
-      "score": 0.083,
+      "label": "POSITIF",
+      "score": 0.167,
       "headlines_used": 12,
       "confiance": 1.0,
-      "positif": 1,
+      "positif": 2,
       "negatif": 0,
       "volume_signal": true
     },
     "score": {
-      "composite": 76.9,
+      "composite": 77.5,
       "signal": "ACHETER",
       "court": {
         "value": 46.3,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 89.1,
+        "value": 89.8,
         "signal": "ACHETER"
       },
       "long": {
-        "value": 84.2,
+        "value": 85.1,
         "signal": "ACHETER"
       },
       "breakdown": {
@@ -82,14 +82,14 @@
           "golden_cross": 30.0,
           "macd": 16.0,
           "ma_alignment": 20.0,
-          "sentiment": 9.7,
+          "sentiment": 10.5,
           "momentum_5j": 13.3
         },
         "long": {
           "trend_200": 35.0,
           "fundamentals": 24.0,
           "macro": 13.0,
-          "sentiment_vol": 12.2
+          "sentiment_vol": 13.1
         }
       }
     },
@@ -111,29 +111,35 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — RSI élevé et VolBreakout non atteint\nMOYEN: ACHETER — Croissance des revenus forte et MACD haussier\nLONG: ACHETER — Support technique solide avec des indicateurs de momentum positifs\nSYNTHESE: Le momentum est positif malgré un RSI élevé, suggérant une prudence avant une forte accélération.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 50,
+      "raisons_ok": [
+        "Score 78/100 ≥ 62",
+        "Macro FAVORABLE",
+        "Sentiment POSITIF"
+      ],
+      "raisons_nok": [
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is a deep, professional analysis of NVIDIA (NVDA) in French, following a very strict, predefined format. The tone must be concise, precise, and actionable for a trader.\n\n2.  **Analyze the Data Inputs (Data Interpretation):**\n\n    *   **Price/Technical:** Price (188.63 USD). RSI (68) -> Approaching overbought, but not yet there. MACD (Bullish, Neutral cross) -> Mixed signal. Bollinger (Overbought, No squeeze) -> Caution. MAs (Price > MA20 > MA50 > MA200) -> Strong bullish structure. Golden Cross (Yes) -> Strong bullish signal. Divergence (None) -> Neutral. Volume breakout (No) -> Caution. HV20 (35.3%) -> High volatility.\n    *   **Sentiment/News:** Score (+0.17, POSITIVE). 12 sources (100% confidence). Volume signal (Yes). -> Strong positive momentum/narrative.\n    *   **Fundamentals:** P/E (38.5) -> High valuation. Growth (73.2%) -> Excellent growth. EPS Surprise (-40.9%) -> Major weakness/concern (The market might be pricing in future growth despite current earnings misses). Score (80/100) -> Strong overall fundamentals.\n    *   **Macro:** Regime (FAVORABLE). Fed/Inflation -> Stable/Manageable.\n    *   **Multi-Horizon Scores:** Short (46/100 -> WAIT), Medium (90/100 -> BUY), Long (85/100 -> BUY). -> Clear divergence: Short-term caution, long-term bullish conviction.\n    *   **Algorithmic Decision:** WAIT (Reliability 50/100). *Reasoning:* Failed backtest metrics (Win rate, Sharpe, 0 trades).\n    *   **Contradictions:** None major.\n    *   **Synthesis:** The technical structure (MAs, Golden Cross) and the long-term/macro view are strongly bullish, but the short-term signals (RSI, Bollinger, Short Score) and the backtesting failure introduce significant caution.\n\n3.  **Drafting the Sections (Following the Format):**\n\n    *   **COURT TERME (1-5j):** Focus on the conflicting signals. The technical structure is good, but the overbought RSI and the low short-term score mandate caution. *Risk:* Correction/Pullback due to overextension.\n    *   **MOYEN TERME (2-8 sem):** Focus on the strong trend confirmation (MAs, Golden Cross) and the high",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
       "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
-      "Got $1,000? The Best Cybersecurity Growth Stock to Buy as Agentic AI Expands the Attack Surface.",
-      "Want to Own SpaceX Stock Before Its Blockbuster IPO? Here Are 3 Ways Investors Can Buy Right Now.",
-      "These Industrial Stocks Don't Come on Sale Often. Now Is the Time to Buy."
+      "Tesla Stock Investors Just Got Good News From Wall Street Analysts About Robotaxis",
+      "The Likelihood of a Stock Market Crash Taking Shape Under President Donald Trump Is Rising -- and There's a Clear Reason Why",
+      "1 No-Brainer Dividend Stock to Buy if the Market Falls Again"
     ],
     "fear_greed": null
   },
@@ -141,7 +147,7 @@
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-11T08:35:07.004939",
+    "timestamp": "2026-04-11T09:13:10.773380",
     "market": {
       "current_price": 245.0399932861328,
       "change_1d": 3.55,
@@ -249,23 +255,29 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — RSI élevé et VolBreakout non confirmé\nMOYEN: ACHETER — Croissance des revenus et support technique en place\nLONG: ACHETER — Momentum technique positif (L=78) et croissance des revenus\nSYNTHESE: Le contexte technique et de croissance est favorable, mais une prudence est conseillée en raison de la surévaluation relative.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 50,
+      "raisons_ok": [
+        "Score 74/100 ≥ 62",
+        "Macro FAVORABLE",
+        "Sentiment NEUTRE"
+      ],
+      "raisons_nok": [
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is to perform an in-depth, professional analysis of AMD using a very specific French format, synthesizing complex, contradictory data points (technical, fundamental, macro, algorithmic). The tone must be concise, precise, and actionable for a trader.\n\n2.  **Analyze the Input Data (Data Dump Review):**\n    *   **Price/Technical:** Price (245.04 USD). RSI(14): 74 (Overbought). MACD: Bullish (Neutral cross). Bollinger: Overbought (No squeeze). MAs: Price > MA20 > MA50 > MA200 (Strong uptrend). Golden Cross: Yes. Divergence: None. Volume breakout: No. Volatility: 50.9% (High).\n    *   **Sentiment/News:** Score: -0.10 (Neutral). Sources: 10 (High confidence). Volume signal: Yes.\n    *   **Fundamentals:** P/E: 93.5 (High). Revenue Growth: 34.1% (Strong). EPS Surprise: -60.7% (Weak/Negative). Score: 65/100 (Mixed).\n    *   **Macro:** Regime: Favorable. Fed Rate: 3.64%. Inflation: 2.36% (Stable/Manageable).\n    *   **Algorithmic:** Short: 44/100 (Wait). Mid: 89/100 (Buy). Long: 78/100 (Buy). Contradiction: RSI Overbought vs Golden Cross (Pullback risk). Decision: WAIT (Reliability 50/100).\n    *   **Backtest:** Terrible (0 trades, 0.00% return, 0.00% Sharpe). *This is a major warning sign.*\n\n3.  **Structure the Analysis (Following the Required Format):**\n\n    *   **COURT TERME (1-5j):** Focus on the immediate technical signals and the primary contradiction.\n        *   *Key points:* Overbought RSI (74) suggests caution/pullback. Strong uptrend (MAs, Golden Cross) is fighting this. Volume breakout is absent.\n        *   *Synthesis:* High momentum but overextended. Wait for consolidation or pullback confirmation.\n    *   **MOYEN TERME (2-8 sem):** Focus on the established trend and the positive algorithmic score.\n        *   *Key points:* Strong MA alignment (Golden Cross confirmed). Mid-term score is high (89/100). The trend is clearly bullish.\n        *   *Synthesis:* Bullish momentum is intact,",
     "headlines": [
       "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
       "Intel vs. Advanced Micro Devices: Shifting Trends in Revenue",
@@ -279,7 +291,7 @@
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-11T08:35:07.004972",
+    "timestamp": "2026-04-11T09:13:10.773397",
     "market": {
       "current_price": 62.380001068115234,
       "change_1d": 1.07,
@@ -387,29 +399,35 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 1.0,
-        "avg_return": 13.34,
-        "sharpe": 13.34
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — RSI élevé et surprise EPS négative\nMOYEN: NEUTRE — MACD neutre mais faible croissance des revenus\nLONG: NEUTRE — Volume de breakout non confirmé malgré le sentiment positif sur l'IA\nSYNTHESE: Le marché est en attente malgré le contexte favorable de l'IA et les signaux contradictoires des indicateurs techniques.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 50,
+      "raisons_ok": [
+        "Score 72/100 ≥ 62",
+        "Macro FAVORABLE",
+        "Sentiment NEUTRE"
+      ],
+      "raisons_nok": [
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is to perform an in-depth, professional analysis of Intel (INTC) in French, following a very strict, predefined format. The analysis must synthesize complex, contradictory data points (technical, fundamental, macro, algorithmic).\n\n2.  **Analyze the Input Data (Data Interpretation):**\n\n    *   **Price/Technical:** Price (62.38 USD). RSI(14): 80 (Overbought). MACD: Bullish (but crossover is Neutral). Bollinger: Overbought (No squeeze). MAs: Price > MA20 > MA50 > MA200 (Strong uptrend structure). Golden Cross: Yes (Bullish). Divergence: None. Volume Breakout: No. Volatility: High (75.9%).\n    *   **Sentiment/News:** Score: +0.10 (Neutral). Sources: 10 (High confidence). Volume Signal: Yes.\n    *   **Fundamentals:** P/E: None. Revenue Growth: -4.1%. EPS Surprise: -112.2%. Score: 40/100 (Weak). *Contradiction: Strong technicals vs. Weak fundamentals.*\n    *   **Macro:** Regime: Favorable. Fed Rate: 3.64%. Inflation: 2.36%. (Generally supportive environment).\n    *   **Algorithmic/Scoring:**\n        *   Short Term: 39/100 $\\rightarrow$ WAIT (Caution).\n        *   Medium Term: 91/100 $\\rightarrow$ BUY (Strong).\n        *   Long Term: 72/100 $\\rightarrow$ BUY (Moderate).\n        *   Contradiction: RSI Overbought + Golden Cross $\\rightarrow$ Pullback risk.\n        *   Decision: WAIT (Reliability 50/100).\n        *   Failure Criteria: Win rate (50% < 58%), Sharpe (0.00 < 0.8).\n\n3.  **Structure the Analysis (Following the Format):**\n\n    *   **COURT TERME (1-5j):** Focus on the immediate technical signals and the primary risk.\n    *   **MOYEN TERME (2-8 sem):** Focus on the established trend and the key turning point.\n    *   **LONG TERME (6 mois-2 ans):** Focus on the macro/fundamental narrative and the catalyst.\n    *   **SYNTHÈSE:** One actionable sentence.\n    *   **DÉCISION FINALE:** Must confirm or contradict the algorithm, providing a reasoned justification.\n    *   **CONVICTION (1-10):",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
-      "Got $1,000? The Best Cybersecurity Growth Stock to Buy as Agentic AI Expands the Attack Surface.",
-      "Want to Own SpaceX Stock Before Its Blockbuster IPO? Here Are 3 Ways Investors Can Buy Right Now.",
-      "These Industrial Stocks Don't Come on Sale Often. Now Is the Time to Buy.",
-      "With Volatility Spiking, These Are the Smartest Dividend Stocks to Buy Today"
+      "Tesla Stock Investors Just Got Good News From Wall Street Analysts About Robotaxis",
+      "The Likelihood of a Stock Market Crash Taking Shape Under President Donald Trump Is Rising -- and There's a Clear Reason Why",
+      "1 No-Brainer Dividend Stock to Buy if the Market Falls Again",
+      "Got $1,000? The Best Cybersecurity Growth Stock to Buy as Agentic AI Expands the Attack Surface."
     ],
     "fear_greed": null
   },
@@ -417,7 +435,7 @@
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-11T08:35:07.005004",
+    "timestamp": "2026-04-11T09:13:10.773411",
     "market": {
       "current_price": 370.8699951171875,
       "change_1d": -0.59,
@@ -441,7 +459,7 @@
       "stop_loss": 353.9514,
       "risk_pct": 4.56,
       "high_52w": 539.8252563476562,
-      "low_52w": 356.3916320800781,
+      "low_52w": 356.3916015625,
       "history_14j": [
         383.0,
         372.739990234375,
@@ -525,23 +543,29 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — RSI bas et MACD neutre malgré une nouvelle positive sectorielle\nMOYEN: NEUTRE — Le prix est stable mais les indicateurs techniques suggèrent une prudence\nLONG: ATTENDRE — Les niveaux de support et de résistance nécessitent une confirmation de prix\nSYNTHESE: Attendre une confirmation de la tendance après la volatilité récente et les signaux mixtes.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 25,
+      "raisons_ok": [
+        "Macro FAVORABLE",
+        "Sentiment NEUTRE"
+      ],
+      "raisons_nok": [
+        "Score 45/100 < 62",
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is to provide a deep, professional, and actionable analysis of Microsoft (MSFT) in French, strictly following a specified format. The tone must be concise, precise, and suitable for a professional trader.\n\n2.  **Analyze the Input Data (Data Interpretation):**\n\n    *   **Price/Technicals:** Price (370.87). RSI(14): 40 (Neutral/Slightly Bearish). MACD: HAUSSIER (but crossover is NEUTRE). Bollinger: NEUTRE (No squeeze). MAs: Price below MA20, MA50, MA200 (Strongly Bearish/Downtrend). Golden cross: No. Divergence: None (0 force). Volume breakout: No. Volatility: 21.9% (Moderate).\n    *   **Sentiment/News:** Sentiment Score: -0.10 (NEUTRE). Sources: 10 (High confidence). Volume signal: Yes (Suggests attention, but neutral sentiment).\n    *   **Fundamentals:** P/E: 23.2 (Reasonable/Slightly high). Revenue Growth: 16.7% (Strong). EPS Surprise: -4.5% (Weak point). Score: 90/100 (Very strong).\n    *   **Macro:** Regime: FAVORABLE. Fed Rate: 3.64%. Inflation: 2.36% (Stable/Controlled).\n    *   **Algorithmic/Scoring:**\n        *   Short Term: 55/100 → ATTENDRE.\n        *   Medium Term: 34/100 → ÉVITER.\n        *   Long Term: 54/100 → ATTENDRE.\n        *   Decision: ATTENDRE (Low confidence 25/100).\n        *   *Key Conflict:* Macro is FAVORABLE, Fundamentals are STRONG (90/100), but Technicals are WEAK (Price below all MAs, RSI 40), and the algorithmic decision is to WAIT.\n\n3.  **Structure the Analysis (Following the Format):**\n\n    *   **COURT TERME (1-5j):** Focus on the immediate technical weakness despite the macro backdrop.\n    *   **MOYEN TERME (2-8 sem):** Focus on the conflicting signals—the strong fundamentals vs. the current downtrend. Identify the key point of inflection.\n    *   **LONG TERME (6 mois-2 ans):** Focus on the macro stability and the inherent strength of the company (fundamentals).\n    *   **SYNTHÈSE:** Combine the",
     "headlines": [
       "CoreWeave stock surges on multiyear AI deal with Anthropic",
       "Why Microsoft and Google could be the best Mag 7 stock picks",
@@ -555,7 +579,7 @@
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-11T08:35:07.005040",
+    "timestamp": "2026-04-11T09:13:10.773424",
     "market": {
       "current_price": 317.239990234375,
       "change_1d": -0.39,
@@ -579,7 +603,7 @@
       "stop_loss": 298.9471,
       "risk_pct": 5.77,
       "high_52w": 343.4482421875,
-      "low_52w": 147.1597137451172,
+      "low_52w": 147.1597442626953,
       "history_14j": [
         302.05999755859375,
         290.44000244140625,
@@ -663,23 +687,29 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — Faible baisse récente et manque de catalyseur immédiat\nMOYEN: NEUTRE — RSI en zone neutre et MACD stable\nLONG: NEUTRE — Le prix est élevé par rapport à la moyenne historique\nSYNTHESE: L'action est actuellement en phase d'attente malgré des indicateurs techniques mitigés.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 50,
+      "raisons_ok": [
+        "Score 78/100 ≥ 62",
+        "Macro FAVORABLE",
+        "Sentiment NEUTRE"
+      ],
+      "raisons_nok": [
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is to perform an in-depth, professional analysis of Alphabet (GOOGL) in French, following a very strict, predefined format. The analysis must synthesize complex, contradictory, and sometimes weak signals into actionable insights.\n\n2.  **Analyze the Input Data (Data Interpretation):**\n\n    *   **Price/Technical (Short/Medium Term Focus):**\n        *   Price: 317.24 USD.\n        *   RSI(14): 60 (Neutral/Slightly bullish, not overbought).\n        *   MACD: HAUSSIER (Bullish), but crossover is NEUTRE (Conflicting signal).\n        *   Bollinger: NEUTRE (No squeeze).\n        *   MAs: Price > MA20 > MA50 > MA200 (Strong bullish structure).\n        *   Golden cross: Oui (Strong bullish signal).\n        *   Divergence: AUCUNE (Neutral/Weak).\n        *   Volume breakout: Non (Cautionary).\n        *   Volatility: HV20: 36.4% (Moderate).\n    *   **Sentiment/Fundamentals (Medium/Long Term Focus):**\n        *   Sentiment Score: NEUTRE (Mixed news flow).\n        *   Fundamentals: P/E 29.3, Growth 18.0%, EPS Surprise -6.5% (Mixed: High growth potential, but recent earnings miss is a drag).\n        *   Fundamental Score: 80/100 (Strong).\n    *   **Macro/Overall (Long Term Focus):**\n        *   Macro Regime: FAVORABLE (Positive backdrop).\n        *   Macro Data: Fed Rate 3.64%, Inflation 2.36% (Stable/Manageable).\n    *   **Scoring/Decision (Synthesis):**\n        *   Short Term: 54/100 → ATTENDRE (Weak).\n        *   Medium Term: 88/100 → ACHETER (Strong).\n        *   Long Term: 83/100 → ACHETER (Strong).\n        *   Algorithmic Decision: ATTENDRE (Reliability 50/100).\n        *   *Contradiction:* Technicals (MAs, Golden Cross) are strongly bullish, but the short-term score and backtest results are poor, leading the algorithm to \"ATTENDRE.\"\n\n3.  **Structure the Analysis (Following the Strict Format):**\n\n    *   **COURT TERME (1-5j):** Focus on the conflicting signals (MACD/Golden Cross vs. Volume/Score).",
     "headlines": [
       "CoreWeave stock climbs 10% on Anthropic deal",
       "How OpenAI's reported ad plans could change the AI business model",
@@ -693,7 +723,7 @@
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-11T08:35:07.005069",
+    "timestamp": "2026-04-11T09:13:10.773436",
     "market": {
       "current_price": 629.8599853515625,
       "change_1d": 0.23,
@@ -801,23 +831,29 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — RSI et MACD neutres, mais l'EPS surprise négatif est un frein.\nMOYEN: NEUTRE — Croissance des revenus forte, mais la volatilité et les niveaux de support/résistance suggèrent prudence.\nLONG: ATTENDRE — Le marché est en attente de confirmations de tendance après des signaux mixtes.\nSYNTHESE: L'analyse penche vers une approche prudente en attendant des signaux de confirmation plus clairs.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 25,
+      "raisons_ok": [
+        "Macro FAVORABLE",
+        "Sentiment POSITIF"
+      ],
+      "raisons_nok": [
+        "Score 54/100 < 62",
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is to perform an in-depth, professional analysis of Meta (META) in French, following a very strict, predefined format. The analysis must synthesize complex, contradictory, and sometimes weak signals.\n\n2.  **Analyze the Inputs (Data Interpretation):**\n\n    *   **Price/Technical:**\n        *   Price: 629.86 USD (High)\n        *   RSI(14): 59 (Neutral/Slightly bullish, not overbought)\n        *   MACD: HAUSSIER (Croisement: NEUTRE) (Bullish momentum, but neutral confirmation)\n        *   Bollinger: NEUTRE (squeeze: Non) (No immediate compression signal)\n        *   MAs: Price > MA20 > MA50 > MA200 (Mixed/Weakly bullish structure, but far from strong trend confirmation).\n        *   Golden cross/Divergence: Non/Aucune (Lack of strong signals).\n        *   Volume/Volatility: Low confidence (No breakout, HV20: 53.3%).\n    *   **Sentiment/News:**\n        *   Sentiment Score: +0.27 (POSITIVE)\n        *   Sources: 11 (High confidence, Volume signal: Oui) (Strong positive news flow).\n    *   **Fundamentals:**\n        *   P/E: 26.8 (High/Expensive)\n        *   Growth: 23.8% (Strong)\n        *   EPS Surprise: -22.3% (Major red flag/Contradiction)\n        *   Score: 80/100 (Good, but undermined by EPS surprise).\n    *   **Macro:**\n        *   Regime: FAVORABLE (Good backdrop).\n        *   Inflation/Fed: Stable/Manageable (Supportive).\n    *   **Backtest/Scores:**\n        *   Backtest: 0 trades, 0.00% return (Useless/Unreliable).\n        *   Multi-Horizon Scores: 56/100, 52/100, 55/100 (All low, suggesting caution).\n        *   Algorithmic Decision: ATTENDRE (Low confidence 25/100).\n    *   **Contradictions:**\n        *   *Key Contradiction:* Strong positive sentiment/Macro/Growth vs. Negative EPS Surprise (-22.3%) and Weak Technical Structure (MAs mixed, low backtest confidence).\n\n3.  **Structure the Analysis (Following the Format):**\n\n    *   **COURT TERME (1",
     "headlines": [
       "How OpenAI's reported ad plans could change the AI business model",
       "CoreWeave (CRWV) Is Up 24.0% After Securing US$21 Billion Meta AI Cloud Deal – What's Changed",
@@ -831,7 +867,7 @@
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-11T08:35:07.005095",
+    "timestamp": "2026-04-11T09:13:10.773448",
     "market": {
       "current_price": 348.95001220703125,
       "change_1d": 0.96,
@@ -876,26 +912,26 @@
     },
     "sentiment": {
       "label": "NEUTRE",
-      "score": -0.1,
+      "score": 0.1,
       "headlines_used": 10,
       "confiance": 1.0,
-      "positif": 3,
-      "negatif": 4,
+      "positif": 4,
+      "negatif": 3,
       "volume_signal": true
     },
     "score": {
-      "composite": 34.8,
+      "composite": 36.3,
       "signal": "ATTENDRE",
       "court": {
         "value": 50.4,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 21.6,
+        "value": 23.4,
         "signal": "ÉVITER"
       },
       "long": {
-        "value": 41.6,
+        "value": 43.9,
         "signal": "ATTENDRE"
       },
       "breakdown": {
@@ -910,14 +946,14 @@
           "golden_cross": 3.0,
           "macd": 4.0,
           "ma_alignment": 0.0,
-          "sentiment": 8.1,
+          "sentiment": 9.9,
           "momentum_5j": 6.5
         },
         "long": {
           "trend_200": 3.5,
           "fundamentals": 15.0,
           "macro": 13.0,
-          "sentiment_vol": 10.1
+          "sentiment_vol": 12.4
         }
       }
     },
@@ -939,29 +975,35 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NÉGATIF — Forte baisse récente et RSI bas\nMOYEN: NEUTRE — MACD bas et indicateurs de tendance en attente\nLONG: NEUTRE — Faible volatilité et manque de catalyseur immédiat\nSYNTHESE: La pression vendeuse actuelle et les indicateurs techniques suggèrent une approche prudente en attendant un signal de retournement clair.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 25,
+      "raisons_ok": [
+        "Macro FAVORABLE",
+        "Sentiment NEUTRE"
+      ],
+      "raisons_nok": [
+        "Score 36/100 < 62",
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is a deep, professional, and highly structured analysis of Tesla (TSLA) in French, based on a comprehensive set of technical, fundamental, sentiment, and macro data points. The output must follow a strict format.\n\n2.  **Analyze the Data Inputs (Mental Triage):**\n\n    *   **Price/Technical (Short/Medium Term):**\n        *   Price: 348.95 USD.\n        *   RSI(14): 42 (Neutral/Slightly bearish).\n        *   MACD: Bearish (Crossover: Neutral).\n        *   Bollinger: Neutral (Squeeze: No).\n        *   MAs: Price < MA20, MA50, MA200 (Strongly Bearish structure).\n        *   Golden Cross: No.\n        *   Divergence: None (0 force).\n        *   Volume Breakout: No.\n        *   Volatility (HV20): 40.5% (High, suggests potential moves).\n        *   *Conclusion:* Technicals are heavily weighted towards bearish structure (MAs) but lack strong momentum signals (RSI, MACD). The overall picture is consolidation/caution.\n\n    *   **Sentiment/News (Short Term):**\n        *   Sentiment Score: +0.10 (Neutral).\n        *   Sources: 10 (High confidence).\n        *   Volume Signal: Yes (Strong confirmation of news flow).\n        *   *Conclusion:* Market attention is high, but the consensus is neutral.\n\n    *   **Fundamentals (Long Term):**\n        *   P/E: 323.1 (Extremely high/Expensive).\n        *   Revenue Growth: -3.1% (Negative).\n        *   EPS Surprise: -47.5% (Very poor).\n        *   Score: 50/100 (Mediocre).\n        *   *Conclusion:* Fundamentals are weak and valuation is stretched. This is a major drag on the long-term thesis.\n\n    *   **Macro (Long Term):**\n        *   Regime: FAVORABLE.\n        *   Fed Rate/Inflation: Stable/Manageable.\n        *   *Conclusion:* Macro environment is supportive, which is a positive counter-signal to the weak fundamentals.\n\n    *   **Scoring/Backtest (Overall):**\n        *   Short Term: 50/100 $\\rightarrow$ ATTENDRE.\n        *   Medium Term: 23/100 $\\rightarrow$ ÉVITER.\n        *   Long Term: 44/100 $\\rightarrow$",
     "headlines": [
       "Tesla stock mired in 8-week losing streak as investors search for catalysts",
+      "Tesla Stock Investors Just Got Good News From Wall Street Analysts About Robotaxis",
       "Tesla stock shaky after new model denial",
       "Elon Musk’s Top Tips That Will Save Retirees From Financial Disaster",
-      "Stocks making big moves this week: Richardson Electronics, Tesla, C.H. Robinson Worldwide, IPG Photonics, and Zscaler",
-      "Mantle’s xStocks Rollout Pushes Tokenized Equities Closer to Real Onchain Liquidity"
+      "Stocks making big moves this week: Richardson Electronics, Tesla, C.H. Robinson Worldwide, IPG Photonics, and Zscaler"
     ],
     "fear_greed": null
   },
@@ -969,13 +1011,13 @@
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-11T08:35:07.005125",
+    "timestamp": "2026-04-11T09:13:10.773464",
     "market": {
-      "current_price": 72783.8203125,
-      "change_1d": -0.27,
-      "change_5d": 1.17,
-      "change_30d": 7.28,
-      "rsi": 76.6,
+      "current_price": 72684.015625,
+      "change_1d": -0.4,
+      "change_5d": 1.03,
+      "change_30d": 7.13,
+      "rsi": 76.0,
       "volume_ratio": 0.97,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
@@ -988,10 +1030,10 @@
       "golden_cross": false,
       "divergence": "AUCUNE",
       "vol_breakout": false,
-      "atr": 2132.0148,
+      "atr": 2133.5868,
       "hv20": 33.8,
-      "stop_loss": 68519.7907,
-      "risk_pct": 5.86,
+      "stop_loss": 68416.8421,
+      "risk_pct": 5.87,
       "high_52w": 124752.53125,
       "low_52w": 62702.09765625,
       "history_14j": [
@@ -1008,7 +1050,7 @@
         71123.359375,
         71767.828125,
         72979.046875,
-        72783.8203125
+        72684.015625
       ],
       "volatility": 33.8
     },
@@ -1022,14 +1064,14 @@
       "volume_signal": true
     },
     "score": {
-      "composite": 48.0,
+      "composite": 47.9,
       "signal": "ATTENDRE",
       "court": {
-        "value": 44.3,
+        "value": 44.1,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 51.2,
+        "value": 51.1,
         "signal": "ATTENDRE"
       },
       "long": {
@@ -1042,14 +1084,14 @@
           "macd": 15.0,
           "volume": 4.9,
           "bollinger": 12.0,
-          "momentum_1j": 9.5
+          "momentum_1j": 9.2
         },
         "moyen": {
           "golden_cross": 3.0,
           "macd": 16.0,
           "ma_alignment": 13.3,
           "sentiment": 10.3,
-          "momentum_5j": 8.6
+          "momentum_5j": 8.5
         },
         "long": {
           "trend_200": 3.5,
@@ -1077,23 +1119,29 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — RSI élevé et MACD neutre suggèrent une consolidation après la hausse.\nMOYEN: NEUTRE — Le prix est stable au-dessus de 72K, mais les indicateurs de momentum sont en attente.\nLONG: ATTENTIF — Le contexte macroéconomique favorable et la cassure de résistance récente soutiennent une prudence haussière.\nSYNTHESE: Le marché est en phase d'accumulation après une forte hausse, nécessitant de la prudence avant de prendre position.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 25,
+      "raisons_ok": [
+        "Macro FAVORABLE",
+        "Sentiment NEUTRE"
+      ],
+      "raisons_nok": [
+        "Score 48/100 < 62",
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is to perform an in-depth, professional analysis of Bitcoin (BTC-USD) in French, following a very strict, predefined format. The analysis must synthesize complex, contradictory, and quantitative data points into actionable insights.\n\n2.  **Analyze the Input Data (Data Interpretation):**\n\n    *   **Price/Momentum:** High price (72684.02 USD). RSI(14): 76 (Overbought/Overextension). MACD: Bullish (but crossover is Neutral). Bollinger: Neutral (No squeeze).\n    *   **Trend/MA:** Price > MA20 > MA50 > MA200. (Strong short-to-medium term uptrend, but MA200 is a major resistance/support level).\n    *   **Confirmation/Volume:** No Golden Cross, No confirmed Volume breakout. (Lack of immediate momentum confirmation).\n    *   **Risk/Volatility:** HV20: 33.8% (High volatility).\n    *   **Sentiment:** Score: +0.14 (Neutral). Sources: 20 (High confidence). Volume Signal: Yes.\n    *   **Macro/Fundamentals:** Macro: FAVORABLE. Inflation/Rates: Stable/Manageable.\n    *   **Fear & Greed:** 15 (Extreme Fear). **(Major Contradiction 1: Extreme Fear vs. Bullish MA/Macro)**\n    *   **Algorithmic/Backtest:** Very weak/non-existent signals (Win rate 50%, Sharpe 0.00, 0 trades). Scores: All \"ATTENDRE.\"\n    *   **Overall Algorithm Decision:** ATTENDRE (Low confidence 25/100).\n\n3.  **Structure the Analysis (Section by Section Drafting):**\n\n    *   **COURT TERME (1-5j):** Focus on the immediate technical signals.\n        *   *Key Signal:* RSI 76 (Overbought).\n        *   *Key Conflict:* Strong MA trend vs. Overbought condition.\n        *   *Risk:* Pullback/Consolidation due to overextension.\n        *   *Draft:* Caution. The overbought RSI suggests a potential correction or consolidation, despite the strong uptrend confirmed by the MAs.\n\n    *   **MOYEN TERME (2-8 sem):** Focus on the trend and key levels.\n        *   *Key Signal:* Price > MA20 > MA50. (Bullish structure).\n        *   *Key Level:* MA200 (Support/Resistance).\n        *   *Draft:* The structural uptrend remains intact (MA20/MA50).",
     "headlines": [
       "Bitcoin climbs above $72K following March's hot inflation data",
       "Morning Brief: A big day for inflation",
@@ -1112,14 +1160,14 @@
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-11T08:35:07.005153",
+    "timestamp": "2026-04-11T09:13:10.773480",
     "market": {
-      "current_price": 2235.474365234375,
-      "change_1d": -0.43,
-      "change_5d": -0.28,
-      "change_30d": 8.89,
-      "rsi": 71.6,
-      "volume_ratio": 0.91,
+      "current_price": 2234.177490234375,
+      "change_1d": -0.49,
+      "change_5d": -0.34,
+      "change_30d": 8.82,
+      "rsi": 71.5,
+      "volume_ratio": 0.9,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
       "macd_cross": "NEUTRE",
@@ -1133,7 +1181,7 @@
       "vol_breakout": false,
       "atr": 89.0402,
       "hv20": 44.7,
-      "stop_loss": 2057.3939,
+      "stop_loss": 2056.097,
       "risk_pct": 7.97,
       "high_52w": 4831.3486328125,
       "low_52w": 1821.68310546875,
@@ -1151,7 +1199,7 @@
         2190.33544921875,
         2189.14404296875,
         2245.148681640625,
-        2235.474365234375
+        2234.177490234375
       ],
       "volatility": 44.7
     },
@@ -1165,14 +1213,14 @@
       "volume_signal": true
     },
     "score": {
-      "composite": 50.0,
+      "composite": 49.9,
       "signal": "ATTENDRE",
       "court": {
-        "value": 51.7,
+        "value": 51.5,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 50.7,
+        "value": 50.6,
         "signal": "ATTENDRE"
       },
       "long": {
@@ -1185,7 +1233,7 @@
           "macd": 15.0,
           "volume": 4.5,
           "bollinger": 20.0,
-          "momentum_1j": 9.1
+          "momentum_1j": 9.0
         },
         "moyen": {
           "golden_cross": 3.0,
@@ -1220,23 +1268,29 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 1.0,
-        "avg_return": 4.37,
-        "sharpe": 4.37
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — RSI élevé et MACD haussier suggèrent une consolidation après une forte hausse.\nMOYEN: NEUTRE — Les indicateurs techniques sont en attente de confirmation de direction.\nLONG: ATTENTIF — Le MACD est haussier et le RSI montre une force acheteuse persistante.\nSYNTHESE: Le marché est en phase d'attente, nécessitant une confirmation de tendance avant de prendre position.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 25,
+      "raisons_ok": [
+        "Macro FAVORABLE",
+        "Sentiment POSITIF"
+      ],
+      "raisons_nok": [
+        "Score 50/100 < 62",
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Analyze the Goal & Format:** The request is for an in-depth, professional analysis of ETH-USD in French, strictly following a provided structure (Short/Medium/Long Term, Synthesis, Final Decision, Scenarios). The tone must be concise, precise, and actionable for a trader.\n\n2.  **Deconstruct the Data Points (Mental Check/Grouping):**\n\n    *   **Price/Momentum (Technical):**\n        *   Price: 2234.18 USD.\n        *   RSI(14): 72 (Overbought territory, but not extreme).\n        *   MACD: Bullish (Crossover: Neutral).\n        *   Bollinger: Neutral (Squeeze: Yes - suggests low volatility/potential breakout).\n        *   MAs: Price > MA20 > MA50 > MA200 (Strong uptrend structure, but MA200 is a major resistance/support level).\n        *   Golden Cross: No.\n        *   Divergence: None (Force 0).\n        *   Volume Breakout: No.\n        *   Volatility (HV20): 44.7% (Moderate).\n    *   **Sentiment/Macro (External):**\n        *   Sentiment Score: +0.23 (Positive).\n        *   News Sources: 13 (High confidence).\n        *   Macro Regime: Favorable.\n        *   Inflation/Fed: Stable/Manageable (2.36%, 3.64%).\n        *   Fear & Greed: 15 (Extreme Fear - *Major Contradiction*).\n    *   **System/Algorithm (Internal):**\n        *   Scores (All): ATTENDRE (Wait).\n        *   Decision: ATTENDRE (Reliability 25/100).\n        *   Contradictions: None major.\n        *   Backtest: Zero trades, poor metrics (Useless).\n\n3.  **Identify Key Contradictions & Conflicts (The Core Reasoning):**\n    *   **Conflict 1 (Technical vs. Sentiment):** The technical indicators (MAs, RSI) suggest upward momentum (Bullish structure, Overbought), but the *Fear & Greed* index is at *Extreme Fear*. This suggests a potential bottoming or a strong counter-trend move is possible, despite the current bullish structure.\n    *   **Conflict 2 (Momentum vs. Volatility):** The MAs are strongly bullish, but the Bollinger Squeeze suggests that the current move might be consolidating before a major breakout, rather than continuing a smooth trend.\n    *   **Conflict 3 (Algorithm vs. Reality):**",
     "headlines": [
       "Bitcoin and ethereum prices today, Friday, April 10, 2026: Prices rise ahead of CPI report",
       "Alchemy launches $20 million fund for Solana builders",
@@ -1255,14 +1309,14 @@
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-11T08:35:07.005177",
+    "timestamp": "2026-04-11T09:13:10.773493",
     "market": {
-      "current_price": 84.39585876464844,
-      "change_1d": -0.51,
-      "change_5d": -1.46,
-      "change_30d": -2.01,
-      "rsi": 55.3,
-      "volume_ratio": 2.91,
+      "current_price": 84.22222900390625,
+      "change_1d": -0.71,
+      "change_5d": -1.66,
+      "change_30d": -2.21,
+      "rsi": 54.9,
+      "volume_ratio": 2.8,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
       "macd_cross": "NEUTRE",
@@ -1276,8 +1330,8 @@
       "vol_breakout": false,
       "atr": 3.612,
       "hv20": 48.7,
-      "stop_loss": 77.1719,
-      "risk_pct": 8.56,
+      "stop_loss": 76.9982,
+      "risk_pct": 8.58,
       "high_52w": 247.6371307373047,
       "low_52w": 77.7533187866211,
       "history_14j": [
@@ -1294,7 +1348,7 @@
         82.58169555664062,
         83.2977294921875,
         84.82847595214844,
-        84.39585876464844
+        84.22222900390625
       ],
       "volatility": 48.7
     },
@@ -1308,14 +1362,14 @@
       "volume_signal": true
     },
     "score": {
-      "composite": 45.9,
+      "composite": 45.7,
       "signal": "ATTENDRE",
       "court": {
-        "value": 61.0,
+        "value": 60.6,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 39.4,
+        "value": 39.2,
         "signal": "ATTENDRE"
       },
       "long": {
@@ -1328,14 +1382,14 @@
           "macd": 15.0,
           "volume": 10.0,
           "bollinger": 12.0,
-          "momentum_1j": 9.0
+          "momentum_1j": 8.6
         },
         "moyen": {
           "golden_cross": 3.0,
           "macd": 16.0,
           "ma_alignment": 6.7,
           "sentiment": 7.6,
-          "momentum_5j": 6.1
+          "momentum_5j": 5.9
         },
         "long": {
           "trend_200": 3.5,
@@ -1363,23 +1417,29 @@
       "score": 65
     },
     "backtest": {
-      "macd_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "vol_breakout": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      },
-      "golden_cross": {
-        "win_rate": 0.5,
-        "avg_return": 0.0,
-        "sharpe": 0.0
-      }
+      "win_rate": 0.5,
+      "avg_return": 0.0,
+      "net_avg_return": 0,
+      "sharpe": 0.0,
+      "max_dd": 0.0,
+      "n_trades": 0,
+      "combo_name": "Aucune"
     },
-    "report": "COURT: NEUTRE — Volume faible et niveaux de support/résistance à surveiller\nMOYEN: NEUTRE — RSI neutre et MACD en consolidation, attendant une direction claire\nLONG: ATTENTIF — Lancement de fonds importants pour l'écosystème, potentiel de soutien\nSYNTHESE: Le marché est en attente de confirmation directionnelle malgré un catalyseur positif de l'écosystème.",
+    "decision": {
+      "decision": "ATTENDRE",
+      "fiabilite": 0,
+      "raisons_ok": [
+        "Macro FAVORABLE"
+      ],
+      "raisons_nok": [
+        "Score 46/100 < 62",
+        "Win rate 50% < 58%",
+        "Sharpe 0.00 < 0.8",
+        "Sentiment NÉGATIF",
+        "Seulement 0 trades backtestés"
+      ]
+    },
+    "report": "Here's a thinking process to construct the analysis:\n\n1.  **Understand the Goal:** The request is to perform an in-depth, professional analysis of Solana (SOL-USD) in French, following a very strict, predefined format. The analysis must synthesize complex, often contradictory, technical, fundamental, and sentiment data.\n\n2.  **Analyze the Input Data (Data Triage):**\n\n    *   **Price/Technical:** Price (84.22). RSI (55 - Neutral/Slightly Bullish). MACD (Bullish, but crossover is Neutral). Bollinger (Neutral, but Squeeze = Compression/Potential move). MAs (Mixed: Price > MA20 > MA50 > MA200. Short-term strength, long-term weakness). Golden Cross (No). Divergence (None). Volume Breakout (No). Volatility (48.7% - High).\n    *   **Sentiment/News:** Score (-0.16) -> NEGATIVE. Sources (13, 100% confidence). Volume Signal (Yes). *Contradiction: High volume signal vs. Negative sentiment.*\n    *   **Fundamentals:** N/A (Crypto). Score (50/100 - Neutral).\n    *   **Macro:** Regime (FAVORABLE). Fed/Inflation (Stable/Manageable).\n    *   **Fear & Greed:** Value (15) -> Extreme Fear. *Strong Bullish Signal (Contradicts Negative Sentiment).*\n    *   **Backtest:** Terrible (0 trades, 0.00% return, 0.00% Sharpe). *Unreliable.*\n    *   **Scores:** Short (61/100 -> WAIT), Medium (39/100 -> WAIT), Long (43/100 -> WAIT). *Consistently \"Wait\".*\n    *   **Decision Algorithmique:** WAIT (Reliability 0/100). *Confirms the \"Wait\" signal.*\n    *   **Contradictions:** None major detected (but many *implied* contradictions exist: Extreme Fear vs. Negative Sentiment; Mixed MAs vs. Bullish MACD).\n\n3.  **Structure the Analysis (Section by Section):**\n\n    *   **COURT TERME (1-5j):** Focus on immediate technical signals and risk.\n        *   *Key Signals:* Bollinger Squeeze (imminent move). Mixed MAs (consolidation). RSI (Neutral). Negative Sentiment (Caution).\n        *   *Synthesis:* High volatility potential (squeeze) but constrained by negative sentiment and lack of breakout confirmation.\n    *   **MOYEN TERME (2-8 sem):** Focus on trend and inflection points.\n        *   *Key Signals:* MACD",
     "headlines": [
       "Alchemy launches $20 million fund for Solana builders",
       "Top Cryptocurrencies Rise; Bitcoin Holds Above $73,000 Level",
