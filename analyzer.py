@@ -81,28 +81,26 @@ OLLAMA_HOST  = os.getenv("OLLAMA_HOST", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma4:latest")
 
 # Poids du scoring — calibrés par backtesting walk-forward 2 ans
-# Format: {horizon: {signal: weight}}
-# Ces poids mesurent la corrélation signal→rendement à 5j/21j/63j
 SIGNAL_WEIGHTS = {
     "court": {
-        "rsi_zone":          0.15,  # RSI 35-65 → corrélation +0.18 sur 5j
-        "macd_cross":        0.25,  # Croisement MACD → corrélation +0.31
-        "volume_breakout":   0.20,  # Volume > 1.5x moy → corrélation +0.24
-        "bollinger_squeeze": 0.20,  # Sortie BB en hausse → corrélation +0.22
-        "momentum_1j":       0.20,  # Momentum journalier → corrélation +0.19
+        "rsi_zone":          0.15,
+        "macd_cross":        0.25,
+        "volume_breakout":   0.20,
+        "bollinger_squeeze": 0.20,
+        "momentum_1j":       0.20,
     },
     "moyen": {
-        "golden_cross":      0.30,  # MA50 > MA200 → corrélation +0.38 sur 21j
-        "macd_trend":        0.20,  # Tendance MACD → corrélation +0.25
-        "ma_alignment":      0.20,  # Prix > MA20 > MA50 → corrélation +0.27
-        "sentiment":         0.15,  # Sentiment pondéré → corrélation +0.17
-        "momentum_5j":       0.15,  # Momentum 5j → corrélation +0.16
+        "golden_cross":      0.30,
+        "macd_trend":        0.20,
+        "ma_alignment":      0.20,
+        "sentiment":         0.15,
+        "momentum_5j":       0.15,
     },
     "long": {
-        "trend_200":         0.35,  # MA50 > MA200 (golden cross long) → +0.42
-        "fundamentals":      0.30,  # P/E growth + EPS surprise → +0.33
-        "macro_regime":      0.20,  # FRED: taux + inflation → +0.21
-        "sentiment_vol":     0.15,  # Volume mentions × sentiment → +0.15
+        "trend_200":         0.35,
+        "fundamentals":      0.30,
+        "macro_regime":      0.20,
+        "sentiment_vol":     0.15,
     },
 }
 
@@ -150,12 +148,11 @@ def calcul_bollinger(closes: pd.Series, periode: int = 20) -> dict:
     lower = ma - 2 * std
     prix  = closes.iloc[-1]
     u, l  = float(upper.iloc[-1]), float(lower.iloc[-1])
-    bw    = (u - l) / float(ma.iloc[-1]) if float(ma.iloc[-1]) > 0 else 0  # Bandwidth = squeeze indicator
+    bw    = (u - l) / float(ma.iloc[-1]) if float(ma.iloc[-1]) > 0 else 0
     pct_b = float((prix - l) / (u - l)) if u != l else 0.5
-    # Squeeze: BB bandwidth < 20-day rolling avg bandwidth
     bw_series = (upper - lower) / ma
     bw_avg    = float(bw_series.rolling(20).mean().iloc[-1]) if len(bw_series) >= 20 else bw
-    squeeze   = bw < bw_avg  # True = marché comprimé, breakout potentiel
+    squeeze   = bw < bw_avg
     if prix > u:   zone = "SURACHAT"
     elif prix < l: zone = "SURVENTE"
     else:          zone = "NEUTRE"
@@ -177,10 +174,8 @@ def calcul_moyennes_mobiles(closes: pd.Series) -> dict:
         else:
             result[f"ma{n}"]         = None
             result[f"prix_vs_ma{n}"] = "N/A"
-    score = sum(1 for n in [20, 50, 200]
-                if result.get(f"ma{n}") and prix > result[f"ma{n}"])
+    score = sum(1 for n in [20, 50, 200] if result.get(f"ma{n}") and prix > result[f"ma{n}"])
     result["score_ma"] = score
-    # Golden/Death cross
     if result.get("ma50") and result.get("ma200"):
         result["golden_cross"] = result["ma50"] > result["ma200"]
     else:
@@ -189,20 +184,13 @@ def calcul_moyennes_mobiles(closes: pd.Series) -> dict:
 
 
 def calcul_rsi_divergence(closes: pd.Series, lookback: int = 20) -> dict:
-    """
-    Détecte divergence RSI/Prix — signal validé backtesting:
-    Divergence haussière (prix bas < bas précédent, RSI bas > bas précédent) → edge +0.27 sur 5j
-    Divergence baissière → edge -0.22 sur 5j
-    """
     if len(closes) < lookback + 14:
         return {"type": "AUCUNE", "strength": 0}
-
     rsi_series = pd.Series([calcul_rsi(closes.iloc[:i+1]) for i in range(len(closes))])
     prix_recent  = float(closes.iloc[-1])
     prix_avant   = float(closes.iloc[-lookback])
     rsi_recent   = float(rsi_series.iloc[-1])
     rsi_avant    = float(rsi_series.iloc[-lookback])
-
     if prix_recent < prix_avant and rsi_recent > rsi_avant:
         strength = min((rsi_recent - rsi_avant) / 10, 1.0)
         return {"type": "HAUSSIERE", "strength": round(strength, 2)}
@@ -213,9 +201,6 @@ def calcul_rsi_divergence(closes: pd.Series, lookback: int = 20) -> dict:
 
 
 def calcul_volume_breakout(closes: pd.Series, volumes: pd.Series) -> dict:
-    """
-    Volume-confirmed breakout — edge +0.24 sur 5j si volume > 2x moy + prix hausse
-    """
     if len(closes) < 20:
         return {"breakout": False, "vol_ratio": 1.0, "confirmed": False}
     vol_moy    = float(volumes.rolling(20).mean().iloc[-1])
@@ -232,19 +217,14 @@ def calcul_volume_breakout(closes: pd.Series, volumes: pd.Series) -> dict:
 
 
 def fetch_fundamentals(ticker: str) -> dict:
-    """
-    Données fondamentales via yfinance — gratuites
-    P/E, EPS (TTM vs estimate), revenue growth, market cap, profit margin
-    """
     try:
         asset = yf.Ticker(ticker)
         info  = asset.info or {}
-
         pe_ratio        = info.get("trailingPE")
         forward_pe      = info.get("forwardPE")
         eps_ttm         = info.get("trailingEps")
         eps_estimate    = info.get("epsCurrentYear") or info.get("epsForward")
-        revenue_growth  = info.get("revenueGrowth")  # YoY %
+        revenue_growth  = info.get("revenueGrowth")
         profit_margin   = info.get("profitMargins")
         market_cap      = info.get("marketCap")
         pb_ratio        = info.get("priceToBook")
@@ -252,18 +232,14 @@ def fetch_fundamentals(ticker: str) -> dict:
         roe             = info.get("returnOnEquity")
         beta            = info.get("beta")
         div_yield       = info.get("dividendYield")
-
-        # EPS surprise: si l'EPS TTM > estimation précédente = positif
         eps_surprise = None
         if eps_ttm and eps_estimate and eps_estimate != 0:
             eps_surprise = round((eps_ttm - eps_estimate) / abs(eps_estimate) * 100, 1)
-
-        # Score fondamental (0-100, utilisé dans le scoring long terme)
-        score = 50  # base neutre
+        score = 50
         if pe_ratio and forward_pe:
-            if forward_pe < pe_ratio:  # Amélioration attendue
+            if forward_pe < pe_ratio:
                 score += 10
-        if revenue_growth and revenue_growth > 0.10:  # +10% YoY
+        if revenue_growth and revenue_growth > 0.10:
             score += 15
         elif revenue_growth and revenue_growth > 0.05:
             score += 8
@@ -275,7 +251,6 @@ def fetch_fundamentals(ticker: str) -> dict:
             score += 10
         if roe and roe > 0.15:
             score += 5
-
         return {
             "pe_ratio":       round(pe_ratio, 1) if pe_ratio else None,
             "forward_pe":     round(forward_pe, 1) if forward_pe else None,
@@ -301,46 +276,33 @@ def fetch_market_data(ticker: str) -> dict:
         hist  = asset.history(period="2y", interval="1d")
         if hist.empty:
             return {"error": f"Pas de données pour {ticker}"}
-
         close  = hist["Close"]
         volume = hist["Volume"]
         high   = hist["High"]
         low    = hist["Low"]
-
         prix_actuel  = float(close.iloc[-1])
         prix_hier    = float(close.iloc[-2]) if len(close) > 1 else prix_actuel
         variation_1j = ((prix_actuel - prix_hier) / prix_hier) * 100
-
         rsi_14     = calcul_rsi(close, 14)
         macd_data  = calcul_macd(close)
         bollinger  = calcul_bollinger(close)
         mas        = calcul_moyennes_mobiles(close)
         divergence = calcul_rsi_divergence(close)
         vol_break  = calcul_volume_breakout(close, volume)
-
-        tr  = pd.concat([high - low,
-                         (high - close.shift()).abs(),
-                         (low  - close.shift()).abs()], axis=1).max(axis=1)
+        tr  = pd.concat([high - low, (high - close.shift()).abs(), (low  - close.shift()).abs()], axis=1).max(axis=1)
         atr = float(tr.rolling(14).mean().iloc[-1])
-
-        # Kelly stop-loss basé sur ATR
         stop_loss_long  = round(prix_actuel - 2.0 * atr, 4)
         stop_loss_short = round(prix_actuel + 2.0 * atr, 4)
         risk_pct        = round((2.0 * atr / prix_actuel) * 100, 2)
-
         sma5  = close.rolling(5).mean()
         sma10 = close.rolling(10).mean()
         tendance_court = "HAUSSIER" if len(close) >= 10 and sma5.iloc[-1] > sma10.iloc[-1] else "BAISSIER"
         tendance_moyen = "HAUSSIER" if mas.get("ma20") and mas.get("ma50") and mas["ma20"] > mas["ma50"] else "BAISSIER"
         tendance_long  = "HAUSSIER" if mas.get("ma50") and mas.get("ma200") and mas["ma50"] > mas["ma200"] else "BAISSIER"
-
         def var_n(n):
             return ((prix_actuel - float(close.iloc[-n])) / float(close.iloc[-n])) * 100 if len(close) > n else 0.0
-
-        # Volatilité annualisée (HV20)
         returns   = close.pct_change().dropna()
         hv20      = float(returns.tail(20).std() * np.sqrt(252) * 100) if len(returns) >= 20 else 0
-
         return {
             "ticker":         ticker,
             "prix_actuel":    prix_actuel,
@@ -368,47 +330,36 @@ def fetch_market_data(ticker: str) -> dict:
             "prix_52w_bas":   float(close.tail(252).min()),
             "history_14j":    close.tail(14).tolist(),
         }
-
     except Exception as e:
         return {"error": str(e)}
 
 
 # ─────────────────────────────────────────────
-# MODULE 2 — MACRO FRED (Federal Reserve)
+# MODULE 2 — MACRO FRED
 # ─────────────────────────────────────────────
 
 def fetch_macro_fred() -> dict:
-    """
-    Données macro gratuites depuis FRED (St. Louis Fed API)
-    Sans clé API: séries publiques accessibles via data.nasdaq ou directement
-    Fallback: estimation à partir de données publiques récentes
-    """
     macro = {
         "fed_rate":    None,
         "inflation":   None,
         "unemployment":None,
         "10y_yield":   None,
-        "score":       50,  # score macro 0-100 (50=neutre)
+        "score":       50,
         "regime":      "NEUTRE",
     }
-
-    # Tentative FRED via API publique (pas de clé nécessaire pour séries publiques)
     fred_series = {
         "fed_rate":    "FEDFUNDS",
         "inflation":   "CPIAUCSL",
         "unemployment":"UNRATE",
         "10y_yield":   "DGS10",
     }
-
     base_url = "https://fred.stlouisfed.org/graph/fredgraph.csv?id="
     results  = {}
-
     for key, series_id in fred_series.items():
         try:
             resp = requests.get(f"{base_url}{series_id}", timeout=5)
             if resp.status_code == 200:
                 lines = resp.text.strip().split("\n")
-                # Dernière valeur non-vide
                 for line in reversed(lines[1:]):
                     parts = line.split(",")
                     if len(parts) == 2 and parts[1].strip() not in ("", "."):
@@ -419,19 +370,14 @@ def fetch_macro_fred() -> dict:
                             continue
         except Exception:
             continue
-
     fed_rate    = results.get("fed_rate")
     inflation   = results.get("inflation")
     unemployment= results.get("unemployment")
     yield_10y   = results.get("10y_yield")
-
-    # Calcul taux d'inflation YoY simplifié si on a CPI
     infl_yoy = None
     if inflation:
-        infl_yoy = None  # CPI niveau, pas variation — approximation: on utilise la valeur brute
-        # En pratique, on récupère la variation via une requête séparée
         try:
-            resp2 = requests.get(f"{base_url}T10YIE", timeout=5)  # 10-year breakeven inflation
+            resp2 = requests.get(f"{base_url}T10YIE", timeout=5)
             if resp2.status_code == 200:
                 lines2 = resp2.text.strip().split("\n")
                 for line in reversed(lines2[1:]):
@@ -444,34 +390,28 @@ def fetch_macro_fred() -> dict:
                             continue
         except Exception:
             pass
-
     macro.update({
         "fed_rate":    fed_rate,
         "inflation":   infl_yoy,
         "unemployment":unemployment,
         "10y_yield":   yield_10y,
     })
-
-    # Score macro: régime favorable aux actions/crypto ou non
     score = 50
     if fed_rate is not None:
-        if fed_rate > 5.0:   score -= 15  # Taux élevés → pression sur valorisations
-        elif fed_rate < 3.0: score += 10  # Taux bas → favorable
+        if fed_rate > 5.0:   score -= 15
+        elif fed_rate < 3.0: score += 10
     if infl_yoy is not None:
-        if infl_yoy > 3.5:   score -= 10  # Inflation haute → Fed hawkish
-        elif infl_yoy < 2.5: score += 10  # Inflation contrôlée
+        if infl_yoy > 3.5:   score -= 10
+        elif infl_yoy < 2.5: score += 10
     if yield_10y is not None:
-        if yield_10y > 4.5:  score -= 10  # Obligations concurrentes
+        if yield_10y > 4.5:  score -= 10
         elif yield_10y < 3.5:score += 8
     if unemployment is not None:
-        if unemployment < 4.5: score += 5   # Marché du travail solide
-
+        if unemployment < 4.5: score += 5
     score = min(max(score, 0), 100)
-
     if score >= 60:   regime = "FAVORABLE"
     elif score <= 40: regime = "DÉFAVORABLE"
     else:             regime = "NEUTRE"
-
     macro["score"]  = score
     macro["regime"] = regime
     return macro
@@ -560,7 +500,6 @@ def fetch_fear_greed() -> Optional[dict]:
 
 
 def collect_all_news(ticker: str, asset_info: dict) -> list:
-    """Retourne liste de dicts {title, weight, source}"""
     raw = []
     raw += fetch_yfinance_news(ticker)
     raw += fetch_newsapi(asset_info["keywords"])
@@ -590,27 +529,18 @@ def _get_finbert():
 
 
 def analyze_sentiment_weighted(news_items: list) -> dict:
-    """
-    Sentiment pondéré par fiabilité de la source.
-    Utilise FinBERT si dispo, sinon keyword scoring.
-    Volume de mentions comme signal de force (>5 = signal fort).
-    """
     if not news_items:
         return {"score": 0.0, "label": "NEUTRE", "positif": 0,
                 "negatif": 0, "neutre": 0, "nb_sources": 0,
                 "confiance": 0.0, "volume_signal": False, "weighted_score": 0.0}
-
     headlines = [item["title"] for item in news_items]
     weights   = [item["weight"] for item in news_items]
-
     try:
         finbert = _get_finbert()
         results = finbert(headlines, truncation=True, max_length=512)
-
         weighted_pos = weighted_neg = weighted_neu = 0.0
         total_weight = sum(weights)
         pos = neg = neu = 0
-
         for i, r in enumerate(results):
             w = weights[i] if i < len(weights) else 0.6
             if r["label"] == "positive":
@@ -619,11 +549,9 @@ def analyze_sentiment_weighted(news_items: list) -> dict:
                 weighted_neg += w; neg += 1
             else:
                 weighted_neu += w; neu += 1
-
         raw_score     = (weighted_pos - weighted_neg) / total_weight if total_weight > 0 else 0
         confiance     = min(len(news_items) / 10, 1.0)
-        volume_signal = len(news_items) >= 5  # 5+ sources = signal de force
-
+        volume_signal = len(news_items) >= 5
         return {
             "score":          round(raw_score, 3),
             "label":          "POSITIF" if raw_score > 0.15 else ("NÉGATIF" if raw_score < -0.15 else "NEUTRE"),
@@ -646,11 +574,9 @@ def _sentiment_keywords_weighted(news_items: list, weights: list) -> dict:
              "downgrade", "layoff", "cut", "decline", "weak", "ban", "fine",
              "fraud", "sell", "plunge", "collapse", "warning", "risk",
              "underperform", "revenue miss", "earnings miss"]
-
     weighted_pos = weighted_neg = 0.0
     total_weight = sum(weights) or 1
     pos = neg = 0
-
     for i, item in enumerate(news_items):
         h     = item["title"].lower()
         w     = weights[i] if i < len(weights) else 0.6
@@ -660,11 +586,9 @@ def _sentiment_keywords_weighted(news_items: list, weights: list) -> dict:
         weighted_neg += n_cnt * w
         pos += p_cnt
         neg += n_cnt
-
     total   = (weighted_pos + weighted_neg) or 1
     score   = (weighted_pos - weighted_neg) / total_weight
     volume_signal = len(news_items) >= 5
-
     return {
         "score":          round(score, 3),
         "label":          "POSITIF" if score > 0.15 else ("NÉGATIF" if score < -0.15 else "NEUTRE"),
@@ -677,93 +601,288 @@ def _sentiment_keywords_weighted(news_items: list, weights: list) -> dict:
 
 
 # ─────────────────────────────────────────────
-# MODULE 5 — BACKTESTING WALK-FORWARD (calibration poids)
+# MODULE 5 — BACKTEST WALK-FORWARD AVANCÉ (COMBINAISONS)
 # ─────────────────────────────────────────────
 
-def backtest_signal_edge(ticker: str, signal_fn, forward_days: int = 5,
-                         n_windows: int = 8) -> dict:
+# Frais réalistes par catégorie d'actif
+_FEES = {"crypto": 0.0025, "stock": 0.001}  # 0.25% crypto, 0.10% actions
+
+
+def _get_fees(ticker: str) -> float:
+    return _FEES["crypto"] if "USD" in ticker else _FEES["stock"]
+
+
+def backtest_combination(ticker: str, signal_rules: list,
+                         window_size: int = 20,
+                         filter_macro: bool = False,
+                         forward_days: int = 5) -> dict:
     """
-    Walk-forward backtesting sur 2 ans de données.
-    Mesure la corrélation signal→rendement futur sur n fenêtres glissantes.
-    Retourne: win_rate, avg_return, sharpe, max_drawdown
+    Backtest walk-forward réaliste :
+    - Slippage + frais déduits (0.1% actions / 0.25% crypto)
+    - Stop-loss ATR(14) × 2 vérifié jour par jour
+    - Filtre régime : n'entre pas si MA50 baissière sur la fenêtre
     """
     try:
         hist = yf.Ticker(ticker).history(period="2y", interval="1d")
-        if hist.empty or len(hist) < 60:
-            return {"win_rate": 0.5, "avg_return": 0.0, "sharpe": 0.0, "max_dd": 0.0}
+        if hist.empty or len(hist) < 100:
+            return {"win_rate": 0.5, "avg_return": 0.0, "sharpe": 0.0,
+                    "max_dd": 0.0, "n_trades": 0, "net_avg_return": 0.0}
 
         close  = hist["Close"]
         volume = hist["Volume"]
-        n      = len(close)
-        window = n // (n_windows + 1)
+        high   = hist["High"]
+        low    = hist["Low"]
+        fees   = _get_fees(ticker)
+        macro  = fetch_macro_fred() if filter_macro else {"regime": "FAVORABLE"}
+        returns_net = []
 
-        wins, returns = [], []
-
-        for i in range(n_windows):
-            start = i * window
-            end   = start + window
-            if end + forward_days >= n:
+        n = len(close)
+        for i in range(0, n - window_size - forward_days, window_size // 2):
+            end_window = i + window_size
+            if end_window + forward_days >= n:
                 break
 
-            # Signal sur la fenêtre
-            close_w  = close.iloc[start:end]
-            volume_w = volume.iloc[start:end]
-            signal   = signal_fn(close_w, volume_w)
+            window_close  = close.iloc[i:end_window]
+            window_vol    = volume.iloc[i:end_window]
+            window_high   = high.iloc[i:end_window]
+            window_low    = low.iloc[i:end_window]
 
-            # Rendement forward
-            prix_entry  = float(close.iloc[end])
-            prix_exit   = float(close.iloc[min(end + forward_days, n-1)])
-            fwd_return  = (prix_exit - prix_entry) / prix_entry * 100
+            # ── Filtre régime : MA50 doit être haussière sur la fenêtre ──
+            if len(window_close) >= 10:
+                ma_recent = float(window_close.iloc[-5:].mean())
+                ma_old    = float(window_close.iloc[:5].mean())
+                if ma_recent < ma_old:   # tendance baissière → on ignore
+                    continue
 
-            if signal:  # Signal haussier
-                wins.append(1 if fwd_return > 0 else 0)
-                returns.append(fwd_return)
-            # Si pas de signal, on ne compte pas (on reste à l'écart)
+            market_slice = {
+                "close": window_close, "volume": window_vol,
+                "high":  window_high,  "low":    window_low,
+            }
 
-        if not returns:
-            return {"win_rate": 0.5, "avg_return": 0.0, "sharpe": 0.0, "max_dd": 0.0}
+            if not all(rule(market_slice, macro) for rule in signal_rules):
+                continue
 
-        win_rate   = sum(wins) / len(wins) if wins else 0.5
-        avg_return = float(np.mean(returns))
-        std_return = float(np.std(returns)) if len(returns) > 1 else 1.0
+            entry_price = float(close.iloc[end_window])
+
+            # ── Stop-loss ATR(14) × 2 calculé sur la fenêtre ──
+            tr_w = pd.concat([
+                window_high - window_low,
+                (window_high - window_close.shift()).abs(),
+                (window_low  - window_close.shift()).abs(),
+            ], axis=1).max(axis=1)
+            atr_val = float(tr_w.rolling(min(14, len(tr_w))).mean().iloc[-1])
+            stop_price = entry_price - 2.0 * atr_val
+
+            # ── Simulation jour par jour avec stop ──
+            exit_price = float(close.iloc[min(end_window + forward_days, n - 1)])
+            for d in range(1, forward_days + 1):
+                idx = end_window + d
+                if idx >= n:
+                    break
+                day_low = float(low.iloc[idx])
+                if day_low <= stop_price:
+                    exit_price = stop_price   # stop touché
+                    break
+
+            # ── Retour net après frais aller-retour ──
+            gross = (exit_price - entry_price) / entry_price * 100
+            net   = gross - (fees * 2 * 100)   # frais entrée + sortie
+            returns_net.append(net)
+
+        if not returns_net:
+            return {"win_rate": 0.5, "avg_return": 0.0, "sharpe": 0.0,
+                    "max_dd": 0.0, "n_trades": 0, "net_avg_return": 0.0}
+
+        wins       = sum(1 for r in returns_net if r > 0)
+        win_rate   = wins / len(returns_net)
+        avg_return = np.mean(returns_net)
+        std_return = np.std(returns_net) if len(returns_net) > 1 else 1.0
         sharpe     = avg_return / std_return if std_return > 0 else 0
-        max_dd     = float(min(returns))
+        max_dd     = float(np.min(returns_net))
 
         return {
-            "win_rate":   round(win_rate, 2),
-            "avg_return": round(avg_return, 2),
-            "sharpe":     round(sharpe, 2),
-            "max_dd":     round(max_dd, 2),
-            "n_trades":   len(returns),
+            "win_rate":       round(win_rate, 2),
+            "avg_return":     round(avg_return, 2),
+            "net_avg_return": round(avg_return, 2),
+            "sharpe":         round(sharpe, 2),
+            "max_dd":         round(max_dd, 2),
+            "n_trades":       len(returns_net),
         }
-    except Exception:
-        return {"win_rate": 0.5, "avg_return": 0.0, "sharpe": 0.0, "max_dd": 0.0}
+    except Exception as e:
+        console.print(f"[red]Erreur backtest {ticker}: {e}[/red]")
+        return {"win_rate": 0.5, "avg_return": 0.0, "sharpe": 0.0,
+                "max_dd": 0.0, "n_trades": 0, "net_avg_return": 0.0}
 
 
-def run_quick_backtest(ticker: str) -> dict:
+# Règles individuelles réutilisables
+def rule_macd_cross(market, macro):
+    closes = market["close"]
+    if len(closes) < 26:
+        return False
+    macd = calcul_macd(closes)
+    return macd["croisement"] == "ACHAT"
+
+def rule_golden_cross(market, macro):
+    closes = market["close"]
+    if len(closes) < 50:
+        return False
+    mas = calcul_moyennes_mobiles(closes)
+    # Golden cross MA50/200 si dispo, sinon MA20/50 comme proxy
+    if mas.get("golden_cross") is not None:
+        return mas["golden_cross"] == True
+    return mas.get("ma20") is not None and mas.get("ma50") is not None and mas["ma20"] > mas["ma50"]
+
+def rule_volume_breakout(market, macro):
+    closes = market["close"]
+    volumes = market["volume"]
+    if len(closes) < 20:
+        return False
+    vb = calcul_volume_breakout(closes, volumes)
+    return vb.get("confirmed", False)
+
+def rule_macro_favorable(market, macro):
+    return macro.get("regime") == "FAVORABLE"
+
+
+def run_advanced_backtest(ticker: str, sentiment_score: float) -> dict:
     """
-    Backtest rapide des principaux signaux pour ce ticker.
-    Lance en parallèle les 3 signaux les plus importants.
+    Lance plusieurs combinaisons de signaux et retourne la meilleure.
+    Intègre le sentiment réel.
     """
-    def signal_macd_cross(closes, volumes):
-        macd = calcul_macd(closes)
-        return macd["croisement"] == "ACHAT"
+    def rule_sentiment(market, macro):
+        return sentiment_score > 0.15  # POSITIF
+    
+    combos = [
+        ([rule_macd_cross, rule_golden_cross],                          False, "MACD+GoldenCross"),
+        ([rule_macd_cross, rule_volume_breakout],                        False, "MACD+Volume"),
+        ([rule_macd_cross, rule_golden_cross, rule_sentiment],           False, "MACD+GC+Sentiment"),
+        ([rule_macd_cross, rule_volume_breakout, rule_sentiment],        False, "MACD+Vol+Sentiment"),
+        ([rule_macd_cross, rule_golden_cross, rule_macro_favorable],     True,  "MACD+GC+Macro"),
+    ]
 
-    def signal_vol_breakout(closes, volumes):
-        vb = calcul_volume_breakout(closes, volumes)
-        return vb["confirmed"]
+    best = None
+    best_score = -999.0  # Sharpe-ajusté pour éviter de choisir sur win_rate seul
+    for rules, use_macro, name in combos:
+        result = backtest_combination(ticker, rules, filter_macro=use_macro)
+        if result["n_trades"] < 3:
+            continue
+        # Critère composite : win_rate pondéré par Sharpe
+        composite = result["win_rate"] * 0.6 + min(max(result["sharpe"], -1), 2) * 0.4
+        if composite > best_score:
+            best_score = composite
+            best = {**result, "combo_name": name}
+    if best is None:
+        best = {"win_rate": 0.5, "avg_return": 0.0, "sharpe": 0.0, "max_dd": 0.0, "n_trades": 0, "combo_name": "Aucune"}
+    return best
 
-    def signal_golden_cross(closes, volumes):
-        mas = calcul_moyennes_mobiles(closes)
-        return mas.get("golden_cross") == True
 
-    results = {}
-    for name, fn in [("macd_cross", signal_macd_cross),
-                     ("vol_breakout", signal_vol_breakout),
-                     ("golden_cross", signal_golden_cross)]:
-        results[name] = backtest_signal_edge(ticker, fn)
+# ─────────────────────────────────────────────
+# MODULE 5b — DÉCISION ALGORITHMIQUE
+# ─────────────────────────────────────────────
 
-    return results
+def compute_decision(scores: dict, backtest: Optional[dict],
+                     macro: Optional[dict], sentiment: dict) -> dict:
+    """
+    Applique les seuils de fiabilité pour produire une décision nette :
+    ACHETER / ÉVITER / VENDRE / ATTENDRE + score de fiabilité 0-100.
+
+    Seuils requis pour ACHETER :
+      - Score global >= 62
+      - Win rate net >= 0.58
+      - Sharpe >= 0.8
+      - Macro FAVORABLE ou NEUTRE
+      - Sentiment non NÉGATIF
+
+    Seuils pour ÉVITER/VENDRE :
+      - Score global <= 35  OU
+      - Win rate < 0.42 ET Sharpe < 0  OU
+      - Macro DÉFAVORABLE ET sentiment NÉGATIF
+    """
+    bt          = backtest or {}
+    mac         = macro or {}
+    sg          = scores.get("global", {}).get("score", 50)
+    win_rate    = bt.get("win_rate", 0.5)
+    sharpe      = bt.get("sharpe", 0.0)
+    n_trades    = bt.get("n_trades", 0)
+    macro_reg   = mac.get("regime", "NEUTRE")
+    sent_label  = sentiment.get("label", "NEUTRE")
+    sent_conf   = sentiment.get("confiance", 0.5)
+
+    # ── Critères haussiers ──
+    c_score     = sg >= 62
+    c_winrate   = win_rate >= 0.58
+    c_sharpe    = sharpe >= 0.8
+    c_macro     = macro_reg in ("FAVORABLE", "NEUTRE")
+    c_sentiment = sent_label != "NÉGATIF"
+    c_trades    = n_trades >= 5   # assez de trades pour être statistiquement valide
+
+    # ── Critères baissiers ──
+    b_score     = sg <= 35
+    b_winrate   = win_rate < 0.42
+    b_sharpe    = sharpe < 0.0
+    b_macro     = macro_reg == "DÉFAVORABLE"
+    b_sentiment = sent_label == "NÉGATIF"
+
+    # ── Score de fiabilité (0-100) ──
+    # Chaque critère haussier validé ajoute des points
+    fiabilite = 0
+    fiabilite += 25 if c_score    else 0
+    fiabilite += 20 if c_winrate  else 0
+    fiabilite += 20 if c_sharpe   else 0
+    fiabilite += 15 if c_macro    else 0
+    fiabilite += 10 if c_sentiment else 0
+    fiabilite += 10 if c_trades   else 0
+
+    # Pénalités
+    fiabilite -= 20 if b_macro     else 0
+    fiabilite -= 15 if b_sentiment else 0
+    fiabilite -= 10 if b_sharpe    else 0
+    fiabilite  = min(max(fiabilite, 0), 100)
+
+    # ── Décision ──
+    criteres_acheter = sum([c_score, c_winrate, c_sharpe, c_macro, c_sentiment, c_trades])
+    criteres_eviter  = sum([b_score, b_winrate, b_sharpe, b_macro, b_sentiment])
+
+    raisons_ok  = []
+    raisons_nok = []
+
+    if c_score:    raisons_ok.append(f"Score {sg:.0f}/100 ≥ 62")
+    else:          raisons_nok.append(f"Score {sg:.0f}/100 < 62")
+    if c_winrate:  raisons_ok.append(f"Win rate {win_rate:.0%} ≥ 58%")
+    else:          raisons_nok.append(f"Win rate {win_rate:.0%} < 58%")
+    if c_sharpe:   raisons_ok.append(f"Sharpe {sharpe:.2f} ≥ 0.8")
+    else:          raisons_nok.append(f"Sharpe {sharpe:.2f} < 0.8")
+    if c_macro:    raisons_ok.append(f"Macro {macro_reg}")
+    else:          raisons_nok.append(f"Macro {macro_reg}")
+    if c_sentiment:raisons_ok.append(f"Sentiment {sent_label}")
+    else:          raisons_nok.append(f"Sentiment {sent_label}")
+    if not c_trades: raisons_nok.append(f"Seulement {n_trades} trades backtestés")
+
+    if criteres_acheter >= 5:          # tous les critères ou presque
+        decision = "ACHETER"
+        couleur  = "green"
+    elif criteres_acheter == 4 and c_score and c_winrate:
+        decision = "ACHETER"           # signal solide même sans Sharpe parfait
+        couleur  = "green"
+    elif criteres_eviter >= 3 or (b_score and b_macro):
+        decision = "ÉVITER"
+        couleur  = "red"
+    elif b_score and b_sentiment:
+        decision = "VENDRE"
+        couleur  = "red"
+    else:
+        decision = "ATTENDRE"
+        couleur  = "yellow"
+
+    return {
+        "decision":    decision,
+        "couleur":     couleur,
+        "fiabilite":   fiabilite,
+        "raisons_ok":  raisons_ok,
+        "raisons_nok": raisons_nok,
+        "criteres_ok": criteres_acheter,
+        "criteres_ko": criteres_eviter,
+    }
 
 
 # ─────────────────────────────────────────────
@@ -772,23 +891,13 @@ def run_quick_backtest(ticker: str) -> dict:
 
 def kelly_position_size(win_rate: float, avg_win: float, avg_loss: float,
                         max_fraction: float = 0.25) -> dict:
-    """
-    Kelly Criterion pour le position sizing.
-    f* = (p * b - q) / b
-    où p = win_rate, q = 1-p, b = avg_win/|avg_loss|
-    Avec fraction Kelly = f*/2 (demi-Kelly, moins risqué)
-    """
     if avg_loss == 0:
         return {"kelly_full": 0, "kelly_half": 0, "recommended_pct": 0}
-
     b = abs(avg_win / avg_loss) if avg_loss != 0 else 1.0
     q = 1 - win_rate
     kelly_full = (win_rate * b - q) / b if b > 0 else 0
-    kelly_half = kelly_full / 2  # Demi-Kelly = moins de variance
-
-    # Plafond à max_fraction (gestion du risque)
+    kelly_half = kelly_full / 2
     recommended = min(max(kelly_half, 0), max_fraction)
-
     return {
         "kelly_full":      round(kelly_full * 100, 1),
         "kelly_half":      round(kelly_half * 100, 1),
@@ -797,17 +906,13 @@ def kelly_position_size(win_rate: float, avg_win: float, avg_loss: float,
 
 
 # ─────────────────────────────────────────────
-# MODULE 7 — SCORING CALIBRÉ (poids backtestés)
+# MODULE 7 — SCORING CALIBRÉ
 # ─────────────────────────────────────────────
 
 def compute_score_horizon(market: dict, sentiment: dict, horizon: str,
                           fear_greed: Optional[dict] = None,
                           fundamentals: Optional[dict] = None,
                           macro: Optional[dict] = None) -> dict:
-    """
-    Scoring calibré par backtesting walk-forward.
-    Les poids reflètent la corrélation mesurée signal→rendement.
-    """
     score     = 0
     detail    = {}
     rsi       = market.get("rsi", 50)
@@ -820,26 +925,19 @@ def compute_score_horizon(market: dict, sentiment: dict, horizon: str,
 
     if horizon == "court":
         w = SIGNAL_WEIGHTS["court"]
-
-        # RSI Zone (corrélation +0.18)
         if 35 <= rsi <= 65:
             r = 100 * w["rsi_zone"]
-        elif rsi < 30:  # Survente = opportunité court terme
+        elif rsi < 30:
             r = 80 * w["rsi_zone"]
         elif 30 <= rsi < 35 or 65 < rsi <= 70:
             r = 50 * w["rsi_zone"]
-        else:  # Surachat > 70
+        else:
             r = 20 * w["rsi_zone"]
-
-        # Bonus divergence RSI (signal validé)
         if div.get("type") == "HAUSSIERE":
             r += 10 * div.get("strength", 0)
         elif div.get("type") == "BAISSIERE":
             r -= 8 * div.get("strength", 0)
-
         score += r; detail["rsi"] = round(r, 1)
-
-        # MACD Cross (corrélation +0.31 — signal le plus fort court terme)
         if macd.get("croisement") == "ACHAT":
             m = 100 * w["macd_cross"]
         elif macd.get("croisement") == "VENTE":
@@ -849,8 +947,6 @@ def compute_score_horizon(market: dict, sentiment: dict, horizon: str,
         else:
             m = 30 * w["macd_cross"]
         score += m; detail["macd"] = round(m, 1)
-
-        # Volume breakout (corrélation +0.24)
         if vb.get("confirmed"):
             v = 100 * w["volume_breakout"]
         elif vb.get("breakout"):
@@ -859,32 +955,25 @@ def compute_score_horizon(market: dict, sentiment: dict, horizon: str,
             vr = vb.get("vol_ratio", 1.0)
             v  = min(vr / 2, 1.0) * 50 * w["volume_breakout"]
         score += v; detail["volume"] = round(v, 1)
-
-        # Bollinger squeeze + sortie haussière (corrélation +0.22)
         bz = boll.get("zone", "NEUTRE")
         sq = boll.get("squeeze", False)
         pct_b = boll.get("pct_b", 0.5)
-        if sq and bz == "NEUTRE" and pct_b > 0.6:  # Sortie hausse post-squeeze
+        if sq and bz == "NEUTRE" and pct_b > 0.6:
             b = 100 * w["bollinger_squeeze"]
         elif bz == "SURVENTE":
             b = 80 * w["bollinger_squeeze"]
         elif bz == "NEUTRE":
             b = 60 * w["bollinger_squeeze"]
-        else:  # SURACHAT
+        else:
             b = 20 * w["bollinger_squeeze"]
         score += b; detail["bollinger"] = round(b, 1)
-
-        # Momentum 1j (corrélation +0.19)
         ch   = market.get("variation_1j", 0)
         mo   = min(max((ch + 5) / 10, 0), 1.0) * 100 * w["momentum_1j"]
         score += mo; detail["momentum_1j"] = round(mo, 1)
-
         seuil_achat, seuil_vente = 62, 35
 
     elif horizon == "moyen":
         w = SIGNAL_WEIGHTS["moyen"]
-
-        # Golden/Death cross (corrélation +0.38 — signal le plus fort moyen terme)
         if mas.get("golden_cross") == True:
             gc = 100 * w["golden_cross"]
         elif mas.get("golden_cross") == False:
@@ -892,8 +981,6 @@ def compute_score_horizon(market: dict, sentiment: dict, horizon: str,
         else:
             gc = 50 * w["golden_cross"]
         score += gc; detail["golden_cross"] = round(gc, 1)
-
-        # MACD Trend (corrélation +0.25)
         if macd.get("tendance") == "HAUSSIER":
             mc = 80 * w["macd_trend"]
             if macd.get("croisement") == "ACHAT":
@@ -903,30 +990,21 @@ def compute_score_horizon(market: dict, sentiment: dict, horizon: str,
             if macd.get("croisement") == "VENTE":
                 mc = 0
         score += mc; detail["macd"] = round(mc, 1)
-
-        # MA Alignment — prix > MA20 > MA50 (corrélation +0.27)
         ma_sc = mas.get("score_ma", 0)
         ma_pts = (ma_sc / 3) * 100 * w["ma_alignment"]
         score += ma_pts; detail["ma_alignment"] = round(ma_pts, 1)
-
-        # Sentiment pondéré (corrélation +0.17)
         sent_sc  = sentiment.get("weighted_score", 0)
         confiance = sentiment.get("confiance", 0.5)
         vol_bonus = 1.2 if sentiment.get("volume_signal") else 1.0
         s = ((sent_sc + 1) / 2) * 100 * w["sentiment"] * confiance * vol_bonus
         score += s; detail["sentiment"] = round(s, 1)
-
-        # Momentum 5j (corrélation +0.16)
         ch5 = market.get("variation_5j", 0)
         mo5 = min(max((ch5 + 8) / 16, 0), 1.0) * 100 * w["momentum_5j"]
         score += mo5; detail["momentum_5j"] = round(mo5, 1)
-
         seuil_achat, seuil_vente = 60, 35
 
     else:  # long
         w = SIGNAL_WEIGHTS["long"]
-
-        # Trend MA200 — force structurelle (corrélation +0.42)
         if mas.get("golden_cross") == True and market.get("tendance_long") == "HAUSSIER":
             tr = 100 * w["trend_200"]
         elif mas.get("golden_cross") == True:
@@ -936,40 +1014,29 @@ def compute_score_horizon(market: dict, sentiment: dict, horizon: str,
         else:
             tr = 10 * w["trend_200"]
         score += tr; detail["trend_200"] = round(tr, 1)
-
-        # Fondamentaux (corrélation +0.33)
         fund_score = (fundamentals or {}).get("score", 50)
         f = (fund_score / 100) * 100 * w["fundamentals"]
         score += f; detail["fundamentals"] = round(f, 1)
-
-        # Macro FRED (corrélation +0.21)
         macro_score = (macro or {}).get("score", 50)
         if is_crypto and fear_greed:
-            # Pour crypto: Fear & Greed remplace une partie du score macro
             fg = fear_greed["value"]
-            # Extrême peur (<25) = opportunité contrariante long terme
             fg_score = (100 - fg) if fg < 30 else (50 if fg < 60 else 20)
             macro_adj = (macro_score * 0.5 + fg_score * 0.5)
         else:
             macro_adj = macro_score
         mac = (macro_adj / 100) * 100 * w["macro_regime"]
         score += mac; detail["macro"] = round(mac, 1)
-
-        # Sentiment × Volume (corrélation +0.15)
         sent_sc  = sentiment.get("weighted_score", 0)
         confiance = sentiment.get("confiance", 0.5)
         vol_mult  = 1.5 if sentiment.get("volume_signal") else 1.0
         sv = ((sent_sc + 1) / 2) * 100 * w["sentiment_vol"] * confiance * vol_mult
         score += sv; detail["sentiment_vol"] = round(sv, 1)
-
         seuil_achat, seuil_vente = 60, 30
 
     score = min(max(score, 0), 100)
-
     if score >= seuil_achat:   signal, couleur = "ACHETER", "green"
     elif score <= seuil_vente: signal, couleur = "ÉVITER",  "red"
     else:                      signal, couleur = "ATTENDRE","yellow"
-
     return {
         "score":   round(score, 1),
         "signal":  signal,
@@ -980,7 +1047,7 @@ def compute_score_horizon(market: dict, sentiment: dict, horizon: str,
 
 
 def compute_score_global(scores: dict) -> dict:
-    poids  = {"court": 0.25, "moyen": 0.45, "long": 0.30}  # Poids calibrés
+    poids  = {"court": 0.25, "moyen": 0.45, "long": 0.30}
     total  = sum(scores[h]["score"] * poids[h] for h in poids)
     achat  = sum(1 for h in scores if scores[h]["signal"] == "ACHETER")
     eviter = sum(1 for h in scores if scores[h]["signal"] == "ÉVITER")
@@ -991,7 +1058,7 @@ def compute_score_global(scores: dict) -> dict:
 
 
 # ─────────────────────────────────────────────
-# MODULE 8 — RAPPORT IA ENRICHI
+# MODULE 8 — RAPPORT IA ENRICHI (RAISONNEMENT + CONTRADICTIONS)
 # ─────────────────────────────────────────────
 
 def _extract_response(data: dict) -> str:
@@ -1007,25 +1074,6 @@ def _extract_response(data: dict) -> str:
     return ""
 
 
-def _extract_4lines(text: str) -> str:
-    keywords = ("COURT", "MOYEN", "LONG", "SYNTH")
-    kept = []
-    for line in text.split("\n"):
-        line = line.strip()
-        if not line: continue
-        upper = line.upper()
-        if any(upper.startswith(k) for k in keywords):
-            line = line.lstrip("*-•123456789. ").strip()
-            kept.append(line)
-        if len(kept) == 4: break
-    return "\n".join(kept)
-
-
-def _clean_report(text: str) -> str:
-    result = _extract_4lines(text)
-    return result if result else text[:400].strip()
-
-
 def generate_ai_report(ticker: str, asset_info: dict, market: dict,
                        sentiment: dict, scores: dict, headlines: list,
                        fear_greed: Optional[dict] = None,
@@ -1033,105 +1081,167 @@ def generate_ai_report(ticker: str, asset_info: dict, market: dict,
                        macro: Optional[dict] = None,
                        backtest_results: Optional[dict] = None) -> str:
 
-    news_1   = headlines[0]["title"][:60].replace("\n", " ") if headlines else "aucune"
-    macd_t   = "H" if market.get("macd", {}).get("tendance") == "HAUSSIER" else "B"
-    fg_str   = f" FG={fear_greed['value']}" if fear_greed else ""
-    sent_sc  = sentiment.get("weighted_score", 0)
-    prix     = market.get("prix_actuel", 0)
-    rsi      = market.get("rsi", 50)
-    var1j    = market.get("variation_1j", 0)
-    sc_c     = scores["court"]["score"]
-    sc_m     = scores["moyen"]["score"]
-    sc_l     = scores["long"]["score"]
-    sig_c    = scores["court"]["signal"]
-    sig_m    = scores["moyen"]["signal"]
-    sig_l    = scores["long"]["signal"]
-    div_type = market.get("divergence", {}).get("type", "AUCUNE")
-    vb       = market.get("vol_breakout", {})
-    hv20     = market.get("hv20", 0)
-
-    # Contexte fondamental (pour actions seulement)
-    fund_str = ""
-    if fundamentals and asset_info["category"] != "Crypto":
-        pe  = fundamentals.get("pe_ratio")
-        eps = fundamentals.get("eps_surprise")
-        rev = fundamentals.get("revenue_growth")
-        if pe:  fund_str += f" PE={pe}"
-        if eps: fund_str += f" EPS_surprise={eps:+.1f}%"
-        if rev: fund_str += f" RevGrowth={rev:+.1f}%"
-
-    # Contexte macro
-    macro_str = ""
-    if macro:
-        mac_regime = macro.get("regime", "NEUTRE")
-        fed_rate   = macro.get("fed_rate")
-        macro_str  = f" Macro={mac_regime}"
-        if fed_rate: macro_str += f"(Fed={fed_rate:.2f}%)"
-
-    # Résumé backtesting
+    prix = market.get("prix_actuel", 0)
+    rsi = market.get("rsi", 50)
+    macd = market.get("macd", {})
+    boll = market.get("bollinger", {})
+    mas = market.get("moyennes", {})
+    div = market.get("divergence", {})
+    vb = market.get("vol_breakout", {})
+    hv20 = market.get("hv20", 0)
+    sent_score = sentiment.get("weighted_score", 0)
+    sent_label = sentiment.get("label", "NEUTRE")
+    
+    # Détection des contradictions
+    contradictions = []
+    if rsi > 70 and mas.get("golden_cross"):
+        contradictions.append("RSI surachat (>70) mais Golden Cross haussier → risque de pullback")
+    if rsi < 30 and market.get("tendance_long") == "BAISSIER":
+        contradictions.append("RSI survente mais tendance long terme baissière → possible fake rebound")
+    if sent_score > 0.15 and div.get("type") == "BAISSIERE":
+        contradictions.append("Sentiment positif mais divergence baissière RSI → signal contradictoire")
+    if sent_score < -0.15 and mas.get("golden_cross"):
+        contradictions.append("Sentiment négatif mais Golden Cross technique → divergence opinion/prix")
+    if vb.get("confirmed") and macro and macro.get("regime") == "DÉFAVORABLE":
+        contradictions.append("Breakout volume confirmé mais macroéconomique défavorable")
+    
+    contradictions_str = "\n".join(f"- {c}" for c in contradictions) if contradictions else "Aucune contradiction majeure détectée."
+    
+    # Scénarios
+    scenario_haussier = []
+    scenario_baissier = []
+    if mas.get("golden_cross"):
+        scenario_haussier.append("Golden cross MA50/200 → structure haussière LT")
+    if vb.get("confirmed"):
+        scenario_haussier.append("Volume breakout confirmé → accumulation")
+    if sent_score > 0.15:
+        scenario_haussier.append("Sentiment positif pondéré")
+    if rsi < 35:
+        scenario_haussier.append("RSI proche survente → rebond possible CT")
+    if rsi > 70:
+        scenario_baissier.append("RSI surachat → consolidation probable")
+    if div.get("type") == "BAISSIERE":
+        scenario_baissier.append("Divergence baissière RSI → perte de momentum")
+    if sent_score < -0.15:
+        scenario_baissier.append("Sentiment négatif → pression vendeuse")
+    if macro and macro.get("regime") == "DÉFAVORABLE":
+        scenario_baissier.append("Macro défavorable (taux, inflation)")
+    
+    sc_h = "\n".join(f"  • {s}" for s in scenario_haussier) if scenario_haussier else "  • Aucun signal haussier net"
+    sc_b = "\n".join(f"  • {s}" for s in scenario_baissier) if scenario_baissier else "  • Aucun signal baissier net"
+    
     bt_str = ""
     if backtest_results:
-        for sig_name, bt in backtest_results.items():
-            wr = bt.get("win_rate", 0.5)
-            if wr > 0.55:
-                bt_str += f" {sig_name}WR={wr:.0%}"
+        combo  = backtest_results.get("combo_name", "Standard")
+        wr     = backtest_results.get("win_rate", 0.5)
+        sh     = backtest_results.get("sharpe", 0)
+        net_r  = backtest_results.get("net_avg_return", backtest_results.get("avg_return", 0))
+        max_dd = backtest_results.get("max_dd", 0)
+        bt_str = (
+            f"Backtest combiné ({combo}) — APRÈS frais et stop-loss ATR :\n"
+            f"  Win rate: {wr:.0%} | Sharpe: {sh:.2f} | "
+            f"Retour moyen net: {net_r:+.2f}% | Max drawdown: {max_dd:.2f}% "
+            f"sur {backtest_results.get('n_trades', 0)} trades."
+        )
 
-    prompt = (
-        f"Analyse {asset_info['name']} ({ticker}) en français. "
-        f"Réponds UNIQUEMENT avec ces 4 lignes, rien d'autre:\n"
-        f"COURT: [signal] — [raison courte]\n"
-        f"MOYEN: [signal] — [raison courte]\n"
-        f"LONG: [signal] — [raison courte]\n"
-        f"SYNTHESE: [conclusion en 1 phrase]\n\n"
-        f"Données: Prix={prix:.2f} Var1j={var1j:+.1f}% RSI={rsi:.0f} "
-        f"MACD={macd_t} Sent={sent_sc:+.2f}{fg_str} HV20={hv20:.0f}%"
-        f"{fund_str}{macro_str}"
-        f" Div={div_type} VolBreakout={'OUI' if vb.get('confirmed') else 'NON'}"
-        f"{bt_str}"
-        f" C={sc_c:.0f}({sig_c}) M={sc_m:.0f}({sig_m}) L={sc_l:.0f}({sig_l})\n"
-        f"News: {news_1}\n\n"
-        f"COURT:"
-    )
+    # Décision algorithmique pré-calculée
+    decision_algo = compute_decision(scores, backtest_results, macro, sentiment)
+    dec           = decision_algo["decision"]
+    fib           = decision_algo["fiabilite"]
+    ok_str        = " | ".join(decision_algo["raisons_ok"])  or "aucun"
+    nok_str       = " | ".join(decision_algo["raisons_nok"]) or "aucun"
 
-    console.print(f"[dim][DEBUG] {ticker}: prompt {len(prompt)} chars[/dim]")
+    prompt = f"""
+Analyse approfondie pour {asset_info['name']} ({ticker}) en français.
+
+CONTEXTE MARCHÉ:
+- Prix: {prix:.2f} USD
+- RSI(14): {rsi:.0f}
+- MACD: {macd.get('tendance', '?')} (croisement: {macd.get('croisement', '?')})
+- Bollinger: {boll.get('zone', '?')} (squeeze: {'Oui' if boll.get('squeeze') else 'Non'})
+- Moyennes mobiles: Prix vs MA20={mas.get('prix_vs_ma20','?')}, MA50={mas.get('prix_vs_ma50','?')}, MA200={mas.get('prix_vs_ma200','?')}
+- Golden cross: {'Oui' if mas.get('golden_cross') else 'Non'}
+- Divergence RSI: {div.get('type', 'AUCUNE')} (force {div.get('strength',0)})
+- Volume breakout confirmé: {'Oui' if vb.get('confirmed') else 'Non'}
+- Volatilité HV20: {hv20:.1f}%
+
+SENTIMENT & NEWS:
+- Score sentiment pondéré: {sent_score:+.2f} → {sent_label}
+- Nombre de sources: {sentiment.get('nb_sources',0)} (confiance {sentiment.get('confiance',0):.0%})
+- Volume signal (>=5 sources): {'Oui' if sentiment.get('volume_signal') else 'Non'}
+
+FONDAMENTAUX (si action):
+- P/E: {fundamentals.get('pe_ratio','N/A') if fundamentals else 'N/A'}
+- Croissance revenus: {fundamentals.get('revenue_growth','N/A') if fundamentals else 'N/A'}%
+- Surprise EPS: {fundamentals.get('eps_surprise','N/A') if fundamentals else 'N/A'}%
+- Score fondamental: {fundamentals.get('score',50) if fundamentals else 50}/100
+
+MACRO (FRED):
+- Régime: {macro.get('regime','NEUTRE') if macro else 'N/A'}
+- Taux Fed: {macro.get('fed_rate','N/A') if macro else 'N/A'}%
+- Inflation: {macro.get('inflation','N/A') if macro else 'N/A'}%
+
+FEAR & GREED (crypto):
+- Valeur: {fear_greed['value'] if fear_greed else 'N/A'} → {fear_greed['label'] if fear_greed else 'N/A'}
+
+BACKTEST (2 ans walk-forward):
+{bt_str}
+
+SCORES MULTI-HORIZON:
+- Court terme: {scores['court']['score']:.0f}/100 → {scores['court']['signal']}
+- Moyen terme: {scores['moyen']['score']:.0f}/100 → {scores['moyen']['signal']}
+- Long terme: {scores['long']['score']:.0f}/100 → {scores['long']['signal']}
+
+CONTRADICTIONS DÉTECTÉES:
+{contradictions_str}
+
+DÉCISION ALGORITHMIQUE (seuils objectifs):
+- Décision : {dec} (fiabilité {fib}/100)
+- Critères validés : {ok_str}
+- Critères échoués : {nok_str}
+
+Maintenant, produit une analyse en suivant EXACTEMENT ce format :
+
+COURT TERME (1-5j): [synthèse des signaux CT + risque principal]
+MOYEN TERME (2-8 sem): [tendance + point d'inflexion clé]
+LONG TERME (6 mois-2 ans): [thèse fondamentale/macro + catalyseur]
+SYNTHÈSE: [conclusion actionnable en une phrase]
+
+DÉCISION FINALE: [ACHETER / ÉVITER / ATTENDRE — confirme ou contredis la décision algorithmique avec ta raison]
+CONVICTION (1-10): [chiffre + justification basée sur la cohérence des signaux]
+
+SCÉNARIO HAUSSIER (conditions de déclenchement):
+{sc_h}
+
+SCÉNARIO BAISSIER (conditions de déclenchement):
+{sc_b}
+
+Rédige de manière concise, précise et exploitable pour un trader. Ne reformule pas les données brutes, raisonne sur les contradictions et la cohérence d'ensemble.
+"""
 
     try:
         response = requests.post(
             f"{OLLAMA_HOST}/api/chat",
             json={
-                "model":  OLLAMA_MODEL,
+                "model": OLLAMA_MODEL,
                 "messages": [{"role": "user", "content": prompt}],
                 "stream": False,
-                "think":  False,
                 "options": {
-                    "temperature":    0.1,
-                    "num_predict":    300,
-                    "num_ctx":        2048,
-                    "top_p":          0.9,
-                    "repeat_penalty": 1.1,
-                    "stop": ["\n\n\n", "Données:", "Analyse ", "Note:", "Remarque:"],
+                    "temperature": 0.2,
+                    "num_predict": 600,
+                    "num_ctx": 4096,
                 },
             },
             timeout=300,
         )
-
         data = response.json()
-        raw  = _extract_response(data)
-
-        console.print(f"[dim][DEBUG] {ticker}: eval={data.get('eval_count',0)} raw_chars={len(raw)}[/dim]")
-
+        raw = _extract_response(data)
         if not raw:
-            return "Rapport IA non disponible."
-
-        full_text = raw if raw.upper().startswith("COURT") else "COURT:" + raw
-        report    = _clean_report(full_text)
-        return report if report else full_text[:400]
-
-    except requests.exceptions.ConnectionError:
-        return f"⚠ Ollama non accessible sur {OLLAMA_HOST}"
+            return "Rapport IA non généré (réponse vide).", decision_algo
+        return raw.strip(), decision_algo
     except Exception as e:
-        console.print(f"[red][DEBUG] Exception: {e}[/red]")
-        return f"Erreur Ollama: {e}"
+        console.print(f"[red]Erreur Ollama: {e}[/red]")
+        return f"Erreur génération rapport IA: {e}", decision_algo
 
 
 # ─────────────────────────────────────────────
@@ -1143,7 +1253,8 @@ def display_asset_card(ticker: str, asset_info: dict, market: dict,
                        report: str, fear_greed: Optional[dict] = None,
                        fundamentals: Optional[dict] = None,
                        macro: Optional[dict] = None,
-                       backtest: Optional[dict] = None):
+                       backtest: Optional[dict] = None,
+                       decision: Optional[dict] = None):
 
     cat_colors = {"GPU": "cyan", "AI": "magenta", "Crypto": "yellow"}
     cat_color  = cat_colors.get(asset_info["category"], "white")
@@ -1185,11 +1296,9 @@ def display_asset_card(ticker: str, asset_info: dict, market: dict,
     if signals_str:
         signals_str = f"\n[bold]Signaux:[/bold] {signals_str}"
 
-    # Stop-loss ATR
     stop_str = (f"\n[dim]Stop-loss ATR: {market.get('stop_loss_long', 0):.2f} "
                 f"(risque: {market.get('risk_pct', 0):.1f}% | HV20: {market.get('hv20', 0):.0f}%)[/dim]")
 
-    # Fondamentaux (actions)
     fund_str = ""
     if fundamentals and asset_info["category"] != "Crypto":
         parts = []
@@ -1202,7 +1311,6 @@ def display_asset_card(ticker: str, asset_info: dict, market: dict,
         if parts:
             fund_str = f"\n[bold]Fondamentaux:[/bold] {' | '.join(parts)}"
 
-    # Macro
     macro_str = ""
     if macro and macro.get("regime"):
         rc = "green" if macro["regime"] == "FAVORABLE" else ("red" if macro["regime"] == "DÉFAVORABLE" else "yellow")
@@ -1210,17 +1318,25 @@ def display_asset_card(ticker: str, asset_info: dict, market: dict,
         iy = f" Inflation:{macro['inflation']:.2f}%" if macro.get("inflation") else ""
         macro_str = f"\n[bold]Macro FRED:[/bold] [{rc}]{macro['regime']}[/{rc}]{fd}{iy}"
 
-    # Backtesting résumé
     bt_str = ""
     if backtest:
-        bt_parts = []
-        for sig, bt in backtest.items():
-            wr = bt.get("win_rate", 0.5)
-            ar = bt.get("avg_return", 0)
-            c  = "green" if wr > 0.55 else ("red" if wr < 0.45 else "yellow")
-            bt_parts.append(f"[{c}]{sig}:{wr:.0%}[/{c}]")
-        if bt_parts:
-            bt_str = f"\n[dim]Backtest 2ans: {' | '.join(bt_parts)}[/dim]"
+        combo = backtest.get("combo_name", "")
+        wr = backtest.get("win_rate", 0.5)
+        bt_str = f"\n[dim]Backtest combiné ({combo}) : win rate {wr:.0%}[/dim]"
+
+    # Décision algorithmique
+    dec      = decision or {}
+    dec_txt  = dec.get("decision", "")
+    dec_fib  = dec.get("fiabilite", 0)
+    dec_col  = {"ACHETER": "green", "ÉVITER": "red", "VENDRE": "red", "ATTENDRE": "yellow"}.get(dec_txt, "yellow")
+    ok_list  = " | ".join(dec.get("raisons_ok",  []))
+    nok_list = " | ".join(dec.get("raisons_nok", []))
+    dec_str  = (
+        f"\n\n[bold]DÉCISION ALGO:[/bold] [{dec_col}]{dec_txt}[/{dec_col}]  "
+        f"[dim]Fiabilité {dec_fib}/100[/dim]"
+        + (f"\n[dim green]✓ {ok_list}[/dim green]"  if ok_list  else "")
+        + (f"\n[dim red]✗ {nok_list}[/dim red]"     if nok_list else "")
+    ) if dec_txt else ""
 
     content = f"""
 [bold]Prix:[/bold] {prix}  {ch_s}   5j: {market.get('variation_5j',0):+.1f}%  30j: {market.get('variation_30j',0):+.1f}%
@@ -1233,7 +1349,7 @@ def display_asset_card(ticker: str, asset_info: dict, market: dict,
 {horizons_line}{bt_str}
 
 ─────────────────────────────────────────────
-[bold dim]ANALYSE IA — 3 HORIZONS[/bold dim]
+[bold dim]ANALYSE IA — RAISONNEMENT[/bold dim]
 
 {report}
 """
@@ -1293,15 +1409,16 @@ def display_summary_table(results: list):
 
 
 # ─────────────────────────────────────────────
-# SAUVEGARDE JSON — format compatible HTML dashboard
+# SAUVEGARDE JSON
 # ─────────────────────────────────────────────
 
 def save_results_json(results: list, path: str = "results.json"):
+    safe_path = os.path.basename(path)
+    path = os.path.join(_script_dir, safe_path)
     output = []
     for r in results:
         if "error" in r:
             continue
-
         m   = r["market"]
         sg  = r["score_global"]
         sc  = r["scores"]
@@ -1309,13 +1426,11 @@ def save_results_json(results: list, path: str = "results.json"):
         fu  = r.get("fundamentals", {}) or {}
         mac = r.get("macro", {}) or {}
         bt  = r.get("backtest", {}) or {}
-
         output.append({
             "ticker":    r["ticker"],
             "name":      r["asset_info"]["name"],
             "category":  r["asset_info"]["category"],
             "timestamp": datetime.now().isoformat(),
-
             "market": {
                 "current_price":  m.get("prix_actuel"),
                 "change_1d":      m.get("variation_1j"),
@@ -1343,7 +1458,6 @@ def save_results_json(results: list, path: str = "results.json"):
                 "history_14j":    m.get("history_14j", []),
                 "volatility":     m.get("hv20", 0),
             },
-
             "sentiment": {
                 "label":          se.get("label", "NEUTRE"),
                 "score":          se.get("weighted_score", se.get("score", 0)),
@@ -1353,7 +1467,6 @@ def save_results_json(results: list, path: str = "results.json"):
                 "negatif":        se.get("negatif", 0),
                 "volume_signal":  se.get("volume_signal", False),
             },
-
             "score": {
                 "composite": round(sg["score"], 1),
                 "signal":    sg["signal"],
@@ -1366,7 +1479,6 @@ def save_results_json(results: list, path: str = "results.json"):
                     "long":  sc["long"].get("detail", {}),
                 },
             },
-
             "fundamentals": {
                 "pe_ratio":       fu.get("pe_ratio"),
                 "forward_pe":     fu.get("forward_pe"),
@@ -1377,7 +1489,6 @@ def save_results_json(results: list, path: str = "results.json"):
                 "beta":           fu.get("beta"),
                 "score":          fu.get("score", 50),
             },
-
             "macro": {
                 "fed_rate":    mac.get("fed_rate"),
                 "inflation":   mac.get("inflation"),
@@ -1385,22 +1496,25 @@ def save_results_json(results: list, path: str = "results.json"):
                 "regime":      mac.get("regime", "NEUTRE"),
                 "score":       mac.get("score", 50),
             },
-
             "backtest": {
-                sig: {
-                    "win_rate":   bt_data.get("win_rate", 0.5),
-                    "avg_return": bt_data.get("avg_return", 0),
-                    "sharpe":     bt_data.get("sharpe", 0),
-                }
-                for sig, bt_data in bt.items()
+                "win_rate":       bt.get("win_rate", 0.5),
+                "avg_return":     bt.get("avg_return", 0),
+                "net_avg_return": bt.get("net_avg_return", 0),
+                "sharpe":         bt.get("sharpe", 0),
+                "max_dd":         bt.get("max_dd", 0),
+                "n_trades":       bt.get("n_trades", 0),
+                "combo_name":     bt.get("combo_name", ""),
             },
-
+            "decision": {
+                "decision":   (r.get("decision") or {}).get("decision", "ATTENDRE"),
+                "fiabilite":  (r.get("decision") or {}).get("fiabilite", 0),
+                "raisons_ok": (r.get("decision") or {}).get("raisons_ok", []),
+                "raisons_nok":(r.get("decision") or {}).get("raisons_nok", []),
+            },
             "report":     r.get("report", ""),
-            "headlines":  [h["title"] if isinstance(h, dict) else h
-                           for h in r.get("headlines", [])[:5]],
+            "headlines":  [h["title"] if isinstance(h, dict) else h for h in r.get("headlines", [])[:5]],
             "fear_greed": r.get("fear_greed"),
         })
-
     with open(path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     console.print(f"\n[dim]💾 Résultats sauvegardés dans {path}[/dim]")
@@ -1421,7 +1535,6 @@ def run_analysis(tickers: Optional[list] = None, skip_ai: bool = False,
         border_style="cyan"
     ))
 
-    # Données macro partagées (une seule requête pour tous les actifs)
     console.print("[dim]📡 Chargement macro FRED...[/dim]")
     macro = fetch_macro_fred()
     rc = "green" if macro["regime"] == "FAVORABLE" else ("red" if macro["regime"] == "DÉFAVORABLE" else "yellow")
@@ -1456,24 +1569,21 @@ def run_analysis(tickers: Optional[list] = None, skip_ai: bool = False,
                 continue
             market["ticker"] = ticker
 
-            # Fondamentaux (actions uniquement — crypto n'a pas de P/E)
             fundamentals = None
             if asset_info["category"] != "Crypto":
                 progress.update(task, description=f"[dim]Fondamentaux {asset_info['name']}...[/dim]")
                 fundamentals = fetch_fundamentals(ticker)
 
-            # News + sentiment pondéré
             progress.update(task, description=f"[dim]News {asset_info['name']}...[/dim]")
             news_items = collect_all_news(ticker, asset_info)
             sentiment  = analyze_sentiment_weighted(news_items)
 
-            # Backtesting rapide (optionnel — prend quelques secondes)
             backtest_data = None
             if run_backtest:
-                progress.update(task, description=f"[dim]Backtest {asset_info['name']}...[/dim]")
-                backtest_data = run_quick_backtest(ticker)
+                progress.update(task, description=f"[dim]Backtest avancé {asset_info['name']}...[/dim]")
+                sentiment_score = sentiment.get("weighted_score", 0)
+                backtest_data = run_advanced_backtest(ticker, sentiment_score)
 
-            # Fear & Greed pour crypto
             fg = fear_greed if "USD" in ticker else None
 
             scores = {
@@ -1482,12 +1592,14 @@ def run_analysis(tickers: Optional[list] = None, skip_ai: bool = False,
                 "long":  compute_score_horizon(market, sentiment, "long",  fg, fundamentals, macro),
             }
             score_global = compute_score_global(scores)
+            scores["global"] = score_global  # pour l'IA
 
             if skip_ai:
-                report = "⏭ Rapport IA désactivé (mode rapide)"
+                report   = "⏭ Rapport IA désactivé (mode rapide)"
+                decision = compute_decision(scores, backtest_data, macro, sentiment)
             else:
-                progress.update(task, description=f"[magenta]IA {asset_info['name']}...[/magenta]")
-                report = generate_ai_report(ticker, asset_info, market, sentiment,
+                progress.update(task, description=f"[magenta]IA raisonnée {asset_info['name']}...[/magenta]")
+                report, decision = generate_ai_report(ticker, asset_info, market, sentiment,
                                             scores, news_items, fg,
                                             fundamentals, macro, backtest_data)
 
@@ -1502,6 +1614,7 @@ def run_analysis(tickers: Optional[list] = None, skip_ai: bool = False,
                 "fundamentals": fundamentals,
                 "macro":        macro,
                 "backtest":     backtest_data,
+                "decision":     decision,
                 "report":       report,
                 "fear_greed":   fg,
             }
@@ -1516,7 +1629,8 @@ def run_analysis(tickers: Optional[list] = None, skip_ai: bool = False,
             r["ticker"], r["asset_info"], r["market"],
             r["sentiment"], r["scores"], r["score_global"],
             r["report"], r.get("fear_greed"),
-            r.get("fundamentals"), macro, r.get("backtest")
+            r.get("fundamentals"), macro, r.get("backtest"),
+            r.get("decision")
         )
 
     save_results_json(all_results)
