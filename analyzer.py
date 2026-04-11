@@ -567,11 +567,12 @@ def generate_ai_report(ticker: str, asset_info: dict, market: dict,
 
     try:
         response = requests.post(
-            f"{OLLAMA_HOST}/api/generate",
+            f"{OLLAMA_HOST}/api/chat",
             json={
                 "model":  OLLAMA_MODEL,
-                "prompt": prompt,
+                "messages": [{"role": "user", "content": prompt}],
                 "stream": False,
+                "think":  False,
                 "options": {
                     "temperature":    0.1,
                     "num_predict":    300,
@@ -579,9 +580,9 @@ def generate_ai_report(ticker: str, asset_info: dict, market: dict,
                     "top_p":          0.9,
                     "repeat_penalty": 1.1,
                     "stop": [
-                        "\n\n\n",   # Arrête après triple saut de ligne
-                        "Données:", # Évite une répétition du prompt
-                        "Analyse ", # Évite une répétition du prompt
+                        "\n\n\n",
+                        "Données:",
+                        "Analyse ",
                         "Note:",
                         "Remarque:",
                     ],
@@ -592,7 +593,7 @@ def generate_ai_report(ticker: str, asset_info: dict, market: dict,
 
         data = response.json()
         ec   = data.get("eval_count", 0)
-        dr   = data.get("done_reason", "?")
+        dr   = data.get("done_reason", data.get("message", {}).get("done_reason", "?"))
 
         # ── Extraction multi-champs (standard + thinking mode) ──
         raw = _extract_response(data)
