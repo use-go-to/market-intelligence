@@ -3,108 +3,55 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-11T06:35:46.626131",
+    "timestamp": "2026-04-11T06:49:23.671037",
     "market": {
-      "ticker": "NVDA",
-      "prix_actuel": 188.6300048828125,
-      "variation_1j": 2.57,
-      "variation_5j": 6.19,
-      "variation_30j": 3.0,
-      "variation_90j": 2.04,
-      "variation_1an": 65.03,
+      "current_price": 188.6300048828125,
+      "change_1d": 2.57,
+      "change_5d": 6.19,
+      "change_30d": 3.0,
       "rsi": 68.2,
-      "macd": {
-        "macd": 0.12882478269742137,
-        "signal": -1.6624025948476588,
-        "histo": 1.7912273775450802,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 188.58734450650445,
-        "lower": 166.25365433382757,
-        "ma": 177.420499420166,
-        "pct_b": 1.002,
-        "zone": "SURACHAT"
-      },
-      "moyennes": {
-        "ma20": 177.420499420166,
-        "prix_vs_ma20": "AU DESSUS",
-        "ma50": 182.07218597412108,
-        "prix_vs_ma50": "AU DESSUS",
-        "ma200": 180.72493171691895,
-        "prix_vs_ma200": "AU DESSUS",
-        "score_ma": 3
-      },
+      "volume_ratio": 0.94,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "SURACHAT",
+      "ma20_status": "AU DESSUS",
+      "ma50_status": "AU DESSUS",
+      "ma200_status": "AU DESSUS",
       "atr": 5.195,
-      "vol_ratio": 0.94,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "BAISSIER",
-      "tendance_long": "HAUSSIER",
-      "prix_52w_haut": 207.01727294921875,
-      "prix_52w_bas": 96.88717651367188
+      "high_52w": 207.01727294921875,
+      "low_52w": 96.88717651367188
     },
     "sentiment": {
-      "score": 0.1,
       "label": "NEUTRE",
+      "score": 0.1,
+      "headlines_used": 10,
+      "confiance": 1.0,
       "positif": 2,
-      "negatif": 1,
-      "neutre": 7,
-      "nb_sources": 10,
-      "confiance": 1.0
+      "negatif": 1
     },
-    "scores": {
+    "score": {
+      "composite": 75.6,
+      "signal": "ACHETER",
       "court": {
-        "score": 65,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "rsi": 15,
-          "macd": 20,
-          "volume": 9,
-          "momentum_1j": 18,
-          "bollinger": 3
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 65,
+        "signal": "ACHETER"
       },
       "moyen": {
-        "score": 72,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "ma_score": 24,
-          "macd": 15,
-          "sentiment": 13,
-          "rsi": 10,
-          "momentum_5j": 10
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 72,
+        "signal": "ACHETER"
       },
       "long": {
-        "score": 91,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "golden_cross": 35,
-          "tendance_long": 25,
-          "sentiment": 11,
-          "momentum_1an": 20
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 91,
+        "signal": "ACHETER"
       }
-    },
-    "score_global": {
-      "score": 75.6,
-      "signal": "ACHETER",
-      "couleur": "green"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
       "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
+      "VinFast Auto Makes a Big Splash but Might Be More of a Sell Than Ever",
       "The AI Stock Wall Street Can't Stop Talking About in 2026",
-      "Could Investing $10,000 in SCHB Make You a Millionaire?",
-      "2 AI Stocks I'd Buy Before Sandisk -- Even After Its Stock Has Surged More Than 2,200% in the Past Year"
+      "Could Investing $10,000 in SCHB Make You a Millionaire?"
     ],
     "fear_greed": null
   },
@@ -112,100 +59,47 @@
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-11T06:35:46.626160",
+    "timestamp": "2026-04-11T06:49:23.671067",
     "market": {
-      "ticker": "AMD",
-      "prix_actuel": 245.0399932861328,
-      "variation_1j": 3.55,
-      "variation_5j": 11.29,
-      "variation_30j": 23.92,
-      "variation_90j": 20.61,
-      "variation_1an": 153.04,
+      "current_price": 245.0399932861328,
+      "change_1d": 3.55,
+      "change_5d": 11.29,
+      "change_30d": 23.92,
       "rsi": 73.7,
-      "macd": {
-        "macd": 7.512347236173838,
-        "signal": 2.9746696376053143,
-        "histo": 4.537677598568523,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 239.7344358275104,
-        "lower": 181.14656392834897,
-        "ma": 210.44049987792968,
-        "pct_b": 1.091,
-        "zone": "SURACHAT"
-      },
-      "moyennes": {
-        "ma20": 210.44049987792968,
-        "prix_vs_ma20": "AU DESSUS",
-        "ma50": 209.35099975585936,
-        "prix_vs_ma50": "AU DESSUS",
-        "ma200": 199.41349975585936,
-        "prix_vs_ma200": "AU DESSUS",
-        "score_ma": 3
-      },
+      "volume_ratio": 1.06,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "SURACHAT",
+      "ma20_status": "AU DESSUS",
+      "ma50_status": "AU DESSUS",
+      "ma200_status": "AU DESSUS",
       "atr": 10.85,
-      "vol_ratio": 1.06,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "HAUSSIER",
-      "tendance_long": "HAUSSIER",
-      "prix_52w_haut": 264.3299865722656,
-      "prix_52w_bas": 85.55999755859375
+      "high_52w": 264.3299865722656,
+      "low_52w": 85.55999755859375
     },
     "sentiment": {
-      "score": -0.1,
       "label": "NEUTRE",
+      "score": -0.1,
+      "headlines_used": 10,
+      "confiance": 1.0,
       "positif": 2,
-      "negatif": 3,
-      "neutre": 5,
-      "nb_sources": 10,
-      "confiance": 1.0
+      "negatif": 3
     },
-    "scores": {
+    "score": {
+      "composite": 72.1,
+      "signal": "ACHETER",
       "court": {
-        "score": 58,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "rsi": 5,
-          "macd": 20,
-          "volume": 10,
-          "momentum_1j": 20,
-          "bollinger": 3
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 58,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "score": 70,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "ma_score": 24,
-          "macd": 15,
-          "sentiment": 11,
-          "rsi": 10,
-          "momentum_5j": 10
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 70,
+        "signal": "ACHETER"
       },
       "long": {
-        "score": 89,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "golden_cross": 35,
-          "tendance_long": 25,
-          "sentiment": 9,
-          "momentum_1an": 20
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 89,
+        "signal": "ACHETER"
       }
-    },
-    "score_global": {
-      "score": 72.1,
-      "signal": "ACHETER",
-      "couleur": "green"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
@@ -221,108 +115,55 @@
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-11T06:35:46.626170",
+    "timestamp": "2026-04-11T06:49:23.671080",
     "market": {
-      "ticker": "INTC",
-      "prix_actuel": 62.380001068115234,
-      "variation_1j": 1.07,
-      "variation_5j": 22.84,
-      "variation_30j": 37.86,
-      "variation_90j": 36.95,
-      "variation_1an": 189.74,
+      "current_price": 62.380001068115234,
+      "change_1d": 1.07,
+      "change_5d": 22.84,
+      "change_30d": 37.86,
       "rsi": 80.4,
-      "macd": {
-        "macd": 3.4541125693633887,
-        "signal": 1.455204971401753,
-        "histo": 1.9989075979616358,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 60.653051072905825,
-        "lower": 35.70894882028266,
-        "ma": 48.18099994659424,
-        "pct_b": 1.069,
-        "zone": "SURACHAT"
-      },
-      "moyennes": {
-        "ma20": 48.18099994659424,
-        "prix_vs_ma20": "AU DESSUS",
-        "ma50": 47.20760009765625,
-        "prix_vs_ma50": "AU DESSUS",
-        "ma200": 36.19070003509521,
-        "prix_vs_ma200": "AU DESSUS",
-        "score_ma": 3
-      },
+      "volume_ratio": 0.96,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "SURACHAT",
+      "ma20_status": "AU DESSUS",
+      "ma50_status": "AU DESSUS",
+      "ma200_status": "AU DESSUS",
       "atr": 3.16,
-      "vol_ratio": 0.96,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "HAUSSIER",
-      "tendance_long": "HAUSSIER",
-      "prix_52w_haut": 62.380001068115234,
-      "prix_52w_bas": 18.84000015258789
+      "high_52w": 62.380001068115234,
+      "low_52w": 18.84000015258789
     },
     "sentiment": {
-      "score": 0.0,
       "label": "NEUTRE",
+      "score": 0.0,
+      "headlines_used": 10,
+      "confiance": 1.0,
       "positif": 1,
-      "negatif": 1,
-      "neutre": 8,
-      "nb_sources": 10,
-      "confiance": 1.0
+      "negatif": 1
     },
-    "scores": {
+    "score": {
+      "composite": 67.6,
+      "signal": "ACHETER",
       "court": {
-        "score": 50,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "rsi": 5,
-          "macd": 20,
-          "volume": 9,
-          "momentum_1j": 13,
-          "bollinger": 3
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 50,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "score": 64,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "ma_score": 24,
-          "macd": 15,
-          "sentiment": 12,
-          "rsi": 3,
-          "momentum_5j": 10
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 64,
+        "signal": "ACHETER"
       },
       "long": {
-        "score": 90,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "golden_cross": 35,
-          "tendance_long": 25,
-          "sentiment": 10,
-          "momentum_1an": 20
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 90,
+        "signal": "ACHETER"
       }
-    },
-    "score_global": {
-      "score": 67.6,
-      "signal": "ACHETER",
-      "couleur": "green"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
+      "VinFast Auto Makes a Big Splash but Might Be More of a Sell Than Ever",
       "The AI Stock Wall Street Can't Stop Talking About in 2026",
       "Could Investing $10,000 in SCHB Make You a Millionaire?",
-      "2 AI Stocks I'd Buy Before Sandisk -- Even After Its Stock Has Surged More Than 2,200% in the Past Year",
-      "Stanley Druckenmiller Says Stablecoins Will Dominate Global Payments Within 15 Years. Are Visa and Mastercard Stock in Trouble?"
+      "2 AI Stocks I'd Buy Before Sandisk -- Even After Its Stock Has Surged More Than 2,200% in the Past Year"
     ],
     "fear_greed": null
   },
@@ -330,100 +171,47 @@
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-11T06:35:46.626178",
+    "timestamp": "2026-04-11T06:49:23.671092",
     "market": {
-      "ticker": "MSFT",
-      "prix_actuel": 370.8699951171875,
-      "variation_1j": -0.59,
-      "variation_5j": -0.54,
-      "variation_30j": -7.71,
-      "variation_90j": -22.44,
-      "variation_1an": -4.3,
+      "current_price": 370.8699951171875,
+      "change_1d": -0.59,
+      "change_5d": -0.54,
+      "change_30d": -7.71,
       "rsi": 39.5,
-      "macd": {
-        "macd": -8.315402588952509,
-        "signal": -9.778323829356008,
-        "histo": 1.4629212404034995,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 401.9294524882931,
-        "lower": 352.32154543651154,
-        "ma": 377.12549896240233,
-        "pct_b": 0.374,
-        "zone": "NEUTRE"
-      },
-      "moyennes": {
-        "ma20": 377.12549896240233,
-        "prix_vs_ma20": "EN DESSOUS",
-        "ma50": 393.62245056152346,
-        "prix_vs_ma50": "EN DESSOUS",
-        "ma200": 472.589891204834,
-        "prix_vs_ma200": "EN DESSOUS",
-        "score_ma": 0
-      },
+      "volume_ratio": 0.88,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "NEUTRE",
+      "ma20_status": "EN DESSOUS",
+      "ma50_status": "EN DESSOUS",
+      "ma200_status": "EN DESSOUS",
       "atr": 8.4593,
-      "vol_ratio": 0.88,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "BAISSIER",
-      "tendance_long": "BAISSIER",
-      "prix_52w_haut": 539.8251953125,
-      "prix_52w_bas": 356.3916015625
+      "high_52w": 539.8251953125,
+      "low_52w": 356.3916015625
     },
     "sentiment": {
-      "score": 0.1,
       "label": "NEUTRE",
+      "score": 0.1,
+      "headlines_used": 10,
+      "confiance": 1.0,
       "positif": 4,
-      "negatif": 3,
-      "neutre": 3,
-      "nb_sources": 10,
-      "confiance": 1.0
+      "negatif": 3
     },
-    "scores": {
+    "score": {
+      "composite": 47.0,
+      "signal": "ATTENDRE",
       "court": {
-        "score": 61,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "rsi": 15,
-          "macd": 20,
-          "volume": 8,
-          "momentum_1j": 8,
-          "bollinger": 10
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 61,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "score": 47,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "ma_score": 0,
-          "macd": 15,
-          "sentiment": 13,
-          "rsi": 15,
-          "momentum_5j": 4
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 47,
+        "signal": "ATTENDRE"
       },
       "long": {
-        "score": 33,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "golden_cross": 10,
-          "tendance_long": 5,
-          "sentiment": 11,
-          "momentum_1an": 7
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 33,
+        "signal": "ATTENDRE"
       }
-    },
-    "score_global": {
-      "score": 47.0,
-      "signal": "ATTENDRE",
-      "couleur": "yellow"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
@@ -439,100 +227,47 @@
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-11T06:35:46.626185",
+    "timestamp": "2026-04-11T06:49:23.671104",
     "market": {
-      "ticker": "GOOGL",
-      "prix_actuel": 317.239990234375,
-      "variation_1j": -0.39,
-      "variation_5j": 5.75,
-      "variation_30j": 4.51,
-      "variation_90j": -3.38,
-      "variation_1an": 100.58,
+      "current_price": 317.239990234375,
+      "change_1d": -0.39,
+      "change_5d": 5.75,
+      "change_30d": 4.51,
       "rsi": 60.1,
-      "macd": {
-        "macd": 1.3036168880092873,
-        "signal": -2.7144978650208587,
-        "histo": 4.0181147530301455,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 325.6873018799578,
-        "lower": 272.9116971434797,
-        "ma": 299.29949951171875,
-        "pct_b": 0.84,
-        "zone": "NEUTRE"
-      },
-      "moyennes": {
-        "ma20": 299.29949951171875,
-        "prix_vs_ma20": "AU DESSUS",
-        "ma50": 308.22975158691406,
-        "prix_vs_ma50": "AU DESSUS",
-        "ma200": 268.25245834350585,
-        "prix_vs_ma200": "AU DESSUS",
-        "score_ma": 3
-      },
+      "volume_ratio": 0.65,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "NEUTRE",
+      "ma20_status": "AU DESSUS",
+      "ma50_status": "AU DESSUS",
+      "ma200_status": "AU DESSUS",
       "atr": 9.1464,
-      "vol_ratio": 0.65,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "BAISSIER",
-      "tendance_long": "HAUSSIER",
-      "prix_52w_haut": 343.4482421875,
-      "prix_52w_bas": 147.1597137451172
+      "high_52w": 343.4482421875,
+      "low_52w": 147.15972900390625
     },
     "sentiment": {
-      "score": 0.167,
       "label": "POSITIF",
+      "score": 0.167,
+      "headlines_used": 12,
+      "confiance": 1.0,
       "positif": 3,
-      "negatif": 1,
-      "neutre": 8,
-      "nb_sources": 12,
-      "confiance": 1.0
+      "negatif": 1
     },
-    "scores": {
+    "score": {
+      "composite": 76.2,
+      "signal": "ACHETER",
       "court": {
-        "score": 59,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "rsi": 15,
-          "macd": 20,
-          "volume": 6,
-          "momentum_1j": 8,
-          "bollinger": 10
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 59,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "score": 78,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "ma_score": 24,
-          "macd": 15,
-          "sentiment": 14,
-          "rsi": 15,
-          "momentum_5j": 10
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 78,
+        "signal": "ACHETER"
       },
       "long": {
-        "score": 91,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "golden_cross": 35,
-          "tendance_long": 25,
-          "sentiment": 11,
-          "momentum_1an": 20
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 91,
+        "signal": "ACHETER"
       }
-    },
-    "score_global": {
-      "score": 76.2,
-      "signal": "ACHETER",
-      "couleur": "green"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
@@ -548,100 +283,47 @@
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-11T06:35:46.626191",
+    "timestamp": "2026-04-11T06:49:23.671115",
     "market": {
-      "ticker": "META",
-      "prix_actuel": 629.8599853515625,
-      "variation_1j": 0.23,
-      "variation_5j": 9.92,
-      "variation_30j": -1.22,
-      "variation_90j": -3.47,
-      "variation_1an": 7.86,
+      "current_price": 629.8599853515625,
+      "change_1d": 0.23,
+      "change_5d": 9.92,
+      "change_30d": -1.22,
       "rsi": 58.7,
-      "macd": {
-        "macd": -7.503834630150777,
-        "signal": -16.079287348372038,
-        "histo": 8.57545271822126,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 652.3484716141687,
-        "lower": 530.1920191084874,
-        "ma": 591.2702453613281,
-        "pct_b": 0.816,
-        "zone": "NEUTRE"
-      },
-      "moyennes": {
-        "ma20": 591.2702453613281,
-        "prix_vs_ma20": "AU DESSUS",
-        "ma50": 633.2578100585938,
-        "prix_vs_ma50": "EN DESSOUS",
-        "ma200": 681.6781002807617,
-        "prix_vs_ma200": "EN DESSOUS",
-        "score_ma": 1
-      },
+      "volume_ratio": 0.72,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "NEUTRE",
+      "ma20_status": "AU DESSUS",
+      "ma50_status": "EN DESSOUS",
+      "ma200_status": "EN DESSOUS",
       "atr": 23.1564,
-      "vol_ratio": 0.72,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "BAISSIER",
-      "tendance_long": "BAISSIER",
-      "prix_52w_haut": 788.1489868164062,
-      "prix_52w_bas": 483.1526794433594
+      "high_52w": 788.1489868164062,
+      "low_52w": 483.1526794433594
     },
     "sentiment": {
-      "score": 0.273,
       "label": "POSITIF",
+      "score": 0.273,
+      "headlines_used": 11,
+      "confiance": 1.0,
       "positif": 4,
-      "negatif": 1,
-      "neutre": 6,
-      "nb_sources": 11,
-      "confiance": 1.0
+      "negatif": 1
     },
-    "scores": {
+    "score": {
+      "composite": 58.8,
+      "signal": "ACHETER",
       "court": {
-        "score": 72,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "rsi": 25,
-          "macd": 20,
-          "volume": 7,
-          "momentum_1j": 10,
-          "bollinger": 10
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 72,
+        "signal": "ACHETER"
       },
       "moyen": {
-        "score": 63,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "ma_score": 8,
-          "macd": 15,
-          "sentiment": 15,
-          "rsi": 15,
-          "momentum_5j": 10
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 63,
+        "signal": "ACHETER"
       },
       "long": {
-        "score": 40,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "golden_cross": 10,
-          "tendance_long": 5,
-          "sentiment": 12,
-          "momentum_1an": 13
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 40,
+        "signal": "ATTENDRE"
       }
-    },
-    "score_global": {
-      "score": 58.8,
-      "signal": "ACHETER",
-      "couleur": "green"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
@@ -657,100 +339,47 @@
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-11T06:35:46.626199",
+    "timestamp": "2026-04-11T06:49:23.671125",
     "market": {
-      "ticker": "TSLA",
-      "prix_actuel": 348.95001220703125,
-      "variation_1j": 0.96,
-      "variation_5j": -1.1,
-      "variation_30j": -11.66,
-      "variation_90j": -21.59,
-      "variation_1an": 28.2,
+      "current_price": 348.95001220703125,
+      "change_1d": 0.96,
+      "change_5d": -1.1,
+      "change_30d": -11.66,
       "rsi": 42.0,
-      "macd": {
-        "macd": -14.473319423082444,
-        "signal": -12.753762002696373,
-        "histo": -1.7195574203860708,
-        "tendance": "BAISSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 407.0249521104878,
-        "lower": 334.6760458143169,
-        "ma": 370.85049896240236,
-        "pct_b": 0.197,
-        "zone": "NEUTRE"
-      },
-      "moyennes": {
-        "ma20": 370.85049896240236,
-        "prix_vs_ma20": "EN DESSOUS",
-        "ma50": 394.3057989501953,
-        "prix_vs_ma50": "EN DESSOUS",
-        "ma200": 397.3535998535156,
-        "prix_vs_ma200": "EN DESSOUS",
-        "score_ma": 0
-      },
+      "volume_ratio": 0.79,
+      "trend": "BAISSIER",
+      "macd_trend": "BAISSIER",
+      "bollinger_zone": "NEUTRE",
+      "ma20_status": "EN DESSOUS",
+      "ma50_status": "EN DESSOUS",
+      "ma200_status": "EN DESSOUS",
       "atr": 15.43,
-      "vol_ratio": 0.79,
-      "tendance_court": "BAISSIER",
-      "tendance_moyen": "BAISSIER",
-      "tendance_long": "BAISSIER",
-      "prix_52w_haut": 489.8800048828125,
-      "prix_52w_bas": 227.5
+      "high_52w": 489.8800048828125,
+      "low_52w": 227.5
     },
     "sentiment": {
-      "score": -0.1,
       "label": "NEUTRE",
+      "score": -0.1,
+      "headlines_used": 10,
+      "confiance": 1.0,
       "positif": 3,
-      "negatif": 4,
-      "neutre": 3,
-      "nb_sources": 10,
-      "confiance": 1.0
+      "negatif": 4
     },
-    "scores": {
+    "score": {
+      "composite": 44.8,
+      "signal": "ATTENDRE",
       "court": {
-        "score": 60,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "rsi": 25,
-          "macd": 5,
-          "volume": 7,
-          "momentum_1j": 13,
-          "bollinger": 10
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 60,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "score": 34,
-        "signal": "ÉVITER",
-        "couleur": "red",
-        "detail": {
-          "ma_score": 0,
-          "macd": 5,
-          "sentiment": 11,
-          "rsi": 15,
-          "momentum_5j": 3
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 34,
+        "signal": "ÉVITER"
       },
       "long": {
-        "score": 44,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "golden_cross": 10,
-          "tendance_long": 5,
-          "sentiment": 9,
-          "momentum_1an": 20
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 44,
+        "signal": "ATTENDRE"
       }
-    },
-    "score_global": {
-      "score": 44.8,
-      "signal": "ATTENDRE",
-      "couleur": "yellow"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
@@ -766,108 +395,55 @@
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-11T06:35:46.626207",
+    "timestamp": "2026-04-11T06:49:23.671139",
     "market": {
-      "ticker": "BTC-USD",
-      "prix_actuel": 72726.4453125,
-      "variation_1j": -0.35,
-      "variation_5j": 1.09,
-      "variation_30j": 7.19,
-      "variation_90j": 3.5,
-      "variation_1an": -36.33,
-      "rsi": 76.2,
-      "macd": {
-        "macd": 647.4051976988994,
-        "signal": -6.303817498856887,
-        "histo": 653.7090151977563,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 73800.48524793629,
-        "lower": 64463.497564563724,
-        "ma": 69131.99140625,
-        "pct_b": 0.885,
-        "zone": "NEUTRE"
-      },
-      "moyennes": {
-        "ma20": 69131.99140625,
-        "prix_vs_ma20": "AU DESSUS",
-        "ma50": 69081.02390625,
-        "prix_vs_ma50": "AU DESSUS",
-        "ma200": 88083.47134765625,
-        "prix_vs_ma200": "EN DESSOUS",
-        "score_ma": 2
-      },
+      "current_price": 72745.4921875,
+      "change_1d": -0.32,
+      "change_5d": 1.12,
+      "change_30d": 7.22,
+      "rsi": 76.4,
+      "volume_ratio": 1.01,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "NEUTRE",
+      "ma20_status": "AU DESSUS",
+      "ma50_status": "AU DESSUS",
+      "ma200_status": "EN DESSOUS",
       "atr": 2132.0148,
-      "vol_ratio": 1.01,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "HAUSSIER",
-      "tendance_long": "BAISSIER",
-      "prix_52w_haut": 124752.53125,
-      "prix_52w_bas": 62702.09765625
+      "high_52w": 124752.53125,
+      "low_52w": 62702.09765625
     },
     "sentiment": {
-      "score": 0.15,
       "label": "NEUTRE",
+      "score": 0.15,
+      "headlines_used": 20,
+      "confiance": 1.0,
       "positif": 7,
-      "negatif": 4,
-      "neutre": 9,
-      "nb_sources": 20,
-      "confiance": 1.0
+      "negatif": 4
     },
-    "scores": {
+    "score": {
+      "composite": 50.7,
+      "signal": "ATTENDRE",
       "court": {
-        "score": 53,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "rsi": 5,
-          "macd": 20,
-          "volume": 10,
-          "momentum_1j": 8,
-          "bollinger": 10
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 53,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "score": 54,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "ma_score": 16,
-          "macd": 15,
-          "sentiment": 14,
-          "rsi": 3,
-          "momentum_5j": 6
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 54,
+        "signal": "ATTENDRE"
       },
       "long": {
-        "score": 44,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "golden_cross": 10,
-          "tendance_long": 5,
-          "sentiment": 11,
-          "fear_greed": 18
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 44,
+        "signal": "ATTENDRE"
       }
-    },
-    "score_global": {
-      "score": 50.7,
-      "signal": "ATTENDRE",
-      "couleur": "yellow"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
       "Bitcoin climbs above $72K following March's hot inflation data",
       "Morning Brief: A big day for inflation",
+      "Bitcoin hits $73,000 on Middle East geopolitical relief and $350M ETF inflow",
       "Exodus Pay Pushes Self-Custody One Step Closer to Everyday Spending",
-      "Crypto Ends The Week Higher After U.S.-Iran Ceasefire",
-      "Sector Update: Financial Stocks Decline Friday"
+      "Crypto Ends The Week Higher After U.S.-Iran Ceasefire"
     ],
     "fear_greed": {
       "value": 15,
@@ -880,100 +456,47 @@
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-11T06:35:46.626216",
+    "timestamp": "2026-04-11T06:49:23.671151",
     "market": {
-      "ticker": "ETH-USD",
-      "prix_actuel": 2232.91943359375,
-      "variation_1j": -0.54,
-      "variation_5j": -0.4,
-      "variation_30j": 8.76,
-      "variation_90j": 6.9,
-      "variation_1an": -36.15,
-      "rsi": 71.3,
-      "macd": {
-        "macd": 31.720141369116845,
-        "signal": 12.985243053352734,
-        "histo": 18.734898315764113,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 2280.6880855871427,
-        "lower": 1945.375647323014,
-        "ma": 2113.031866455078,
-        "pct_b": 0.858,
-        "zone": "NEUTRE"
-      },
-      "moyennes": {
-        "ma20": 2113.031866455078,
-        "prix_vs_ma20": "AU DESSUS",
-        "ma50": 2074.3673461914063,
-        "prix_vs_ma50": "AU DESSUS",
-        "ma200": 2927.5067590332033,
-        "prix_vs_ma200": "EN DESSOUS",
-        "score_ma": 2
-      },
+      "current_price": 2234.44091796875,
+      "change_1d": -0.48,
+      "change_5d": -0.33,
+      "change_30d": 8.84,
+      "rsi": 71.5,
+      "volume_ratio": 0.94,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "NEUTRE",
+      "ma20_status": "AU DESSUS",
+      "ma50_status": "AU DESSUS",
+      "ma200_status": "EN DESSOUS",
       "atr": 89.0402,
-      "vol_ratio": 0.94,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "HAUSSIER",
-      "tendance_long": "BAISSIER",
-      "prix_52w_haut": 4831.3486328125,
-      "prix_52w_bas": 1821.68310546875
+      "high_52w": 4831.3486328125,
+      "low_52w": 1821.68310546875
     },
     "sentiment": {
-      "score": 0.231,
       "label": "POSITIF",
+      "score": 0.231,
+      "headlines_used": 13,
+      "confiance": 1.0,
       "positif": 6,
-      "negatif": 3,
-      "neutre": 4,
-      "nb_sources": 13,
-      "confiance": 1.0
+      "negatif": 3
     },
-    "scores": {
+    "score": {
+      "composite": 53.1,
+      "signal": "ATTENDRE",
       "court": {
-        "score": 52,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "rsi": 5,
-          "macd": 20,
-          "volume": 9,
-          "momentum_1j": 8,
-          "bollinger": 10
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 52,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "score": 60,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "ma_score": 16,
-          "macd": 15,
-          "sentiment": 15,
-          "rsi": 10,
-          "momentum_5j": 4
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 60,
+        "signal": "ACHETER"
       },
       "long": {
-        "score": 45,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "golden_cross": 10,
-          "tendance_long": 5,
-          "sentiment": 12,
-          "fear_greed": 18
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 45,
+        "signal": "ATTENDRE"
       }
-    },
-    "score_global": {
-      "score": 53.1,
-      "signal": "ATTENDRE",
-      "couleur": "yellow"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
@@ -994,100 +517,47 @@
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-11T06:35:46.626222",
+    "timestamp": "2026-04-11T06:49:23.671161",
     "market": {
-      "ticker": "SOL-USD",
-      "prix_actuel": 84.02113342285156,
-      "variation_1j": -0.95,
-      "variation_5j": -1.9,
-      "variation_30j": -2.45,
-      "variation_90j": -3.47,
-      "variation_1an": -48.12,
-      "rsi": 54.4,
-      "macd": {
-        "macd": -1.0789994378843915,
-        "signal": -1.4963291091536437,
-        "histo": 0.41732967126925224,
-        "tendance": "HAUSSIER",
-        "croisement": "NEUTRE"
-      },
-      "bollinger": {
-        "upper": 91.24819790401665,
-        "lower": 76.36306384525093,
-        "ma": 83.80563087463379,
-        "pct_b": 0.514,
-        "zone": "NEUTRE"
-      },
-      "moyennes": {
-        "ma20": 83.80563087463379,
-        "prix_vs_ma20": "AU DESSUS",
-        "ma50": 85.46668167114258,
-        "prix_vs_ma50": "EN DESSOUS",
-        "ma200": 131.2139359664917,
-        "prix_vs_ma200": "EN DESSOUS",
-        "score_ma": 1
-      },
-      "atr": 3.6117,
-      "vol_ratio": 2.87,
-      "tendance_court": "HAUSSIER",
-      "tendance_moyen": "BAISSIER",
-      "tendance_long": "BAISSIER",
-      "prix_52w_haut": 247.6371307373047,
-      "prix_52w_bas": 77.7533187866211
+      "current_price": 84.0692138671875,
+      "change_1d": -0.9,
+      "change_5d": -1.84,
+      "change_30d": -2.39,
+      "rsi": 54.5,
+      "volume_ratio": 2.87,
+      "trend": "HAUSSIER",
+      "macd_trend": "HAUSSIER",
+      "bollinger_zone": "NEUTRE",
+      "ma20_status": "AU DESSUS",
+      "ma50_status": "EN DESSOUS",
+      "ma200_status": "EN DESSOUS",
+      "atr": 3.612,
+      "high_52w": 247.6371307373047,
+      "low_52w": 77.7533187866211
     },
     "sentiment": {
-      "score": -0.154,
       "label": "NÉGATIF",
+      "score": -0.154,
+      "headlines_used": 13,
+      "confiance": 1.0,
       "positif": 1,
-      "negatif": 3,
-      "neutre": 9,
-      "nb_sources": 13,
-      "confiance": 1.0
+      "negatif": 3
     },
-    "scores": {
+    "score": {
+      "composite": 55.8,
+      "signal": "ATTENDRE",
       "court": {
-        "score": 76,
-        "signal": "ACHETER",
-        "couleur": "green",
-        "detail": {
-          "rsi": 25,
-          "macd": 20,
-          "volume": 15,
-          "momentum_1j": 6,
-          "bollinger": 10
-        },
-        "horizon": "Court terme (1-5 jours)"
+        "value": 77,
+        "signal": "ACHETER"
       },
       "moyen": {
-        "score": 51,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "ma_score": 8,
-          "macd": 15,
-          "sentiment": 10,
-          "rsi": 15,
-          "momentum_5j": 3
-        },
-        "horizon": "Moyen terme (2-8 semaines)"
+        "value": 51,
+        "signal": "ATTENDRE"
       },
       "long": {
-        "score": 41,
-        "signal": "ATTENDRE",
-        "couleur": "yellow",
-        "detail": {
-          "golden_cross": 10,
-          "tendance_long": 5,
-          "sentiment": 8,
-          "fear_greed": 18
-        },
-        "horizon": "Long terme (6 mois-2 ans)"
+        "value": 41,
+        "signal": "ATTENDRE"
       }
-    },
-    "score_global": {
-      "score": 55.5,
-      "signal": "ATTENDRE",
-      "couleur": "yellow"
     },
     "report": "Rapport IA non disponible (réponse vide).",
     "headlines": [
