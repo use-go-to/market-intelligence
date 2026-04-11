@@ -578,6 +578,17 @@ def collect_all_news(ticker: str, asset_info: dict) -> list:
 # MODULE 4 — SENTIMENT PONDÉRÉ PAR SOURCE
 # ─────────────────────────────────────────────
 
+_finbert_pipeline = None
+
+def _get_finbert():
+    global _finbert_pipeline
+    if _finbert_pipeline is None:
+        from transformers import pipeline
+        _finbert_pipeline = pipeline("sentiment-analysis", model="ProsusAI/finbert",
+                                     tokenizer="ProsusAI/finbert", device=-1)
+    return _finbert_pipeline
+
+
 def analyze_sentiment_weighted(news_items: list) -> dict:
     """
     Sentiment pondéré par fiabilité de la source.
@@ -593,9 +604,7 @@ def analyze_sentiment_weighted(news_items: list) -> dict:
     weights   = [item["weight"] for item in news_items]
 
     try:
-        from transformers import pipeline
-        finbert = pipeline("sentiment-analysis", model="ProsusAI/finbert",
-                           tokenizer="ProsusAI/finbert", device=-1)
+        finbert = _get_finbert()
         results = finbert(headlines, truncation=True, max_length=512)
 
         weighted_pos = weighted_neg = weighted_neu = 0.0
