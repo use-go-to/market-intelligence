@@ -3,7 +3,7 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-11T02:40:20.635940",
+    "timestamp": "2026-04-11T05:05:09.970698",
     "market": {
       "ticker": "NVDA",
       "current_price": 188.6300048828125,
@@ -13,7 +13,7 @@
       "rsi": 68.17249289193902,
       "volatility": 2.324783886630578,
       "trend": "HAUSSIER",
-      "volume_ratio": 1.1444607457619942,
+      "volume_ratio": 1.148684072559505,
       "price_30d_high": 188.6300048828125,
       "price_30d_low": 165.1699981689453
     },
@@ -33,11 +33,11 @@
         "sentiment": 50.0,
         "momentum": 75.66473343872582,
         "rsi": 68.17249289193902,
-        "volume": 57.22303728809971,
+        "volume": 57.43420362797526,
         "trend": 70
       }
     },
-    "report": "CONSTAT: NVIDIA maintient une tendance haussière avec une hausse de 2.6% et un RSI de 68, portée par les annonces de puces N1/N1X pour l'IA embarquée.\nRISQUES: Le risque est une consolidation due au RSI élevé, mais le catalyseur majeur demeure le déploiement des SoC N1/N1X pour l'IA locale.\nVERDICT ATTENDRE: Attendre une confirmation de la tendance haussière ou un léger repli pour acheter à un niveau de support plus favorable.",
+    "report": "CONSTAT: Le titre affiche une performance positive (+2.6%) dans une tendance haussière, corroborée par des fuites sur les SoC N1/N1X pour l'IA embarquée.\nRISQUES: Le RSI à 68 signale une prudence face au surachat potentiel, mais les annonces de nouveaux produits IA (N1) restent des catalyseurs majeurs.\nVERDICT ATTENDRE: Attendre une confirmation officielle des puces N1/N1X pour valider le momentum haussier et déterminer le point d'entrée optimal.",
     "headlines": [
       "Alleged images of the long-awaited Nvidia N1/N1X SoC surface on laptop motherboard — board features 128 GB of LPDDR5X memory alongside 8+6+2 phase VRM",
       "NVIDIA's N1 SoC pictured on an engineering board with 128GB of memory for local AI",
@@ -48,7 +48,7 @@
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-11T02:40:20.635956",
+    "timestamp": "2026-04-11T05:05:09.970719",
     "market": {
       "ticker": "AMD",
       "current_price": 245.0399932861328,
@@ -58,7 +58,7 @@
       "rsi": 73.71161174309083,
       "volatility": 3.5920031155873646,
       "trend": "HAUSSIER",
-      "volume_ratio": 1.06877416357481,
+      "volume_ratio": 1.0814988248647333,
       "price_30d_high": 245.0399932861328,
       "price_30d_low": 190.9499969482422
     },
@@ -71,25 +71,25 @@
       "headlines_used": 0
     },
     "score": {
-      "composite": 57.2,
+      "composite": 57.3,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
         "momentum": 85.49693170279741,
         "rsi": 30,
-        "volume": 53.4387081787405,
+        "volume": 54.074941243236665,
         "trend": 70
       }
     },
-    "report": "CONSTAT: AMD affiche une forte dynamique haussière (+3.5% en 24h) dans une tendance haussière, mais l'indice RSI de 74 signale une zone de surachat.\nRISQUES: Le risque de correction à court terme est élevé en raison du surachat, et l'absence de nouvelles majeures retarde l'identification d'un catalyseur directionnel.\nVERDICT ATTENDRE: Il est recommandé d'attendre une consolidation des prix ou une baisse du RSI pour confirmer la pérennité de la tendance haussière.",
+    "report": "CONSTAT: AMD affiche une forte progression de +3.5% sur 24 heures dans une tendance haussière, mais l'indice RSI à 74 signale un niveau de surachat technique.\nRISQUES: Le risque immédiat est un repli correctif dû au surachat, et l'absence de news fondamentales limite les catalyseurs à court terme.\nVERDICT ATTENDRE: Il est recommandé d'attendre une consolidation ou une confirmation de la tendance haussière à un niveau de support plus bas avant de prendre position.",
     "headlines": []
   },
   {
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-11T02:40:20.635962",
+    "timestamp": "2026-04-11T05:05:09.970726",
     "market": {
       "ticker": "INTC",
       "current_price": 62.380001068115234,
@@ -99,7 +99,7 @@
       "rsi": 80.35421253102177,
       "volatility": 5.137851380101612,
       "trend": "HAUSSIER",
-      "volume_ratio": 0.7675939878898782,
+      "volume_ratio": 0.7700013453945046,
       "price_30d_high": 62.380001068115234,
       "price_30d_low": 41.189998626708984
     },
@@ -119,11 +119,11 @@
         "sentiment": 50.0,
         "momentum": 60.693451626030125,
         "rsi": 30,
-        "volume": 38.37969939449391,
+        "volume": 38.50006726972523,
         "trend": 70
       }
     },
-    "report": "CONSTAT: Le titre affiche une tendance haussière soutenue, portée par une hausse de 1,1% et l'annonce de support de jeu pour les pilotes Arc Graphics.\nRISQUES: Le RSI très élevé (80) signale un risque de surachat et de correction potentielle, malgré le catalyseur positif lié aux pilotes Arc.\nVERDICT ATTENDRE: Attendre une consolidation des prix pour confirmer la pérennité de la tendance haussière et valider le niveau de support.",
+    "report": "CONSTAT: Le cours est en hausse (+1.1%) et la tendance reste haussière, soutenue par l'annonce de support gaming pour les pilotes Arc Pro B70.\nRISQUES: Le RSI élevé (80) signale un risque de surachat à court terme, contrastant avec un sentiment de marché encore neutre.\nVERDICT ATTENDRE: Il est préférable d'attendre une consolidation ou une baisse de volatilité pour confirmer la pérennité de la tendance haussière.",
     "headlines": [
       "Intel's latest Arc Graphics driver officially adds gaming support for the new Arc Pro B70"
     ]
@@ -132,7 +132,7 @@
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-11T02:40:20.635970",
+    "timestamp": "2026-04-11T05:05:09.970733",
     "market": {
       "ticker": "MSFT",
       "current_price": 370.8699951171875,
@@ -142,7 +142,7 @@
       "rsi": 39.487769055693406,
       "volatility": 1.4496113085736644,
       "trend": "BAISSIER",
-      "volume_ratio": 1.0711940920689713,
+      "volume_ratio": 1.0745804823911833,
       "price_30d_high": 410.67999267578125,
       "price_30d_low": 356.7699890136719
     },
@@ -151,8 +151,8 @@
       "label": "NEUTRE",
       "positive": 0,
       "negative": 0,
-      "neutral": 3,
-      "headlines_used": 3
+      "neutral": 4,
+      "headlines_used": 4
     },
     "score": {
       "composite": 44.8,
@@ -162,12 +162,13 @@
         "sentiment": 50.0,
         "momentum": 44.10295074961812,
         "rsi": 39.487769055693406,
-        "volume": 53.559704603448566,
+        "volume": 53.72902411955916,
         "trend": 30
       }
     },
-    "report": "CONSTAT: Malgré une tendance baissière et une baisse de 0.6% sur 24h, l'indicateur RSI à 39 signale un potentiel de survente technique.\nRISQUES: Le risque principal demeure la prudence du marché (score 45/100) et l'incertitude autour de la stratégie de pivot de Windows/Xbox.\nVERDICT ATTENDRE: Il est recommandé d'attendre une confirmation de rebond technique et un changement de tendance avant de prendre position.",
+    "report": "CONSTAT: Le titre affiche une légère baisse de 24h (-0.6%) et une tendance baissière confirmée, avec un RSI de 39 signalant une faiblesse récente.\nRISQUES: Le risque est accentué par la tendance baissière et la concurrence IA (Meta), tandis que les catalyseurs restent liés à l'adoption d'Agent 365.\nVERDICT ATTENDRE: Il est recommandé d'attendre une confirmation de retournement de tendance ou une accélération des annonces sur l'IA pour valider un achat.",
     "headlines": [
+      "【日本マイクロソフト×スキルアップNeXtセミナー開催】Microsoft Copilotの組織定着からAgent 365の最新動向までAIの最前線を語り尽くす",
       "Windows and Xbox are now prioritizing user feedback in a huge pivot ... but why now? I can't help but be suspicious — it smells a bit like panic.",
       "Meta Debuts New LLM Muse Spark",
       "Is Microsoft (MSFT) One of the Hedge Fund Favorites with Strong Setup in 2026?"
@@ -177,7 +178,7 @@
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-11T02:40:20.635977",
+    "timestamp": "2026-04-11T05:05:09.970740",
     "market": {
       "ticker": "GOOGL",
       "current_price": 317.239990234375,
@@ -187,7 +188,7 @@
       "rsi": 60.13985187849982,
       "volatility": 2.619126560087225,
       "trend": "HAUSSIER",
-      "volume_ratio": 0.7535461225207335,
+      "volume_ratio": 0.7610996662028068,
       "price_30d_high": 318.489990234375,
       "price_30d_low": 273.5
     },
@@ -200,18 +201,18 @@
       "headlines_used": 1
     },
     "score": {
-      "composite": 51.8,
+      "composite": 51.9,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
         "momentum": 46.07522987118015,
         "rsi": 60.13985187849982,
-        "volume": 37.677306126036676,
+        "volume": 38.05498331014034,
         "trend": 70
       }
     },
-    "report": "CONSTAT: Malgré une légère baisse de 0,4% sur 24h, le titre maintient une tendance haussière et un RSI de 60, indiquant une force acheteuse modérée.\nRISQUES: Le faible volume et le sentiment neutre limitent le momentum, mais la nouvelle sur DeepMind peut servir de catalyseur stratégique positif.\nVERDICT ATTENDRE: Attendre une confirmation de la tendance haussière par un volume accru et un sentiment plus positif avant d'envisager une position.",
+    "report": "CONSTAT: Malgré une légère baisse de 24h (-0.4%), l'action conserve une tendance haussière avec un RSI modéré (60) et une faible volatilité (0.8x).\nRISQUES: Le risque est le sentiment neutre actuel, mais le catalyseur est le regain d'agilité et d'innovation de DeepMind, signalant un potentiel de croissance à long terme.\nVERDICT ATTENDRE: Attendre une confirmation de la reprise de l'élan haussier pour valider le potentiel de l'innovation DeepMind et dépasser le score moyen actuel.",
     "headlines": [
       "Demis Hassabis says Google DeepMind had to return to its startup roots after the Brain merger"
     ]
@@ -220,7 +221,7 @@
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-11T02:40:20.635984",
+    "timestamp": "2026-04-11T05:05:09.970746",
     "market": {
       "ticker": "META",
       "current_price": 629.8599853515625,
@@ -230,7 +231,7 @@
       "rsi": 58.65035445828687,
       "volatility": 3.7466965675380908,
       "trend": "HAUSSIER",
-      "volume_ratio": 0.7685826921830392,
+      "volume_ratio": 0.7708676558178581,
       "price_30d_high": 667.1587524414062,
       "price_30d_low": 525.719970703125
     },
@@ -250,24 +251,24 @@
         "sentiment": 60.0,
         "momentum": 52.33926489737014,
         "rsi": 58.65035445828687,
-        "volume": 38.42913460915196,
+        "volume": 38.543382790892906,
         "trend": 70
       }
     },
-    "report": "CONSTAT: Malgré une tendance haussière et une légère hausse de 0,2%, les indicateurs techniques (RSI à 59 et sentiment neutre) suggèrent une consolidation à court terme.\nRISQUES: Le catalyseur majeur reste l'investissement massif de 21 milliards $ dans l'IA (CoreWeave), mais le sentiment neutre signale que le marché est en phase d'évaluation de cette croissance.\nVERDICT ATTENDRE: Attendre une confirmation de l'intégration de cette stratégie IA dans les prix, idéalement avec une accélération du volume ou du sentiment.",
+    "report": "CONSTAT: La tendance haussière est soutenue par des annonces d'investissements massifs de 35 milliards de dollars dans l'infrastructure IA, malgré un sentiment de marché actuellement neutre.\nRISQUES: Le risque réside dans la capacité à monétiser ces dépenses colossales, mais le catalyseur majeur reste l'intégration réussie de l'IA (Muse Spark) dans les produits phares.\nVERDICT ATTENDRE: Attendre des signaux concrets de monétisation de l'IA pour valider la valorisation élevée actuelle de l'entreprise.",
     "headlines": [
+      "Meta’s new AI model Muse Spark is coming to WhatsApp. Here is what that means for Indian users",
       "Meta Platforms says it will spend an additional $21B on CoreWeave’s AI infrastructure",
       "Meta commits another $21 billion to CoreWeave, bringing total AI cloud spend to $35 billion",
       "Meta rolls out new AI model in ‘fundamental shift’ in latest effort to catch up with rivals",
-      "Meta AI app climbs to No. 5 on the App Store after Muse Spark launch | TechCrunch",
-      "Meta Stock Climbs 2.5% as New AI Model Muse Spark and Geopolitical Ceasefire Boost Tech Sentiment"
+      "Meta AI app climbs to No. 5 on the App Store after Muse Spark launch | TechCrunch"
     ]
   },
   {
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-11T02:40:20.635990",
+    "timestamp": "2026-04-11T05:05:09.970753",
     "market": {
       "ticker": "TSLA",
       "current_price": 348.95001220703125,
@@ -277,7 +278,7 @@
       "rsi": 41.9687501208712,
       "volatility": 2.8122423946294135,
       "trend": "BAISSIER",
-      "volume_ratio": 0.7257680560213408,
+      "volume_ratio": 0.735260697951875,
       "price_30d_high": 407.82000732421875,
       "price_30d_low": 343.25
     },
@@ -290,35 +291,35 @@
       "headlines_used": 0
     },
     "score": {
-      "composite": 47.4,
+      "composite": 47.5,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
         "momentum": 59.634908676839316,
         "rsi": 41.9687501208712,
-        "volume": 36.288402801067036,
+        "volume": 36.76303489759375,
         "trend": 30
       }
     },
-    "report": "CONSTAT: Malgré une hausse de +1.0% sur 24h, la tendance baissière persistante, un RSI modéré (42) et un score faible (47/100) indiquent une pression vendeuse sous-jacente.\nRISQUES: Le risque principal réside dans la persistance de la tendance baissière et le manque de catalyseurs positifs, ce qui pourrait entraîner une correction malgré le sentiment neutre.\nVERDICT ATTENDRE: Il est préférable d'attendre une confirmation technique de retournement de tendance ou l'apparition de nouvelles macroéconomiques avant d'envisager une prise de position.",
+    "report": "CONSTAT: Malgré une hausse de 1.0% sur 24h, la tendance baissière et le faible volume (0.7x) indiquent une consolidation technique sous-jacente.\nRISQUES: Le risque principal réside dans la divergence entre la tendance baissière et le sentiment neutre, en l'absence de catalyseurs externes.\nVERDICT ATTENDRE: Il est préférable d'attendre une confirmation directionnelle (hausse du volume ou changement de tendance) avant de prendre position.",
     "headlines": []
   },
   {
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-11T02:40:20.635999",
+    "timestamp": "2026-04-11T05:05:09.970761",
     "market": {
       "ticker": "BTC-USD",
-      "current_price": 73044.9453125,
-      "change_1d": 1.7795121029378371,
-      "sma_7": 70429.86830357143,
-      "sma_20": 68891.224609375,
-      "rsi": 77.84706773092921,
-      "volatility": 1.6415054911844762,
+      "current_price": 72843.453125,
+      "change_1d": 1.4987565154215818,
+      "sma_7": 70401.08370535714,
+      "sma_20": 68881.15,
+      "rsi": 77.47008032684991,
+      "volatility": 1.6290044857696782,
       "trend": "HAUSSIER",
-      "volume_ratio": 1.0590639132681128,
+      "volume_ratio": 1.053327020635209,
       "price_30d_high": 74861.0859375,
       "price_30d_low": 65954.921875
     },
@@ -331,18 +332,18 @@
       "headlines_used": 3
     },
     "score": {
-      "composite": 52.7,
+      "composite": 52.0,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
-        "momentum": 67.79512102937836,
+        "momentum": 64.98756515421582,
         "rsi": 30,
-        "volume": 52.95319566340564,
+        "volume": 52.66635103176045,
         "trend": 70
       }
     },
-    "report": "CONSTAT: Bitcoin affiche une tendance haussière avec une hausse de +1.8% en 24h, mais l'indice RSI à 78 signale une zone de surachat.\nRISQUES: Le risque immédiat est une correction technique due au surachat, malgré le soutien potentiel de l'adoption institutionnelle (corporate products).\nVERDICT ATTENDRE: Il est conseillé d'attendre une consolidation ou une confirmation de support après le retracement pour valider la poursuite de la tendance haussière.",
+    "report": "CONSTAT: Le Bitcoin affiche une tendance haussière soutenue (+1.5% en 24h) mais un RSI de 77 signale une zone de surachat technique.\nRISQUES: Le risque majeur est la divergence entre la forte performance et le sentiment neutre, accentuée par une activité on-chain jugée faible.\nVERDICT ATTENDRE: Il est préférable d'attendre une consolidation ou une confirmation de volume plus élevé pour valider la continuation de la tendance haussière.",
     "headlines": [
       "Bitcoin on-chain activity is a ghost town with price being controlled by corporate products",
       "Crypto for Advisors: Crypto’s Performance Q1",
@@ -353,17 +354,17 @@
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-11T02:40:20.636006",
+    "timestamp": "2026-04-11T05:05:09.970768",
     "market": {
       "ticker": "ETH-USD",
-      "current_price": 2248.595703125,
-      "change_1d": 2.715749123370895,
-      "sma_7": 2164.570068359375,
-      "sma_20": 2104.210662841797,
-      "rsi": 73.13685409310165,
-      "volatility": 2.5488053631753624,
+      "current_price": 2241.870849609375,
+      "change_1d": 2.4085581216081575,
+      "sma_7": 2163.609375,
+      "sma_20": 2103.8744201660156,
+      "rsi": 72.80801901340413,
+      "volatility": 2.5332616367511167,
       "trend": "HAUSSIER",
-      "volume_ratio": 1.0065747624383468,
+      "volume_ratio": 0.9901595023760028,
       "price_30d_high": 2351.176025390625,
       "price_30d_low": 1982.5596923828125
     },
@@ -376,35 +377,35 @@
       "headlines_used": 0
     },
     "score": {
-      "composite": 54.8,
+      "composite": 54.0,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 50.0,
-        "momentum": 77.15749123370894,
+        "momentum": 74.08558121608158,
         "rsi": 30,
-        "volume": 50.32873812191734,
+        "volume": 49.50797511880014,
         "trend": 70
       }
     },
-    "report": "CONSTAT: Ethereum affiche une forte dynamique haussière (+2.7% en 24h) avec un prix à 2248.60, soutenu par une tendance globalement haussière.\nRISQUES: Le RSI élevé (73) signale un risque de surachat à court terme, et l'absence de catalyseur majeur externe tempère l'élan actuel.\nVERDICT ATTENDRE: Il est recommandé d'attendre une consolidation ou une confirmation de la tendance pour déterminer le niveau de support suivant et valider une entrée.",
+    "report": "CONSTAT: Ethereum maintient une tendance haussière notable, avec une performance positive de +2.4% en 24h, mais l'indice RSI (73) signale un niveau de surachat.\nRISQUES: Le niveau RSI élevé augmente le risque de correction technique à court terme, et l'absence de nouvelles majeures pourrait freiner la poursuite de la dynamique haussière.\nVERDICT ATTENDRE: Il est recommandé d'attendre une consolidation ou une baisse du RSI pour confirmer la solidité de la tendance avant d'envisager une prise de position.",
     "headlines": []
   },
   {
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-11T02:40:20.636012",
+    "timestamp": "2026-04-11T05:05:09.970775",
     "market": {
       "ticker": "SOL-USD",
-      "current_price": 84.85623931884766,
-      "change_1d": 1.8710111742077304,
-      "sma_7": 82.74258858816964,
-      "sma_20": 83.91237983703613,
-      "rsi": 54.01549086817756,
-      "volatility": 2.6349052101668224,
+      "current_price": 84.40267181396484,
+      "change_1d": 1.3264975270196007,
+      "sma_7": 82.67779323032924,
+      "sma_20": 83.88970146179199,
+      "rsi": 53.08542809989559,
+      "volatility": 2.612074721684789,
       "trend": "BAISSIER",
-      "volume_ratio": 2.5585452359413527,
+      "volume_ratio": 2.5992064173016303,
       "price_30d_high": 96.22372436523438,
       "price_30d_low": 78.9513168334961
     },
@@ -417,18 +418,18 @@
       "headlines_used": 1
     },
     "score": {
-      "composite": 41.0,
+      "composite": 39.4,
       "signal": "ATTENDRE",
       "signal_color": "yellow",
       "breakdown": {
         "sentiment": 0.0,
-        "momentum": 68.7101117420773,
-        "rsi": 54.01549086817756,
+        "momentum": 63.26497527019601,
+        "rsi": 53.08542809989559,
         "volume": 100,
         "trend": 30
       }
     },
-    "report": "CONSTAT: Malgré une hausse de 1,9% et un volume élevé, Solana affiche une tendance baissière et un sentiment négatif, signalant une résistance faible.\nRISQUES: Le risque majeur est la divergence entre la hausse de prix et le sentiment négatif, nécessitant une confirmation de support structurel pour inverser la tendance baissière.\nVERDICT ATTENDRE: Il est recommandé d'attendre une accélération de la tendance et une amélioration du score de sentiment avant de prendre position.",
+    "report": "CONSTAT: Malgré une hausse de +1.3% sur 24h, Solana est dominé par une tendance baissière et un sentiment fortement négatif (Score 39/100).\nRISQUES: Le risque majeur est la divergence entre la performance récente et la tendance baissière structurelle, amplifiée par une volatilité élevée (2.6x).\nVERDICT ATTENDRE: Il est conseillé d'attendre une confirmation de renversement de tendance ou une amélioration du sentiment avant d'envisager toute prise de position.",
     "headlines": [
       "Morning Minute: Crypto Soars, Oil Tumbles on 2-Week Ceasefire"
     ]
