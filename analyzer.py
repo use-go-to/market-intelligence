@@ -490,23 +490,27 @@ def generate_ai_report(ticker: str, asset_info: dict, market: dict,
                        sentiment: dict, scores: dict, headlines: list,
                        fear_greed: Optional[dict] = None) -> str:
 
-    news_3 = " | ".join(headlines[:3]) if headlines else "aucune news"
+    # Résumé news ultra-court (1 seule headline, 60 chars max)
+    news_1 = headlines[0][:60] if headlines else "aucune news"
     macd   = market.get("macd", {})
     mas    = market.get("moyennes", {})
-    fg     = f" FearGreed={fear_greed['value']}({fear_greed['label']})" if fear_greed else ""
+    fg     = f" F&G={fear_greed['value']}" if fear_greed else ""
 
-    prompt = f"""Analyste financier. Analyse {asset_info['name']} ({ticker}) en français. Sois bref.
-
-Données: prix={market.get('prix_actuel',0):.2f} var1j={market.get('variation_1j',0):+.1f}% var5j={market.get('variation_5j',0):+.1f}% RSI={market.get('rsi',50):.0f} MACD={macd.get('tendance','?')} MA20={mas.get('prix_vs_ma20','?')} MA50={mas.get('prix_vs_ma50','?')} MA200={mas.get('prix_vs_ma200','?')}{fg}
-Sentiment={sentiment['label']}({sentiment['score']:+.2f}) sur {sentiment['nb_sources']} sources
-Scores: court={scores['court']['score']:.0f}({scores['court']['signal']}) moyen={scores['moyen']['score']:.0f}({scores['moyen']['signal']}) long={scores['long']['score']:.0f}({scores['long']['signal']})
-News: {news_3}
-
-Réponds en exactement 4 lignes:
-COURT TERME: [signal] — [raison courte]
-MOYEN TERME: [signal] — [raison courte]
-LONG TERME: [signal] — [raison courte]
-SYNTHÈSE: [1 phrase conclusion]"""
+    # Prompt réduit à ~300 tokens max (était ~1800)
+    prompt = (
+        f"Analyste. {asset_info['name']} ({ticker}). Réponds en français, 4 lignes exactes.\n"
+        f"prix={market.get('prix_actuel',0):.2f} 1j={market.get('variation_1j',0):+.1f}% "
+        f"5j={market.get('variation_5j',0):+.1f}% RSI={market.get('rsi',50):.0f} "
+        f"MACD={macd.get('tendance','?')[0]} MA20={mas.get('prix_vs_ma20','?')[:2]} "
+        f"MA50={mas.get('prix_vs_ma50','?')[:2]} sent={sentiment['label'][0]}{fg}\n"
+        f"Scores: C={scores['court']['score']:.0f} M={scores['moyen']['score']:.0f} "
+        f"L={scores['long']['score']:.0f}\n"
+        f"News: {news_1}\n\n"
+        f"COURT TERME: [signal] — [raison]\n"
+        f"MOYEN TERME: [signal] — [raison]\n"
+        f"LONG TERME: [signal] — [raison]\n"
+        f"SYNTHÈSE: [conclusion]"
+    )
 
     try:
         response = requests.post(
@@ -517,8 +521,8 @@ SYNTHÈSE: [1 phrase conclusion]"""
                 "stream": False,
                 "options": {
                     "temperature": 0.1,
-                    "num_predict": 200,   # 4 lignes — pas besoin de plus
-                    "num_ctx":     2048,  # réduit pour GPU 6GB
+                    "num_predict": 400,   # ↑ augmenté (4 lignes ont besoin de place)
+                    "num_ctx":     4096,  # ↑ augmenté (RTX 3060 6GB gère 4096 sans problème)
                     "top_p":       0.9,
                 }
             },
