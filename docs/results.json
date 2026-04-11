@@ -3,7 +3,7 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-11T07:46:35.090499",
+    "timestamp": "2026-04-11T08:20:18.493371",
     "market": {
       "current_price": 188.6300048828125,
       "change_1d": 2.57,
@@ -13,45 +13,127 @@
       "volume_ratio": 0.94,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "SURACHAT",
+      "bollinger_squeeze": false,
       "ma20_status": "AU DESSUS",
       "ma50_status": "AU DESSUS",
       "ma200_status": "AU DESSUS",
+      "golden_cross": true,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 5.195,
+      "hv20": 35.3,
+      "stop_loss": 178.24,
+      "risk_pct": 5.51,
       "high_52w": 207.01727294921875,
-      "low_52w": 96.88717651367188
+      "low_52w": 96.88717651367188,
+      "history_14j": [
+        175.63999938964844,
+        175.1999969482422,
+        178.67999267578125,
+        171.24000549316406,
+        167.52000427246094,
+        165.1699981689453,
+        174.39999389648438,
+        175.75,
+        177.38999938964844,
+        177.63999938964844,
+        178.10000610351562,
+        182.0800018310547,
+        183.91000366210938,
+        188.6300048828125
+      ],
+      "volatility": 35.3
     },
     "sentiment": {
       "label": "NEUTRE",
       "score": 0.083,
       "headlines_used": 12,
       "confiance": 1.0,
-      "positif": 2,
-      "negatif": 1
+      "positif": 1,
+      "negatif": 0,
+      "volume_signal": true
     },
     "score": {
-      "composite": 75.3,
+      "composite": 76.9,
       "signal": "ACHETER",
       "court": {
-        "value": 65,
-        "signal": "ACHETER"
+        "value": 46.3,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 72,
+        "value": 89.1,
         "signal": "ACHETER"
       },
       "long": {
-        "value": 90,
+        "value": 84.2,
         "signal": "ACHETER"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 7.5,
+          "macd": 15.0,
+          "volume": 4.7,
+          "bollinger": 4.0,
+          "momentum_1j": 15.1
+        },
+        "moyen": {
+          "golden_cross": 30.0,
+          "macd": 16.0,
+          "ma_alignment": 20.0,
+          "sentiment": 9.7,
+          "momentum_5j": 13.3
+        },
+        "long": {
+          "trend_200": 35.0,
+          "fundamentals": 24.0,
+          "macro": 13.0,
+          "sentiment_vol": 12.2
+        }
       }
     },
-    "report": "COURT:COURT: Acheter — Forte demande IA soutenue par les actualités\nMOYEN: Acheter — RSI et MACD en territoire haussier avec des indicateurs techniques positifs\nLONG: Acheter — Confirmation de la tendance haussière par les multiples indicateurs techniques\nSYNTHESE: L'analyse technique et le contexte sectoriel indiquent une forte tendance acheteuse pour NVIDIA.",
+    "fundamentals": {
+      "pe_ratio": 38.5,
+      "forward_pe": 17.0,
+      "eps_surprise": -40.9,
+      "revenue_growth": 73.2,
+      "profit_margin": 55.6,
+      "roe": 101.5,
+      "beta": 2.33,
+      "score": 80
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — RSI élevé et MACD neutre suggèrent une consolidation après forte hausse.\nMOYEN: ACHETER — Croissance des revenus (+73.2%) et forte demande en IA soutiennent le prix.\nLONG: ACHETER — Les indicateurs de tendance (M=89, L=84) sont positifs malgré le RSI élevé.\nSYNTHESE: Le momentum haussier est soutenu par la demande IA, mais une prudence est conseillée en raison de la surévaluation relative.",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
       "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
-      "With Volatility Spiking, These Are the Smartest Dividend Stocks to Buy Today",
-      "This $500 Stock Could Be Your Ticket to Generational Wealth",
-      "VinFast Auto Makes a Big Splash but Might Be More of a Sell Than Ever"
+      "Got $1,000? The Best Cybersecurity Growth Stock to Buy as Agentic AI Expands the Attack Surface.",
+      "Want to Own SpaceX Stock Before Its Blockbuster IPO? Here Are 3 Ways Investors Can Buy Right Now.",
+      "These Industrial Stocks Don't Come on Sale Often. Now Is the Time to Buy."
     ],
     "fear_greed": null
   },
@@ -59,7 +141,7 @@
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-11T07:46:35.090521",
+    "timestamp": "2026-04-11T08:20:18.493416",
     "market": {
       "current_price": 245.0399932861328,
       "change_1d": 3.55,
@@ -69,13 +151,38 @@
       "volume_ratio": 1.06,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "SURACHAT",
+      "bollinger_squeeze": false,
       "ma20_status": "AU DESSUS",
       "ma50_status": "AU DESSUS",
       "ma200_status": "AU DESSUS",
+      "golden_cross": true,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 10.85,
+      "hv20": 50.9,
+      "stop_loss": 223.34,
+      "risk_pct": 8.86,
       "high_52w": 264.3299865722656,
-      "low_52w": 85.55999755859375
+      "low_52w": 85.55999755859375,
+      "history_14j": [
+        202.67999267578125,
+        205.3699951171875,
+        220.27000427246094,
+        203.77000427246094,
+        201.99000549316406,
+        196.0399932861328,
+        203.42999267578125,
+        210.2100067138672,
+        217.5,
+        220.17999267578125,
+        221.52999877929688,
+        231.82000732421875,
+        236.63999938964844,
+        245.0399932861328
+      ],
+      "volatility": 50.9
     },
     "sentiment": {
       "label": "NEUTRE",
@@ -83,25 +190,82 @@
       "headlines_used": 10,
       "confiance": 1.0,
       "positif": 2,
-      "negatif": 3
+      "negatif": 3,
+      "volume_signal": true
     },
     "score": {
-      "composite": 72.1,
+      "composite": 74.5,
       "signal": "ACHETER",
       "court": {
-        "value": 58,
+        "value": 44.4,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 70,
+        "value": 89.1,
         "signal": "ACHETER"
       },
       "long": {
-        "value": 89,
+        "value": 77.6,
         "signal": "ACHETER"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 3.0,
+          "macd": 15.0,
+          "volume": 5.3,
+          "bollinger": 4.0,
+          "momentum_1j": 17.1
+        },
+        "moyen": {
+          "golden_cross": 30.0,
+          "macd": 16.0,
+          "ma_alignment": 20.0,
+          "sentiment": 8.1,
+          "momentum_5j": 15.0
+        },
+        "long": {
+          "trend_200": 35.0,
+          "fundamentals": 19.5,
+          "macro": 13.0,
+          "sentiment_vol": 10.1
+        }
       }
     },
-    "report": "COURT:COURT: Neutre — RSI élevé et MACD neutre, attendant confirmation.\nMOYEN: Neutre — MACD en baisse et RSI élevé, prudence recommandée.\nLONG: Neutre — Le prix est élevé et le RSI montre une surachat.\nSYNTHESE: L'analyse suggère une approche prudente en raison des niveaux élevés d'indicateurs techniques.",
+    "fundamentals": {
+      "pe_ratio": 93.5,
+      "forward_pe": 22.7,
+      "eps_surprise": -60.7,
+      "revenue_growth": 34.1,
+      "profit_margin": 12.5,
+      "roe": 7.1,
+      "beta": 1.96,
+      "score": 65
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — RSI élevé et MACD neutre suggèrent une prudence.\nMOYEN: ACHETER — Croissance des revenus et support technique en place.\nLONG: ACHETER — Momentum haussier soutenu par les indicateurs de tendance.\nSYNTHESE: Les signaux techniques et fondamentaux penchent légèrement vers une position acheteuse prudente.",
     "headlines": [
       "Amazon CEO Jassy says company could sell AI chips, raising stakes for Nvidia, AMD",
       "Intel vs. Advanced Micro Devices: Shifting Trends in Revenue",
@@ -115,7 +279,7 @@
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-11T07:46:35.090536",
+    "timestamp": "2026-04-11T08:20:18.493444",
     "market": {
       "current_price": 62.380001068115234,
       "change_1d": 1.07,
@@ -125,45 +289,127 @@
       "volume_ratio": 0.96,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "SURACHAT",
+      "bollinger_squeeze": false,
       "ma20_status": "AU DESSUS",
       "ma50_status": "AU DESSUS",
       "ma200_status": "AU DESSUS",
+      "golden_cross": true,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 3.16,
+      "hv20": 75.9,
+      "stop_loss": 56.06,
+      "risk_pct": 10.13,
       "high_52w": 62.380001068115234,
-      "low_52w": 18.84000015258789
+      "low_52w": 18.84000015258789,
+      "history_14j": [
+        44.0099983215332,
+        44.060001373291016,
+        47.18000030517578,
+        44.099998474121094,
+        43.130001068115234,
+        41.189998626708984,
+        44.130001068115234,
+        48.029998779296875,
+        50.380001068115234,
+        50.779998779296875,
+        52.90999984741211,
+        58.95000076293945,
+        61.720001220703125,
+        62.380001068115234
+      ],
+      "volatility": 75.9
     },
     "sentiment": {
       "label": "NEUTRE",
-      "score": 0.0,
+      "score": 0.1,
       "headlines_used": 10,
       "confiance": 1.0,
       "positif": 1,
-      "negatif": 1
+      "negatif": 0,
+      "volume_signal": true
     },
     "score": {
-      "composite": 67.6,
+      "composite": 72.4,
       "signal": "ACHETER",
       "court": {
-        "value": 50,
+        "value": 38.9,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 64,
+        "value": 90.9,
         "signal": "ACHETER"
       },
       "long": {
-        "value": 90,
+        "value": 72.4,
         "signal": "ACHETER"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 3.0,
+          "macd": 15.0,
+          "volume": 4.8,
+          "bollinger": 4.0,
+          "momentum_1j": 12.1
+        },
+        "moyen": {
+          "golden_cross": 30.0,
+          "macd": 16.0,
+          "ma_alignment": 20.0,
+          "sentiment": 9.9,
+          "momentum_5j": 15.0
+        },
+        "long": {
+          "trend_200": 35.0,
+          "fundamentals": 12.0,
+          "macro": 13.0,
+          "sentiment_vol": 12.4
+        }
       }
     },
-    "report": "COURT:COURT: Neutre — RSI élevé et MACD haussier suggèrent une prudence malgré l'actualité AI\nMOYEN: Neutre — Le prix est au-dessus de la moyenne mobile mais le RSI élevé signale une possible surachat\nLONG: Neutre — Les moyennes mobiles indiquent une tendance haussière mais le RSI et le prix suggèrent une consolidation\nSYNTHESE: Attendre une confirmation de la tendance après une possible correction due à la surévaluation actuelle.",
+    "fundamentals": {
+      "pe_ratio": null,
+      "forward_pe": 62.1,
+      "eps_surprise": -112.2,
+      "revenue_growth": -4.1,
+      "profit_margin": -0.5,
+      "roe": 0.0,
+      "beta": 1.35,
+      "score": 40
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 1.0,
+        "avg_return": 13.34,
+        "sharpe": 13.34
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — RSI élevé et surprise EPS négative\nMOYEN: NEUTRE — MACD neutre mais faible croissance des revenus\nLONG: NEUTRE — Volume de breakout non confirmé malgré le sentiment positif de l'IA\nSYNTHESE: Le marché est en attente malgré le contexte IA favorable, en raison de la surévaluation et des résultats récents.",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
-      "With Volatility Spiking, These Are the Smartest Dividend Stocks to Buy Today",
-      "This $500 Stock Could Be Your Ticket to Generational Wealth",
-      "VinFast Auto Makes a Big Splash but Might Be More of a Sell Than Ever",
-      "The AI Stock Wall Street Can't Stop Talking About in 2026"
+      "Got $1,000? The Best Cybersecurity Growth Stock to Buy as Agentic AI Expands the Attack Surface.",
+      "Want to Own SpaceX Stock Before Its Blockbuster IPO? Here Are 3 Ways Investors Can Buy Right Now.",
+      "These Industrial Stocks Don't Come on Sale Often. Now Is the Time to Buy.",
+      "With Volatility Spiking, These Are the Smartest Dividend Stocks to Buy Today"
     ],
     "fear_greed": null
   },
@@ -171,7 +417,7 @@
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-11T07:46:35.090549",
+    "timestamp": "2026-04-11T08:20:18.493469",
     "market": {
       "current_price": 370.8699951171875,
       "change_1d": -0.59,
@@ -181,13 +427,38 @@
       "volume_ratio": 0.88,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "NEUTRE",
+      "bollinger_squeeze": false,
       "ma20_status": "EN DESSOUS",
       "ma50_status": "EN DESSOUS",
       "ma200_status": "EN DESSOUS",
+      "golden_cross": false,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 8.4593,
+      "hv20": 21.9,
+      "stop_loss": 353.9514,
+      "risk_pct": 4.56,
       "high_52w": 539.8251953125,
-      "low_52w": 356.3916015625
+      "low_52w": 356.3916015625,
+      "history_14j": [
+        383.0,
+        372.739990234375,
+        371.0400085449219,
+        365.9700012207031,
+        356.7699890136719,
+        358.9599914550781,
+        370.1700134277344,
+        369.3699951171875,
+        373.4599914550781,
+        372.8800048828125,
+        372.2900085449219,
+        374.3299865722656,
+        373.07000732421875,
+        370.8699951171875
+      ],
+      "volatility": 21.9
     },
     "sentiment": {
       "label": "NEUTRE",
@@ -195,25 +466,82 @@
       "headlines_used": 10,
       "confiance": 1.0,
       "positif": 3,
-      "negatif": 4
+      "negatif": 4,
+      "volume_signal": true
     },
     "score": {
-      "composite": 45.6,
+      "composite": 45.2,
       "signal": "ATTENDRE",
       "court": {
-        "value": 61,
+        "value": 55.2,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 45,
-        "signal": "ATTENDRE"
+        "value": 34.1,
+        "signal": "ÉVITER"
       },
       "long": {
-        "value": 31,
+        "value": 53.6,
         "signal": "ATTENDRE"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 15.0,
+          "macd": 15.0,
+          "volume": 4.4,
+          "bollinger": 12.0,
+          "momentum_1j": 8.8
+        },
+        "moyen": {
+          "golden_cross": 3.0,
+          "macd": 16.0,
+          "ma_alignment": 0.0,
+          "sentiment": 8.1,
+          "momentum_5j": 7.0
+        },
+        "long": {
+          "trend_200": 3.5,
+          "fundamentals": 27.0,
+          "macro": 13.0,
+          "sentiment_vol": 10.1
+        }
       }
     },
-    "report": "COURT:COURT: Neutre — Le RSI et le MACD sont dans des zones neutres, et le prix est légèrement en baisse.\nMOYEN: Neutre — Les moyennes mobiles (C, M, L) sont toutes en zone d'attente, suggérant une consolidation.\nLONG: Neutre — L'absence de signal fort sur les indicateurs techniques et l'attente sur les moyennes mobiles tempèrent tout mouvement directionnel.\nSYNTHESE: Le marché est en phase d'observation, attendant une confirmation directionnelle avant de prendre position.",
+    "fundamentals": {
+      "pe_ratio": 23.2,
+      "forward_pe": 19.7,
+      "eps_surprise": -4.5,
+      "revenue_growth": 16.7,
+      "profit_margin": 39.0,
+      "roe": 34.4,
+      "beta": 1.11,
+      "score": 90
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — RSI bas et MACD neutre, attendant une confirmation de tendance.\nMOYEN: NEUTRE — Croissance des revenus forte mais le prix est en baisse et le RSI est bas.\nLONG: ATTENDRE — Le volume et les indicateurs techniques suggèrent de patienter avant d'acheter.\nSYNTHESE: La volatilité récente et les indicateurs techniques suggèrent une approche prudente en attendant une confirmation de tendance.",
     "headlines": [
       "CoreWeave stock surges on multiyear AI deal with Anthropic",
       "Why Microsoft and Google could be the best Mag 7 stock picks",
@@ -227,7 +555,7 @@
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-11T07:46:35.090562",
+    "timestamp": "2026-04-11T08:20:18.493489",
     "market": {
       "current_price": 317.239990234375,
       "change_1d": -0.39,
@@ -237,13 +565,38 @@
       "volume_ratio": 0.65,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "NEUTRE",
+      "bollinger_squeeze": false,
       "ma20_status": "AU DESSUS",
       "ma50_status": "AU DESSUS",
       "ma200_status": "AU DESSUS",
+      "golden_cross": true,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 9.1464,
+      "hv20": 36.4,
+      "stop_loss": 298.9471,
+      "risk_pct": 5.77,
       "high_52w": 343.4482421875,
-      "low_52w": 147.1597137451172
+      "low_52w": 147.15972900390625,
+      "history_14j": [
+        302.05999755859375,
+        290.44000244140625,
+        290.92999267578125,
+        280.9200134277344,
+        274.3399963378906,
+        273.5,
+        287.55999755859375,
+        297.3900146484375,
+        295.7699890136719,
+        299.989990234375,
+        305.4599914550781,
+        317.32000732421875,
+        318.489990234375,
+        317.239990234375
+      ],
+      "volatility": 36.4
     },
     "sentiment": {
       "label": "NEUTRE",
@@ -251,25 +604,82 @@
       "headlines_used": 12,
       "confiance": 1.0,
       "positif": 2,
-      "negatif": 2
+      "negatif": 2,
+      "volume_signal": true
     },
     "score": {
-      "composite": 75.1,
+      "composite": 78.1,
       "signal": "ACHETER",
       "court": {
-        "value": 59,
+        "value": 54.5,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 76,
+        "value": 87.9,
         "signal": "ACHETER"
       },
       "long": {
-        "value": 90,
+        "value": 83.2,
         "signal": "ACHETER"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 15.0,
+          "macd": 15.0,
+          "volume": 3.2,
+          "bollinger": 12.0,
+          "momentum_1j": 9.2
+        },
+        "moyen": {
+          "golden_cross": 30.0,
+          "macd": 16.0,
+          "ma_alignment": 20.0,
+          "sentiment": 9.0,
+          "momentum_5j": 12.9
+        },
+        "long": {
+          "trend_200": 35.0,
+          "fundamentals": 24.0,
+          "macro": 13.0,
+          "sentiment_vol": 11.2
+        }
       }
     },
-    "report": "COURT:COURT: Neutre — Faible baisse récente et RSI modéré\nMOYEN: Neutre — MACD neutre et support technique en place\nLONG: Acheter — Moyenne et longue période indiquent une tendance haussière\nSYNTHESE: Le marché est en attente de confirmation directionnelle malgré des signaux techniques positifs.",
+    "fundamentals": {
+      "pe_ratio": 29.3,
+      "forward_pe": 23.6,
+      "eps_surprise": -6.5,
+      "revenue_growth": 18.0,
+      "profit_margin": 32.8,
+      "roe": 35.7,
+      "beta": 1.13,
+      "score": 80
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — RSI élevé et faible variation récente\nMOYEN: ACHETER — Croissance des revenus forte et indicateurs techniques positifs\nLONG: ACHETER — Momentum haussier soutenu par les indicateurs et la croissance\nSYNTHESE: Les signaux techniques et la croissance des revenus suggèrent une tendance acheteuse malgré une consolidation à court terme.",
     "headlines": [
       "CoreWeave stock climbs 10% on Anthropic deal",
       "How OpenAI's reported ad plans could change the AI business model",
@@ -283,7 +693,7 @@
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-11T07:46:35.090573",
+    "timestamp": "2026-04-11T08:20:18.493504",
     "market": {
       "current_price": 629.8599853515625,
       "change_1d": 0.23,
@@ -293,13 +703,38 @@
       "volume_ratio": 0.72,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "NEUTRE",
+      "bollinger_squeeze": false,
       "ma20_status": "AU DESSUS",
       "ma50_status": "EN DESSOUS",
       "ma200_status": "EN DESSOUS",
+      "golden_cross": false,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 23.1564,
+      "hv20": 53.3,
+      "stop_loss": 583.5471,
+      "risk_pct": 7.35,
       "high_52w": 788.1489868164062,
-      "low_52w": 483.1527099609375
+      "low_52w": 483.1526794433594,
+      "history_14j": [
+        604.0599975585938,
+        592.9199829101562,
+        594.8900146484375,
+        547.5399780273438,
+        525.719970703125,
+        536.3800048828125,
+        572.1300048828125,
+        579.22998046875,
+        574.4600219726562,
+        573.02001953125,
+        575.0499877929688,
+        612.4199829101562,
+        628.3900146484375,
+        629.8599853515625
+      ],
+      "volatility": 53.3
     },
     "sentiment": {
       "label": "POSITIF",
@@ -307,25 +742,82 @@
       "headlines_used": 11,
       "confiance": 1.0,
       "positif": 4,
-      "negatif": 1
+      "negatif": 1,
+      "volume_signal": true
     },
     "score": {
-      "composite": 58.8,
-      "signal": "ACHETER",
+      "composite": 53.9,
+      "signal": "ATTENDRE",
       "court": {
-        "value": 72,
-        "signal": "ACHETER"
+        "value": 56.1,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 63,
-        "signal": "ACHETER"
+        "value": 52.1,
+        "signal": "ATTENDRE"
       },
       "long": {
-        "value": 40,
+        "value": 54.8,
         "signal": "ATTENDRE"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 15.0,
+          "macd": 15.0,
+          "volume": 3.6,
+          "bollinger": 12.0,
+          "momentum_1j": 10.5
+        },
+        "moyen": {
+          "golden_cross": 3.0,
+          "macd": 16.0,
+          "ma_alignment": 6.7,
+          "sentiment": 11.5,
+          "momentum_5j": 15.0
+        },
+        "long": {
+          "trend_200": 3.5,
+          "fundamentals": 24.0,
+          "macro": 13.0,
+          "sentiment_vol": 14.3
+        }
       }
     },
-    "report": "COURT:COURT: Neutre — Le RSI est proche de 50 et le MACD est neutre.\nMOYEN: Acheter — Le prix est en hausse (+0.2%) et les indicateurs MACD/Sent sont positifs.\nLONG: Acheter — Le consensus des indicateurs (C, M) est fortement acheteur.\nSYNTHESE: La tendance générale est positive, soutenue par les indicateurs techniques et le contexte sectoriel.",
+    "fundamentals": {
+      "pe_ratio": 26.8,
+      "forward_pe": 17.6,
+      "eps_surprise": -22.3,
+      "revenue_growth": 23.8,
+      "profit_margin": 30.1,
+      "roe": 30.2,
+      "beta": 1.31,
+      "score": 80
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — RSI et MACD neutres, mais le prix est stable.\nMOYEN: NEUTRE — Croissance des revenus forte, mais l'action attend des signaux clairs.\nLONG: ATTENDRE — Le marché est en attente de confirmations malgré les bonnes nouvelles.\nSYNTHESE: L'action est en phase d'attente, nécessitant des signaux de confirmation avant de prendre position.",
     "headlines": [
       "How OpenAI's reported ad plans could change the AI business model",
       "CoreWeave (CRWV) Is Up 24.0% After Securing US$21 Billion Meta AI Cloud Deal – What's Changed",
@@ -339,7 +831,7 @@
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-11T07:46:35.090584",
+    "timestamp": "2026-04-11T08:20:18.493519",
     "market": {
       "current_price": 348.95001220703125,
       "change_1d": 0.96,
@@ -349,13 +841,38 @@
       "volume_ratio": 0.79,
       "trend": "BAISSIER",
       "macd_trend": "BAISSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "NEUTRE",
+      "bollinger_squeeze": false,
       "ma20_status": "EN DESSOUS",
       "ma50_status": "EN DESSOUS",
       "ma200_status": "EN DESSOUS",
+      "golden_cross": false,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 15.43,
+      "hv20": 40.5,
+      "stop_loss": 318.09,
+      "risk_pct": 8.84,
       "high_52w": 489.8800048828125,
-      "low_52w": 227.5
+      "low_52w": 227.5,
+      "history_14j": [
+        380.8500061035156,
+        383.0299987792969,
+        385.95001220703125,
+        372.1099853515625,
+        361.8299865722656,
+        355.2799987792969,
+        371.75,
+        381.260009765625,
+        360.5899963378906,
+        352.82000732421875,
+        346.6499938964844,
+        343.25,
+        345.6199951171875,
+        348.95001220703125
+      ],
+      "volatility": 40.5
     },
     "sentiment": {
       "label": "NEUTRE",
@@ -363,25 +880,82 @@
       "headlines_used": 10,
       "confiance": 1.0,
       "positif": 3,
-      "negatif": 4
+      "negatif": 4,
+      "volume_signal": true
     },
     "score": {
-      "composite": 44.8,
+      "composite": 34.8,
       "signal": "ATTENDRE",
       "court": {
-        "value": 60,
+        "value": 50.4,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 34,
+        "value": 21.6,
         "signal": "ÉVITER"
       },
       "long": {
-        "value": 44,
+        "value": 41.6,
         "signal": "ATTENDRE"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 15.0,
+          "macd": 7.5,
+          "volume": 4.0,
+          "bollinger": 12.0,
+          "momentum_1j": 11.9
+        },
+        "moyen": {
+          "golden_cross": 3.0,
+          "macd": 4.0,
+          "ma_alignment": 0.0,
+          "sentiment": 8.1,
+          "momentum_5j": 6.5
+        },
+        "long": {
+          "trend_200": 3.5,
+          "fundamentals": 15.0,
+          "macro": 13.0,
+          "sentiment_vol": 10.1
+        }
       }
     },
-    "report": "COURT:COURT: Neutre — RSI bas et MACD baissier malgré une hausse journalière\nMOYEN: Neutre — MACD en territoire négatif et RSI faible suggérant une consolidation\nLONG: Neutre — Le RSI et le MACD indiquent une absence de momentum clair pour une prise de position forte\nSYNTHESE: Le marché est en phase d'incertitude avec des indicateurs techniques suggérant de la prudence.",
+    "fundamentals": {
+      "pe_ratio": 323.1,
+      "forward_pe": 127.8,
+      "eps_surprise": -47.5,
+      "revenue_growth": -3.1,
+      "profit_margin": 4.0,
+      "roe": 4.9,
+      "beta": 1.92,
+      "score": 50
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NÉGATIF — Forte baisse récente et RSI bas\nMOYEN: NEUTRE — MACD bas et indicateurs de tendance en attente\nLONG: NEUTRE — Faible volatilité et manque de catalyseur immédiat\nSYNTHESE: La pression vendeuse actuelle et les indicateurs techniques suggèrent une approche prudente en attendant un signal de retournement clair.",
     "headlines": [
       "Tesla stock mired in 8-week losing streak as investors search for catalysts",
       "Tesla stock shaky after new model denial",
@@ -395,49 +969,131 @@
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-11T07:46:35.090598",
+    "timestamp": "2026-04-11T08:20:18.493537",
     "market": {
-      "current_price": 72803.7734375,
+      "current_price": 72803.0859375,
       "change_1d": -0.24,
       "change_5d": 1.2,
       "change_30d": 7.31,
       "rsi": 76.7,
-      "volume_ratio": 1.0,
+      "volume_ratio": 0.98,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "NEUTRE",
+      "bollinger_squeeze": false,
       "ma20_status": "AU DESSUS",
       "ma50_status": "AU DESSUS",
       "ma200_status": "EN DESSOUS",
+      "golden_cross": false,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 2132.0148,
+      "hv20": 33.8,
+      "stop_loss": 68539.0564,
+      "risk_pct": 5.86,
       "high_52w": 124752.53125,
-      "low_52w": 62702.09765625
+      "low_52w": 62702.09765625,
+      "history_14j": [
+        65954.921875,
+        66691.4453125,
+        68233.3125,
+        68078.5546875,
+        66888.5703125,
+        66931.1015625,
+        67290.515625,
+        68981.8984375,
+        68859.828125,
+        71940.703125,
+        71123.359375,
+        71767.828125,
+        72979.046875,
+        72803.0859375
+      ],
+      "volatility": 33.8
     },
     "sentiment": {
       "label": "NEUTRE",
-      "score": 0.15,
+      "score": 0.142,
       "headlines_used": 20,
       "confiance": 1.0,
       "positif": 7,
-      "negatif": 4
+      "negatif": 4,
+      "volume_signal": true
     },
     "score": {
-      "composite": 51.0,
+      "composite": 48.0,
       "signal": "ATTENDRE",
       "court": {
-        "value": 54,
+        "value": 44.4,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 54,
+        "value": 51.2,
         "signal": "ATTENDRE"
       },
       "long": {
-        "value": 44,
+        "value": 46.3,
         "signal": "ATTENDRE"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 3.0,
+          "macd": 15.0,
+          "volume": 4.9,
+          "bollinger": 12.0,
+          "momentum_1j": 9.5
+        },
+        "moyen": {
+          "golden_cross": 3.0,
+          "macd": 16.0,
+          "ma_alignment": 13.3,
+          "sentiment": 10.3,
+          "momentum_5j": 8.6
+        },
+        "long": {
+          "trend_200": 3.5,
+          "fundamentals": 15.0,
+          "macro": 15.0,
+          "sentiment_vol": 12.8
+        }
       }
     },
-    "report": "COURT:COURT: NEUTRE — Prix au-dessus de 72K suite aux données d'inflation\nMOYEN: NEUTRE — RSI élevé (77) et MACD haussier suggèrent une consolidation\nLONG: ATTENDRE — Moyennes mobiles et niveaux de support/résistance indiquent prudence\nSYNTHESE: Le marché est actuellement en consolidation après une hausse soutenue, nécessitant une attente de confirmation directionnelle.",
+    "fundamentals": {
+      "pe_ratio": null,
+      "forward_pe": null,
+      "eps_surprise": null,
+      "revenue_growth": null,
+      "profit_margin": null,
+      "roe": null,
+      "beta": null,
+      "score": 50
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — RSI élevé et MACD neutre suggèrent une consolidation après la hausse.\nMOYEN: NEUTRE — Le prix est stable mais les indicateurs techniques indiquent une prudence.\nLONG: ATTENDRE — Les niveaux de support et de résistance nécessitent une confirmation de prix.\nSYNTHESE: Le marché est en phase d'attente malgré la nouvelle positive, nécessitant une confirmation technique.",
     "headlines": [
       "Bitcoin climbs above $72K following March's hot inflation data",
       "Morning Brief: A big day for inflation",
@@ -456,49 +1112,131 @@
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-11T07:46:35.090609",
+    "timestamp": "2026-04-11T08:20:18.493555",
     "market": {
-      "current_price": 2234.34130859375,
-      "change_1d": -0.48,
-      "change_5d": -0.33,
-      "change_30d": 8.83,
-      "rsi": 71.5,
-      "volume_ratio": 0.93,
+      "current_price": 2234.8623046875,
+      "change_1d": -0.46,
+      "change_5d": -0.31,
+      "change_30d": 8.86,
+      "rsi": 71.6,
+      "volume_ratio": 0.92,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "NEUTRE",
+      "bollinger_squeeze": true,
       "ma20_status": "AU DESSUS",
       "ma50_status": "AU DESSUS",
       "ma200_status": "EN DESSOUS",
+      "golden_cross": false,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 89.0402,
+      "hv20": 44.7,
+      "stop_loss": 2056.7819,
+      "risk_pct": 7.97,
       "high_52w": 4831.3486328125,
-      "low_52w": 1821.68310546875
+      "low_52w": 1821.68310546875,
+      "history_14j": [
+        1982.5596923828125,
+        2023.514892578125,
+        2104.708251953125,
+        2138.737060546875,
+        2056.8525390625,
+        2053.38525390625,
+        2065.3515625,
+        2108.99560546875,
+        2107.761474609375,
+        2241.806640625,
+        2190.33544921875,
+        2189.14404296875,
+        2245.148681640625,
+        2234.8623046875
+      ],
+      "volatility": 44.7
     },
     "sentiment": {
       "label": "POSITIF",
-      "score": 0.231,
+      "score": 0.232,
       "headlines_used": 13,
       "confiance": 1.0,
       "positif": 6,
-      "negatif": 3
+      "negatif": 3,
+      "volume_signal": true
     },
     "score": {
-      "composite": 53.1,
+      "composite": 49.9,
       "signal": "ATTENDRE",
       "court": {
-        "value": 52,
+        "value": 51.7,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 60,
-        "signal": "ACHETER"
+        "value": 50.6,
+        "signal": "ATTENDRE"
       },
       "long": {
-        "value": 45,
+        "value": 47.4,
         "signal": "ATTENDRE"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 3.0,
+          "macd": 15.0,
+          "volume": 4.6,
+          "bollinger": 20.0,
+          "momentum_1j": 9.1
+        },
+        "moyen": {
+          "golden_cross": 3.0,
+          "macd": 16.0,
+          "ma_alignment": 13.3,
+          "sentiment": 11.1,
+          "momentum_5j": 7.2
+        },
+        "long": {
+          "trend_200": 3.5,
+          "fundamentals": 15.0,
+          "macro": 15.0,
+          "sentiment_vol": 13.9
+        }
       }
     },
-    "report": "COURT:COURT: Neutre — RSI élevé et MACD haussier suggèrent une consolidation après une forte hausse.\nMOYEN: Neutre — Le RSI élevé et les niveaux de support/résistance suggèrent une prudence avant de prendre position.\nLONG: Neutre — Le MACD est haussier, mais le RSI élevé et le niveau de support/résistance indiquent une pause.\nSYNTHESE: Le marché est en phase de consolidation après une forte appréciation, nécessitant de la prudence.",
+    "fundamentals": {
+      "pe_ratio": null,
+      "forward_pe": null,
+      "eps_surprise": null,
+      "revenue_growth": null,
+      "profit_margin": null,
+      "roe": null,
+      "beta": null,
+      "score": 50
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 1.0,
+        "avg_return": 4.37,
+        "sharpe": 4.37
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — RSI élevé et MACD haussier mais niveaux de support/résistance non clairs\nMOYEN: NEUTRE — Indice de force (RSI) élevé suggérant une possible surachat à court terme\nLONG: ATTENDRE — Les moyennes mobiles (C, M, L) indiquent une prudence et attendent une confirmation de tendance\nSYNTHESE: Le marché est en attente de confirmation directionnelle malgré des indicateurs techniques légèrement haussiers.",
     "headlines": [
       "Bitcoin and ethereum prices today, Friday, April 10, 2026: Prices rise ahead of CPI report",
       "Alchemy launches $20 million fund for Solana builders",
@@ -517,49 +1255,131 @@
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-11T07:46:35.090619",
+    "timestamp": "2026-04-11T08:20:18.493569",
     "market": {
-      "current_price": 84.2989273071289,
-      "change_1d": -0.62,
-      "change_5d": -1.58,
-      "change_30d": -2.12,
-      "rsi": 55.1,
-      "volume_ratio": 2.92,
+      "current_price": 84.39217376708984,
+      "change_1d": -0.51,
+      "change_5d": -1.47,
+      "change_30d": -2.02,
+      "rsi": 55.3,
+      "volume_ratio": 2.91,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
+      "macd_cross": "NEUTRE",
       "bollinger_zone": "NEUTRE",
+      "bollinger_squeeze": true,
       "ma20_status": "AU DESSUS",
       "ma50_status": "EN DESSOUS",
       "ma200_status": "EN DESSOUS",
+      "golden_cross": false,
+      "divergence": "AUCUNE",
+      "vol_breakout": false,
       "atr": 3.612,
+      "hv20": 48.7,
+      "stop_loss": 77.1682,
+      "risk_pct": 8.56,
       "high_52w": 247.6371307373047,
-      "low_52w": 77.7533187866211
+      "low_52w": 77.7533187866211,
+      "history_14j": [
+        81.42240142822266,
+        82.44405364990234,
+        83.10646057128906,
+        81.19525909423828,
+        78.9513168334961,
+        80.36854553222656,
+        80.80838012695312,
+        81.8544921875,
+        80.15157318115234,
+        85.64801025390625,
+        82.58169555664062,
+        83.2977294921875,
+        84.82847595214844,
+        84.39217376708984
+      ],
+      "volatility": 48.7
     },
     "sentiment": {
       "label": "NÉGATIF",
-      "score": -0.154,
+      "score": -0.158,
       "headlines_used": 13,
       "confiance": 1.0,
       "positif": 1,
-      "negatif": 3
+      "negatif": 3,
+      "volume_signal": true
     },
     "score": {
-      "composite": 55.8,
+      "composite": 45.9,
       "signal": "ATTENDRE",
       "court": {
-        "value": 77,
-        "signal": "ACHETER"
+        "value": 61.0,
+        "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 51,
+        "value": 39.4,
         "signal": "ATTENDRE"
       },
       "long": {
-        "value": 41,
+        "value": 43.0,
         "signal": "ATTENDRE"
+      },
+      "breakdown": {
+        "court": {
+          "rsi": 15.0,
+          "macd": 15.0,
+          "volume": 10.0,
+          "bollinger": 12.0,
+          "momentum_1j": 9.0
+        },
+        "moyen": {
+          "golden_cross": 3.0,
+          "macd": 16.0,
+          "ma_alignment": 6.7,
+          "sentiment": 7.6,
+          "momentum_5j": 6.1
+        },
+        "long": {
+          "trend_200": 3.5,
+          "fundamentals": 15.0,
+          "macro": 15.0,
+          "sentiment_vol": 9.5
+        }
       }
     },
-    "report": "COURT:COURT: ACHETER — Nouvelles positives sur l'écosystème et RSI neutre\nMOYEN: ATTENDRE — MACD haussier mais RSI et niveaux de support/résistance en zone de consolidation\nLONG: ACHETER — Forte annonce de financement pour les développeurs soutenant le momentum haussier\nSYNTHESE: Le sentiment général est positif grâce aux nouvelles, suggérant une tendance haussière à court terme.",
+    "fundamentals": {
+      "pe_ratio": null,
+      "forward_pe": null,
+      "eps_surprise": null,
+      "revenue_growth": null,
+      "profit_margin": null,
+      "roe": null,
+      "beta": null,
+      "score": 50
+    },
+    "macro": {
+      "fed_rate": 3.64,
+      "inflation": 2.36,
+      "10y_yield": 4.29,
+      "regime": "FAVORABLE",
+      "score": 65
+    },
+    "backtest": {
+      "macd_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "vol_breakout": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      },
+      "golden_cross": {
+        "win_rate": 0.5,
+        "avg_return": 0.0,
+        "sharpe": 0.0
+      }
+    },
+    "report": "COURT: NEUTRE — Faible baisse et niveau de consolidation\nMOYEN: NEUTRE — RSI neutre et absence de signal fort\nLONG: NEUTRE — Indicateurs techniques en attente de confirmation\nSYNTHESE: Le marché est en phase d'attente malgré une nouvelle positive pour l'écosystème.",
     "headlines": [
       "Alchemy launches $20 million fund for Solana builders",
       "Top Cryptocurrencies Rise; Bitcoin Holds Above $73,000 Level",
