@@ -3,7 +3,7 @@
     "ticker": "NVDA",
     "name": "NVIDIA",
     "category": "GPU",
-    "timestamp": "2026-04-11T09:32:06.175219",
+    "timestamp": "2026-04-11T09:44:41.447642",
     "market": {
       "current_price": 188.6300048828125,
       "change_1d": 2.57,
@@ -106,18 +106,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -136,10 +136,10 @@
     "report": "Rapport IA non généré (réponse vide).",
     "headlines": [
       "Chips are still where the AI trade's rubber meets the road",
+      "Stocks Rallied After President Donald Trump's Ceasefire in Iran. Here's How to Invest Now.",
       "Could We Be Looking at a Worst-Case Scenario for the Social Security COLA?",
       "Tesla Stock Investors Just Got Good News From Wall Street Analysts About Robotaxis",
-      "The Likelihood of a Stock Market Crash Taking Shape Under President Donald Trump Is Rising -- and There's a Clear Reason Why",
-      "1 No-Brainer Dividend Stock to Buy if the Market Falls Again"
+      "The Likelihood of a Stock Market Crash Taking Shape Under President Donald Trump Is Rising -- and There's a Clear Reason Why"
     ],
     "fear_greed": null
   },
@@ -147,7 +147,7 @@
     "ticker": "AMD",
     "name": "AMD",
     "category": "GPU",
-    "timestamp": "2026-04-11T09:32:06.175271",
+    "timestamp": "2026-04-11T09:44:41.447707",
     "market": {
       "current_price": 245.0399932861328,
       "change_1d": 3.55,
@@ -250,18 +250,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -291,7 +291,7 @@
     "ticker": "INTC",
     "name": "Intel",
     "category": "GPU",
-    "timestamp": "2026-04-11T09:32:06.175302",
+    "timestamp": "2026-04-11T09:44:41.447737",
     "market": {
       "current_price": 62.380001068115234,
       "change_1d": 1.07,
@@ -394,18 +394,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -435,7 +435,7 @@
     "ticker": "MSFT",
     "name": "Microsoft",
     "category": "AI",
-    "timestamp": "2026-04-11T09:32:06.175326",
+    "timestamp": "2026-04-11T09:44:41.447763",
     "market": {
       "current_price": 370.8699951171875,
       "change_1d": -0.59,
@@ -458,8 +458,8 @@
       "hv20": 21.9,
       "stop_loss": 353.9514,
       "risk_pct": 4.56,
-      "high_52w": 539.8251953125,
-      "low_52w": 356.3916320800781,
+      "high_52w": 539.8252563476562,
+      "low_52w": 356.3916015625,
       "history_14j": [
         383.0,
         372.739990234375,
@@ -538,18 +538,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -579,7 +579,7 @@
     "ticker": "GOOGL",
     "name": "Alphabet",
     "category": "AI",
-    "timestamp": "2026-04-11T09:32:06.175350",
+    "timestamp": "2026-04-11T09:44:41.447793",
     "market": {
       "current_price": 317.239990234375,
       "change_1d": -0.39,
@@ -603,7 +603,7 @@
       "stop_loss": 298.9471,
       "risk_pct": 5.77,
       "high_52w": 343.4482421875,
-      "low_52w": 147.1597442626953,
+      "low_52w": 147.15972900390625,
       "history_14j": [
         302.05999755859375,
         290.44000244140625,
@@ -682,18 +682,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -723,7 +723,7 @@
     "ticker": "META",
     "name": "Meta",
     "category": "AI",
-    "timestamp": "2026-04-11T09:32:06.175373",
+    "timestamp": "2026-04-11T09:44:41.447810",
     "market": {
       "current_price": 629.8599853515625,
       "change_1d": 0.23,
@@ -826,18 +826,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -867,7 +867,7 @@
     "ticker": "TSLA",
     "name": "Tesla",
     "category": "AI",
-    "timestamp": "2026-04-11T09:32:06.175397",
+    "timestamp": "2026-04-11T09:44:41.447824",
     "market": {
       "current_price": 348.95001220703125,
       "change_1d": 0.96,
@@ -970,18 +970,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -1011,13 +1011,13 @@
     "ticker": "BTC-USD",
     "name": "Bitcoin",
     "category": "Crypto",
-    "timestamp": "2026-04-11T09:32:06.175426",
+    "timestamp": "2026-04-11T09:44:41.447843",
     "market": {
-      "current_price": 72905.359375,
-      "change_1d": -0.1,
-      "change_5d": 1.34,
-      "change_30d": 7.46,
-      "rsi": 77.4,
+      "current_price": 72857.125,
+      "change_1d": -0.17,
+      "change_5d": 1.27,
+      "change_30d": 7.39,
+      "rsi": 77.1,
       "volume_ratio": 0.97,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
@@ -1032,7 +1032,7 @@
       "vol_breakout": false,
       "atr": 2134.4322,
       "hv20": 33.8,
-      "stop_loss": 68636.495,
+      "stop_loss": 68588.2606,
       "risk_pct": 5.86,
       "high_52w": 124752.53125,
       "low_52w": 62702.09765625,
@@ -1050,7 +1050,7 @@
         71123.359375,
         71767.828125,
         72979.046875,
-        72905.359375
+        72857.125
       ],
       "volatility": 33.8
     },
@@ -1064,14 +1064,14 @@
       "volume_signal": true
     },
     "score": {
-      "composite": 48.2,
+      "composite": 48.1,
       "signal": "ATTENDRE",
       "court": {
-        "value": 44.7,
+        "value": 44.5,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 51.4,
+        "value": 51.3,
         "signal": "ATTENDRE"
       },
       "long": {
@@ -1084,14 +1084,14 @@
           "macd": 15.0,
           "volume": 4.9,
           "bollinger": 12.0,
-          "momentum_1j": 9.8
+          "momentum_1j": 9.7
         },
         "moyen": {
           "golden_cross": 3.0,
           "macd": 16.0,
           "ma_alignment": 13.3,
           "sentiment": 10.3,
-          "momentum_5j": 8.8
+          "momentum_5j": 8.7
         },
         "long": {
           "trend_200": 3.5,
@@ -1114,18 +1114,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -1160,13 +1160,13 @@
     "ticker": "ETH-USD",
     "name": "Ethereum",
     "category": "Crypto",
-    "timestamp": "2026-04-11T09:32:06.175450",
+    "timestamp": "2026-04-11T09:44:41.447860",
     "market": {
-      "current_price": 2246.881103515625,
-      "change_1d": 0.08,
-      "change_5d": 0.23,
-      "change_30d": 9.44,
-      "rsi": 73.0,
+      "current_price": 2244.473876953125,
+      "change_1d": -0.03,
+      "change_5d": 0.12,
+      "change_30d": 9.32,
+      "rsi": 72.8,
       "volume_ratio": 0.89,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
@@ -1181,7 +1181,7 @@
       "vol_breakout": false,
       "atr": 89.0402,
       "hv20": 44.6,
-      "stop_loss": 2068.8007,
+      "stop_loss": 2066.3934,
       "risk_pct": 7.93,
       "high_52w": 4831.3486328125,
       "low_52w": 1821.68310546875,
@@ -1199,7 +1199,7 @@
         2190.33544921875,
         2189.14404296875,
         2245.148681640625,
-        2246.881103515625
+        2244.473876953125
       ],
       "volatility": 44.6
     },
@@ -1213,14 +1213,14 @@
       "volume_signal": true
     },
     "score": {
-      "composite": 50.4,
+      "composite": 50.3,
       "signal": "ATTENDRE",
       "court": {
-        "value": 52.6,
+        "value": 52.4,
         "signal": "ATTENDRE"
       },
       "moyen": {
-        "value": 51.1,
+        "value": 51.0,
         "signal": "ATTENDRE"
       },
       "long": {
@@ -1233,14 +1233,14 @@
           "macd": 15.0,
           "volume": 4.5,
           "bollinger": 20.0,
-          "momentum_1j": 10.2
+          "momentum_1j": 9.9
         },
         "moyen": {
           "golden_cross": 3.0,
           "macd": 16.0,
           "ma_alignment": 13.3,
           "sentiment": 11.1,
-          "momentum_5j": 7.7
+          "momentum_5j": 7.6
         },
         "long": {
           "trend_200": 3.5,
@@ -1263,18 +1263,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
@@ -1309,13 +1309,13 @@
     "ticker": "SOL-USD",
     "name": "Solana",
     "category": "Crypto",
-    "timestamp": "2026-04-11T09:32:06.175469",
+    "timestamp": "2026-04-11T09:44:41.447873",
     "market": {
-      "current_price": 84.70911407470703,
-      "change_1d": -0.14,
-      "change_5d": -1.1,
-      "change_30d": -1.65,
-      "rsi": 56.1,
+      "current_price": 84.6770248413086,
+      "change_1d": -0.18,
+      "change_5d": -1.13,
+      "change_30d": -1.69,
+      "rsi": 56.0,
       "volume_ratio": 2.81,
       "trend": "HAUSSIER",
       "macd_trend": "HAUSSIER",
@@ -1330,7 +1330,7 @@
       "vol_breakout": false,
       "atr": 3.612,
       "hv20": 48.7,
-      "stop_loss": 77.4851,
+      "stop_loss": 77.453,
       "risk_pct": 8.53,
       "high_52w": 247.6371307373047,
       "low_52w": 77.7533187866211,
@@ -1348,7 +1348,7 @@
         82.58169555664062,
         83.2977294921875,
         84.82847595214844,
-        84.70911407470703
+        84.6770248413086
       ],
       "volatility": 48.7
     },
@@ -1365,7 +1365,7 @@
       "composite": 46.2,
       "signal": "ATTENDRE",
       "court": {
-        "value": 61.7,
+        "value": 61.6,
         "signal": "ATTENDRE"
       },
       "moyen": {
@@ -1382,14 +1382,14 @@
           "macd": 15.0,
           "volume": 10.0,
           "bollinger": 12.0,
-          "momentum_1j": 9.7
+          "momentum_1j": 9.6
         },
         "moyen": {
           "golden_cross": 3.0,
           "macd": 16.0,
           "ma_alignment": 6.7,
           "sentiment": 7.6,
-          "momentum_5j": 6.5
+          "momentum_5j": 6.4
         },
         "long": {
           "trend_200": 3.5,
@@ -1412,18 +1412,18 @@
     "macro": {
       "fed_rate": 3.64,
       "inflation": 2.36,
-      "10y_yield": 4.29,
+      "10y_yield": null,
       "regime": "FAVORABLE",
       "score": 65
     },
     "backtest": {
       "win_rate": 0.5,
       "avg_return": 0.0,
-      "net_avg_return": 0,
+      "net_avg_return": 0.0,
       "sharpe": 0.0,
       "max_dd": 0.0,
       "n_trades": 0,
-      "combo_name": "Aucune"
+      "combo_name": "MACD-seul"
     },
     "decision": {
       "decision": "ATTENDRE",
